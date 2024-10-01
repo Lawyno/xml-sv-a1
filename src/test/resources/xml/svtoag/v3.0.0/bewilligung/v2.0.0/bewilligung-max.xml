@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<SVTOAG xmlns="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_SVTOAG/3.0"
+        xmlns:bew="http://www.gkv-datenaustausch.de/XMLSchema/A1S-Bewilligung/2.0"
+        xmlns:a1b="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0" Versionsnummer="3.0.0">
+    <SendungsHeaderSVTOAG Versionsnummer="3.0.0">
+        <Vorlaufsatz>
+            <Verfahrensmerkmal>A1S</Verfahrensmerkmal>
+            <Absendernummer>66667777</Absendernummer>
+            <Empfaengernummer>11223344</Empfaengernummer>
+            <Datum_Erstellung>2024-09-15T08:15:30</Datum_Erstellung>
+            <Dateifolgenummer>123456</Dateifolgenummer>
+        </Vorlaufsatz>
+    </SendungsHeaderSVTOAG>
+    <Sendungs_Body>
+        <Verfahren>
+            <bew:A1_Bewilligung Versionsnummer="2.0.0">
+                <bew:Steuerungsdaten>
+                    <a1b:Absendernummer>66667777</a1b:Absendernummer>
+                    <a1b:Empfaengernummer>11223344</a1b:Empfaengernummer>
+                    <a1b:Datum_Erstellung>2024-09-15T08:15:30</a1b:Datum_Erstellung>
+                    <a1b:Datensatz_ID>datensatz-2000</a1b:Datensatz_ID>
+                    <a1b:Vorgangs_ID>vorgang-1000</a1b:Vorgangs_ID>
+                    <a1b:Stornokennzeichen>J</a1b:Stornokennzeichen>
+                </bew:Steuerungsdaten>
+                <bew:Angaben_Person>
+                    <a1b:Grundangabe_Name>
+                        <a1b:Geschlecht>M</a1b:Geschlecht>
+                        <a1b:Vorname>Max</a1b:Vorname>
+                        <a1b:Familienname>Mustermann</a1b:Familienname>
+                        <a1b:Vorsatzwort>von und zu</a1b:Vorsatzwort>
+                        <a1b:Namenszusatz>Landgraf</a1b:Namenszusatz>
+                        <a1b:Titel>Dr. Prof.</a1b:Titel>
+                    </a1b:Grundangabe_Name>
+                    <a1b:Versicherungsnummer>12345678X910</a1b:Versicherungsnummer>
+                </bew:Angaben_Person>
+                <bew:Angaben_Antragsteller>
+                    <a1b:Datensatz_Id_Ursprungsmeldung>datensatz-1000</a1b:Datensatz_Id_Ursprungsmeldung>
+                    <a1b:Azvu_Ursprungsmeldung>azvu-999</a1b:Azvu_Ursprungsmeldung>
+                    <a1b:Bbnr_Vu>12345678</a1b:Bbnr_Vu>
+                </bew:Angaben_Antragsteller>
+                <bew:Hinweistext>Pseudo Hinweistext zur Bewilligung.</bew:Hinweistext>
+                <bew:Bescheinigung_Pdf>UHNldWRvLVBERi1EYXRlaQ==</bew:Bescheinigung_Pdf>
+            </bew:A1_Bewilligung>
+        </Verfahren>
+    </Sendungs_Body>
+</SVTOAG>

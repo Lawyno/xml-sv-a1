@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<SVTOAG xmlns="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_SVTOAG/1.0"
+        xmlns:a1="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1"
+        xmlns:bew="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3"
+        xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0"
+        Versionsnummer="1.0.0">
+    <SendungsHeaderSVTOAG Versionsnummer="1.0.0">
+        <Vorlaufsatz>
+            <Verfahrensmerkmal>A1S</Verfahrensmerkmal>
+            <Absendernummer>66667777</Absendernummer>
+            <Empfaengernummer>11223344</Empfaengernummer>
+            <Datum_Erstellung>2024-09-15T08:15:30</Datum_Erstellung>
+            <Dateifolgenummer>123456</Dateifolgenummer>
+        </Vorlaufsatz>
+    </SendungsHeaderSVTOAG>
+    <Sendungs_Body>
+        <Verfahren>
+            <a1:Rueckmeldungen>
+                <bew:A1_Bewilligung Versionsnummer="1.3.0">
+                    <bew:Steuerungsdaten>
+                        <bew:Absendernummer>66667777</bew:Absendernummer>
+                        <bew:Empfaengernummer>11223344</bew:Empfaengernummer>
+                        <bew:Datum_Erstellung>2024-09-15T08:15:30</bew:Datum_Erstellung>
+                        <bew:Datensatz_ID>datensatz-2000</bew:Datensatz_ID>
+                        <bew:Vorgangs_ID>vorgang-1000</bew:Vorgangs_ID>
+                        <bew:Stornokennzeichen>J</bew:Stornokennzeichen>
+                    </bew:Steuerungsdaten>
+                    <bew:Angaben_Person>
+                        <bew:Grundangabe_Name>
+                            <btct:Geschlecht>M</btct:Geschlecht>
+                            <btct:Vorname>Max</btct:Vorname>
+                            <btct:Familienname>Mustermann</btct:Familienname>
+                            <btct:Vorsatzwort>von und zu</btct:Vorsatzwort>
+                            <btct:Namenszusatz>Landgraf</btct:Namenszusatz>
+                            <btct:Namenstitel>Dr. Prof.</btct:Namenstitel>
+                        </bew:Grundangabe_Name>
+                        <bew:Versicherungsnummer>12345678X910</bew:Versicherungsnummer>
+                    </bew:Angaben_Person>
+                    <bew:Angaben_Arbeitgeber>
+                        <bew:Datensatz_ID_Ursprungsmeldung>datensatz-1000</bew:Datensatz_ID_Ursprungsmeldung>
+                        <bew:AZVU_Ursprungsmeldung>azvu-999</bew:AZVU_Ursprungsmeldung>
+                        <bew:Betriebsnummer_VU>12345678</bew:Betriebsnummer_VU>
+                    </bew:Angaben_Arbeitgeber>
+                    <bew:Hinweistext>Pseudo Hinweistext zur Bewilligung.</bew:Hinweistext>
+                    <bew:Bescheinigung_PDF>UHNldWRvLVBERi1EYXRlaQ==</bew:Bescheinigung_PDF>
+                </bew:A1_Bewilligung>
+            </a1:Rueckmeldungen>
+        </Verfahren>
+    </Sendungs_Body>
+</SVTOAG>

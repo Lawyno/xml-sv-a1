@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2020 rel. 2 sp1 (x64) (http://www.altova.com) von Björn Scharatta (GKV Spitzenverband) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" xmlns:btst="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_A1/1.0" xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_A1/1.0" schemaLocation="Basistypen_Simple_A1_V1_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" schemaLocation="Basistypen_Complex_A1_V1_0_0.xsd"/>
+	<xs:element name="A1_Bewilligung">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Steuerungsdaten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Absendernummer" type="btst:Absendernummer_Typ">
+								<xs:annotation>
+									<xs:documentation>Hier ist nur die Absendernummer eines Sozialversicherungsträgers zulässig.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Empfaengernummer" type="btst:Absendernummer_Typ">
+								<xs:annotation>
+									<xs:documentation>Hier ist die Absendernummer der beantragenden Stelle einzutragen.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Datum_Erstellung" type="btst:Datum_Zeit_Typ">
+								<xs:annotation>
+									<xs:documentation>Es ist das Datum der Erstellung des Datensatzes einzutragen.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Datensatz_ID" type="btst:DatensatzID_Typ">
+								<xs:annotation>
+									<xs:documentation>Hier kann der Sozialversicherungsträger eine eigene Datensatz-ID für  Rückfragen eintragen.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Vorgangs_ID" type="btst:DatensatzID_Typ">
+								<xs:annotation>
+									<xs:documentation>Die Vorgangs-ID ist ein für die meldende Stelle eindeutiges Zuordnungskriterium für den Meldevorgang, welches unverändert auch für mögliche Stornierungen und Neumeldungen innerhalb des Meldevorgangs verwendet wird.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Stornokennzeichen" type="btst:Stornokennzeichen_Typ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Kennzeichen zur Stornierung der Meldung. Fuer eine Stornierung ist das Kennzeichen "J"zu uebermitteln. Sofern keine Stornierung erfolgt ist das Element nicht zu befuellen. </xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Person">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grundangabe_Name" type="btct:Angaben_Name_Ctp"/>
+							<xs:element name="Versicherungsnummer" type="btst:VSNR_Typ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Es ist die Versicherungsnummer des Arbeitnehmers einzutragen.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Arbeitgeber">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Datensatz_ID_Ursprungsmeldung" type="btst:DatensatzID_Typ">
+								<xs:annotation>
+									<xs:documentation>Es ist die Datensatz ID aus dem Antrag einzutragen.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="AZVU_Ursprungsmeldung" type="btst:Aktenzeichen_Verursacher_Typ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Das Aktenzeichen Versursacher der Ursprungsmeldung des Arbeitgebers</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Betriebsnummer_VU" type="btst:Bbnr_Typ">
+								<xs:annotation>
+									<xs:documentation>Betriebsnummer des Arbeitgebers</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Hinweistext">
+					<xs:annotation>
+						<xs:documentation>Hier wird der Hinweisetext zum Umgang mit der A1 Bescheinigung beim Arbeitgeber übermittelt.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="btst:ISO88591_Typ">
+							<xs:maxLength value="1500"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Bescheinigung_PDF" type="btst:PDF_Typ" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Element zur uebermittlung des base64 kodierten PDF. Bei einer Stornierung der Bescheinigung wird das PDF nicht erneut uebermittelt.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+				<xs:annotation>
+					<xs:documentation>Die Versionsnummer des Datensatzes in der Version 1.3.0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

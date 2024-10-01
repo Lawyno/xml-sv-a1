@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<A1_Antrag_Beamte xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1_Beamte/2.0"
+                  xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0"
+                  Versionsnummer="2.0.0">
+    <Steuerungsdaten>
+        <btct:Absendernummer>A0123456</btct:Absendernummer>
+        <btct:Empfaengernummer>A9876543</btct:Empfaengernummer>
+        <btct:Datum_Erstellung>2024-09-27T08:15:42</btct:Datum_Erstellung>
+        <btct:Prod_ID>prod123</btct:Prod_ID>
+        <btct:Mod_ID>mod12345</btct:Mod_ID>
+        <btct:Datensatz_ID>datensatz-id-0000000000000000002</btct:Datensatz_ID>
+        <btct:Vorgangs_ID>vorgang-id-000000000000000000001</btct:Vorgangs_ID>
+        <btct:Aktenzeichen_Verursacher>Beamte-Max-2.0.0</btct:Aktenzeichen_Verursacher>
+        <btct:Stornierung>
+            <btct:Stornokennzeichen>J</btct:Stornokennzeichen>
+            <btct:Datensatz_ID_Ursprungsmeldung>datensatz-id-0000000000000000001</btct:Datensatz_ID_Ursprungsmeldung>
+        </btct:Stornierung>
+    </Steuerungsdaten>
+    <Angaben_zur_Person_A1>
+        <Name>
+            <Grundangabe_Name>
+                <btct:Geschlecht>M</btct:Geschlecht>
+                <btct:Vorname>Maximilian</btct:Vorname>
+                <btct:Familienname>Mustermann</btct:Familienname>
+            </Grundangabe_Name>
+            <Namens_Ergaenzungen>
+                <btct:Geburtsdatum>1970-12-31</btct:Geburtsdatum>
+                <btct:Geburtsort>Testhüttenstadt</btct:Geburtsort>
+                <btct:Geburtsland>000</btct:Geburtsland>
+                <btct:Versicherungsnummer>12345678X910</btct:Versicherungsnummer>
+                <btct:Staatsangehoerigkeit>000</btct:Staatsangehoerigkeit>
+            </Namens_Ergaenzungen>
+        </Name>
+        <Anschrift_Wohnstaat>
+            <btct:Strasse>Milchstraße</btct:Strasse>
+            <btct:Hausnummer>42</btct:Hausnummer>
+            <btct:Adresszusatz>Etage 128</btct:Adresszusatz>
+            <btct:Postleitzahl>12345</btct:Postleitzahl>
+            <btct:Ort>Coruscant</btct:Ort>
+            <btct:Laenderschluessel>000</btct:Laenderschluessel>
+        </Anschrift_Wohnstaat>
+    </Angaben_zur_Person_A1>
+    <Angaben_Auslandseinsatz>
+        <Grunddaten_Auslandseinsatz>
+            <Beginn>2025-01-01</Beginn>
+            <Ende>2025-01-31</Ende>
+            <Weitere_Taetigkeit_Mitgliedstaat>N</Weitere_Taetigkeit_Mitgliedstaat>
+        </Grunddaten_Auslandseinsatz>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>101</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 01</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>102</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 02</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>103</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 03</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>104</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 04</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>105</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 05</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>106</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 06</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>107</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 07</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>108</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 08</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>109</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 09</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>110</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 10</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>111</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 11</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>112</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 12</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>113</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 13</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>114</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 14</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>115</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 15</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>116</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 16</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>117</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 17</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>118</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 18</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>119</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 19</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>120</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 20</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>121</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 21</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>122</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 22</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>123</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 23</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>124</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 24</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>125</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 25</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>126</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 26</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>127</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 27</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>128</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 28</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>129</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 29</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>130</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 30</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+        <Angaben_zur_Taetigkeit_im_Ausland>
+            <Land>131</Land>
+            <Feste_Einsatzstelle_Ausland>
+                <Bezeichnung_Einsatzstelle>Fundación de prueba 31</Bezeichnung_Einsatzstelle>
+                <Anschrift_Einsatzstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Einsatzstelle>
+            </Feste_Einsatzstelle_Ausland>
+        </Angaben_zur_Taetigkeit_im_Ausland>
+    </Angaben_Auslandseinsatz>
+    <Angaben_Arbeitsverhaeltnis_Deutschland>
+        <Beschaeftigte_Person>
+            <Aktives_Beschaeftigungsverhaeltnis>J</Aktives_Beschaeftigungsverhaeltnis>
+            <Geltung>J</Geltung>
+        </Beschaeftigte_Person>
+    </Angaben_Arbeitsverhaeltnis_Deutschland>
+    <Angaben_Arbeitgeber_Deutschland_A1>
+        <Grunddaten>
+            <Name>Testfirma Häberle GmbH &amp; Co KG</Name>
+            <Anschrift_Arbeitgeber>
+                <btct:Strasse>Teststraße</btct:Strasse>
+                <btct:Hausnummer>1</btct:Hausnummer>
+                <btct:Adresszusatz>3. OG</btct:Adresszusatz>
+                <btct:Postleitzahl>98765</btct:Postleitzahl>
+                <btct:Ort>Teststadt</btct:Ort>
+                <btct:Laenderschluessel>000</btct:Laenderschluessel>
+            </Anschrift_Arbeitgeber>
+            <Telefonnummer>0123 4567890</Telefonnummer>
+            <E_Mail>test@example.org</E_Mail>
+            <Betriebsnummer_VU>12345678</Betriebsnummer_VU>
+        </Grunddaten>
+    </Angaben_Arbeitgeber_Deutschland_A1>
+    <Erklaerung_Arbeitgeber>
+        <Angaben>J</Angaben>
+    </Erklaerung_Arbeitgeber>
+</A1_Antrag_Beamte>

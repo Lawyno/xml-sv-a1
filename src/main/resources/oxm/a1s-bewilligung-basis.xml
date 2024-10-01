@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+              package-name="de.lawyno.xml.sv.a1.basis" version="2.5">
+
+    <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
+                namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0">
+        <xml-ns prefix="bew" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" />
+        <xml-ns prefix="btct" namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
+    </xml-schema>
+
+    <java-types>
+        <java-type name="AngabenPersonRueckmeldungCtp">
+            <xml-type namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" />
+        </java-type>
+        <java-type name="AngabenAntragstellerRueckmeldungCtp">
+            <xml-type namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" />
+        </java-type>
+    </java-types>
+
+</xml-bindings>

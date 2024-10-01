@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="SV-Basis://XMLSchema/1.0" targetNamespace="SV-Basis://XMLSchema/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xs:annotation>
+		<xs:documentation>
+			Dieses Schema enthält sowohl globale Datentypdefinitionen als auch globale Elementdeklarationen, 
+			die im XML-basierten Datenaustausch im Sozialversicherungswesen verfahrensübergreifend Verwendung finden.
+
+			Fachverfahren sollen dieses Schema und die darin enthaltenen Komponenten verwenden oder ihren
+			Bedürfnissen entsprechend einschränken - soweit die Definition dies zulässt.
+			
+			Für die Fachverfahren können über diese Definitionen hinaus eigene Komponenten definiert werden. 
+			Falls diese von verfahrensübergreifender Bedeutung sind ist gemäß Anlage 12 GGT ein 
+			entsprechender Change Request an das für die Pflege dieses SV-Basisschemas zuständige Gremium UAG XML einreichen.
+		</xs:documentation>
+	</xs:annotation>
+	<!-- ===================================================== -->
+	<!--Basisdatentypen mit einfacher Typdefinition; simpleType-->
+	<!-- ===================================================== -->
+	<!-- generische Datentypen -->
+	<xs:simpleType name="Text_1024_Stp">
+		<xs:annotation>
+			<xs:documentation>Langer Text, beispielsweise für die Angabe von Fehlertexten.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="1024"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Text_256_Stp">
+		<xs:annotation>
+			<xs:documentation>Text, beispielsweise für die Angabe von Namensbestandteilen.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Datum-/Zeitangaben-->
+	<xs:simpleType name="Datum_Stp">
+		<xs:annotation>
+			<xs:documentation>Dieser Datentyp dient der Repräsentation eines tagesgenauen Datums und umfasst den Tag der um 00:00 Uhr Mitteleuropäische Zeit (MEZ/CET) bzw. Mitteleuropäischer Sommerzeit (MESZ/CEST) beginnt und bis 00:00 (exklusive) des nächsten Tages dauert. Die MEZ ist als UTC+1, die MESZ als UTC+2 definiert (koordinierte Weltzeit +1 Stunde, bzw +2 Stunden).
+Das zu verwendende Datumsformat ist eine Einschränkung von xs:date (ISO 8601) auf JJJJ-MM-TT, da die Zeitzone durch diese Definition vorgegeben ist.
+</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>
+				Wenn dieser Datentyp für Stichtage verwendet wird, so ist das angegebene Datum als inklusive anzusehen.</Kommentar>
+				<Beispiele>2008-04-29</Beispiele>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:date">
+			<xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Datum_Uhrzeit_Stp">
+		<xs:annotation>
+			<xs:documentation>Datum im Format YYYY-MM-DDThh:mm:ss</xs:documentation>
+			<xs:appinfo>
+				<Kommentar/>
+				<Beispiele>2008-04-29T10:35:00</Beispiele>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime">
+			<xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Geburtsdatum_unbekannt_Stp">
+		<xs:annotation>
+			<xs:documentation>Geburtsdatum im Format JJJJ-MM-TT. Bei ausländischen Staatsbürgern kann der Tag oder Monat der Geburt unbekannt sein. In diesen Fällen ist der Tag oder Monat mit "00" anzugeben.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="([1-9]\d{3})\-(0[0-9]|1[012])\-(0[0-9]|[12][0-9]|3[01])"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Jahr_Stp">
+		<xs:annotation>
+			<xs:documentation>Jahresangabe der Gegenwart, z. B. zur Konkretisierung einer Kodierung eines kalenderjahresbezogenen Bezugssystems wie ICD-10-GM oder OPS.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1900"/>
+			<xs:maxInclusive value="2099"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Versionsnummern-->
+	<xs:simpleType name="Versionsnummer_Stp">
+		<xs:annotation>
+			<xs:documentation>Version bzw. logische Verfahrensversion nach Anlage 12 GGT im Wertebereich zwischen 1.0.0 und 999.999.999 für produktive Systemumgebungen</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>Die Einschränkung erlaubt Werte >= 1.0.0 als Angabe zur Version</Kommentar>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[1-9][0-9]{0,2}\.(0|[1-9][0-9]{0,2})\.(0|[1-9][0-9]{0,2})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Verfahren-->
+	<xs:simpleType name="Verfahrensmerkmal_Stp">
+		<xs:annotation>
+			<xs:documentation>Definiton des Verfahrensmerkmals</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Grundangaben Name-->
+	<xs:simpleType name="Geschlecht_Stp">
+		<xs:annotation>
+			<xs:documentation>Geschlecht Inhalt entsprechend § 22 PStG (https://www.gesetze-im-internet.de/pstg/) entweder 1 (weiblich), 2 (männlich), 3 (unbestimmt), 4 (divers)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="w">
+				<xs:annotation>
+					<xs:documentation>weiblich</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="m">
+				<xs:annotation>
+					<xs:documentation>männlich</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="d">
+				<xs:annotation>
+					<xs:documentation>divers</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="x">
+				<xs:annotation>
+					<xs:documentation>unbestimmt</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Nachname_Stp">
+		<xs:annotation>
+			<xs:documentation>Dieser Datentyp modelliert den Nachnamen einer Person.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Text_256_Stp">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Namensvorsatz_Stp">
+		<xs:annotation>
+			<xs:documentation>Dieser Datentyp modelliert den Namensvorsatz einer Person. Die erlaubten Werte sind durch Anlage 6 DEÜV vorgegeben.</xs:documentation>
+			<xs:appinfo>
+				<Beispiele>von und zu</Beispiele>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="Text_256_Stp">
+			<xs:minLength value="1"/>
+			<xs:enumeration value="a"/>
+			<xs:enumeration value="aan de"/>
+			<xs:enumeration value="aan den"/>
+			<xs:enumeration value="al"/>
+			<xs:enumeration value="am"/>
+			<xs:enumeration value="an"/>
+			<xs:enumeration value="an der"/>
+			<xs:enumeration value="auf"/>
+			<xs:enumeration value="auf dem"/>
+			<xs:enumeration value="auf der"/>
+			<xs:enumeration value="auf m"/>
+			<xs:enumeration value="aufm"/>
+			<xs:enumeration value="auff m"/>
+			<xs:enumeration value="aus"/>
+			<xs:enumeration value="aus dem"/>
+			<xs:enumeration value="aus den"/>
+			<xs:enumeration value="aus der"/>
+			<xs:enumeration value="b"/>
+			<xs:enumeration value="be"/>
+			<xs:enumeration value="bei"/>
+			<xs:enumeration value="bei der"/>
+			<xs:enumeration value="beim"/>
+			<xs:enumeration value="ben"/>
+			<xs:enumeration value="bey"/>
+			<xs:enumeration value="bey der"/>
+			<xs:enumeration value="che"/>
+			<xs:enumeration value="cid"/>
+			<xs:enumeration value="d"/>
+			<xs:enumeration value="d."/>
+			<xs:enumeration value="d'"/>
+			<xs:enumeration value="da"/>
+			<xs:enumeration value="da costa"/>
+			<xs:enumeration value="da las"/>
+			<xs:enumeration value="da silva"/>
+			<xs:enumeration value="dal"/>
+			<xs:enumeration value="dall"/>
+			<xs:enumeration value="dall'"/>
+			<xs:enumeration value="dalla"/>
+			<xs:enumeration value="dalle"/>
+			<xs:enumeration value="dallo"/>
+			<xs:enumeration value="das"/>
+			<xs:enumeration value="de"/>
+			<xs:enumeration value="degli"/>
+			<xs:enumeration value="dei"/>
+			<xs:enumeration value="den"/>
+			<xs:enumeration value="de l '"/>
+			<xs:enumeration value="de la"/>
+			<xs:enumeration value="de las"/>
+			<xs:enumeration value="de le"/>
+			<xs:enumeration value="de los"/>
+			<xs:enumeration value="del"/>
+			<xs:enumeration value="del coz"/>
+			<xs:enumeration value="deli"/>
+			<xs:enumeration value="dell"/>
+			<xs:enumeration value="dell'"/>
+			<xs:enumeration value="della"/>
+			<xs:enumeration value="delle"/>
+			<xs:enumeration value="delli"/>
+			<xs:enumeration value="dello"/>
+			<xs:enumeration value="der"/>
+			<xs:enumeration value="des"/>
+			<xs:enumeration value="di"/>
+			<xs:enumeration value="dit"/>
+			<xs:enumeration value="do"/>
+			<xs:enumeration value="do ceu"/>
+			<xs:enumeration value="don"/>
+			<xs:enumeration value="don le"/>
+			<xs:enumeration value="dos"/>
+			<xs:enumeration value="dos santos"/>
+			<xs:enumeration value="du"/>
+			<xs:enumeration value="dy"/>
+			<xs:enumeration value="el"/>
+			<xs:enumeration value="g"/>
+			<xs:enumeration value="gen"/>
+			<xs:enumeration value="gil"/>
+			<xs:enumeration value="gli"/>
+			<xs:enumeration value="grosse"/>
+			<xs:enumeration value="große"/>
+			<xs:enumeration value="i"/>
+			<xs:enumeration value="im"/>
+			<xs:enumeration value="in"/>
+			<xs:enumeration value="in de"/>
+			<xs:enumeration value="in den"/>
+			<xs:enumeration value="in der"/>
+			<xs:enumeration value="in het"/>
+			<xs:enumeration value="in't"/>
+			<xs:enumeration value="kl"/>
+			<xs:enumeration value="kleine"/>
+			<xs:enumeration value="l"/>
+			<xs:enumeration value="l."/>
+			<xs:enumeration value="l'"/>
+			<xs:enumeration value="la"/>
+			<xs:enumeration value="le"/>
+			<xs:enumeration value="lee"/>
+			<xs:enumeration value="li"/>
+			<xs:enumeration value="lo"/>
+			<xs:enumeration value="m"/>
+			<xs:enumeration value="mc"/>
+			<xs:enumeration value="mac"/>
+			<xs:enumeration value="n"/>
+			<xs:enumeration value="o"/>
+			<xs:enumeration value="o'"/>
+			<xs:enumeration value="op"/>
+			<xs:enumeration value="op de"/>
+			<xs:enumeration value="op den"/>
+			<xs:enumeration value="op gen"/>
+			<xs:enumeration value="op het"/>
+			<xs:enumeration value="op te"/>
+			<xs:enumeration value="op ten"/>
+			<xs:enumeration value="oude"/>
+			<xs:enumeration value="pla"/>
+			<xs:enumeration value="pro"/>
+			<xs:enumeration value="s"/>
+			<xs:enumeration value="st."/>
+			<xs:enumeration value="t"/>
+			<xs:enumeration value="te"/>
+			<xs:enumeration value="ten"/>
+			<xs:enumeration value="ter"/>
+			<xs:enumeration value="thi"/>
+			<xs:enumeration value="tho"/>
+			<xs:enumeration value="thom"/>
+			<xs:enumeration value="thor"/>
+			<xs:enumeration value="thum"/>
+			<xs:enumeration value="to"/>
+			<xs:enumeration value="tom"/>
+			<xs:enumeration value="tor"/>
+			<xs:enumeration value="tu"/>
+			<xs:enumeration value="tum"/>
+			<xs:enumeration value="unten"/>
+			<xs:enumeration value="unter"/>
+			<xs:enumeration value="unterm"/>
+			<xs:enumeration value="v."/>
+			<xs:enumeration value="v. d."/>
+			<xs:enumeration value="v. dem"/>
+			<xs:enumeration value="v. den"/>
+			<xs:enumeration value="v. der"/>
+			<xs:enumeration value="v.d."/>
+			<xs:enumeration value="v.dem"/>
+			<xs:enumeration value="v.den"/>
+			<xs:enumeration value="v.der"/>
+			<xs:enumeration value="van"/>
+			<xs:enumeration value="van de"/>
+			<xs:enumeration value="van dem"/>
+			<xs:enumeration value="van den"/>
+			<xs:enumeration value="van der"/>
+			<xs:enumeration value="vande"/>
+			<xs:enumeration value="vandem"/>
+			<xs:enumeration value="vanden"/>
+			<xs:enumeration value="vander"/>
+			<xs:enumeration value="van gen"/>
+			<xs:enumeration value="van het"/>
+			<xs:enumeration value="van t"/>
+			<xs:enumeration value="ven"/>
+			<xs:enumeration value="ven der"/>
+			<xs:enumeration value="ver"/>
+			<xs:enumeration value="vo"/>
+			<xs:enumeration value="vom"/>
+			<xs:enumeration value="vom und zu"/>
+			<xs:enumeration value="von"/>
+			<xs:enumeration value="von und zu"/>
+			<xs:enumeration value="von und zu der"/>
+			<xs:enumeration value="von und zur"/>
+			<xs:enumeration value="von de"/>
+			<xs:enumeration value="von dem"/>
+			<xs:enumeration value="von den"/>
+			<xs:enumeration value="von der"/>
+			<xs:enumeration value="von la"/>
+			<xs:enumeration value="von zu"/>
+			<xs:enumeration value="von zum"/>
+			<xs:enumeration value="von zur"/>
+			<xs:enumeration value="vonde"/>
+			<xs:enumeration value="vonden"/>
+			<xs:enumeration value="vondem"/>
+			<xs:enumeration value="vonder"/>
+			<xs:enumeration value="von einem"/>
+			<xs:enumeration value="von mast"/>
+			<xs:enumeration value="vor"/>
+			<xs:enumeration value="vor dem"/>
+			<xs:enumeration value="vor den"/>
+			<xs:enumeration value="vor der"/>
+			<xs:enumeration value="vorm"/>
+			<xs:enumeration value="vorn"/>
+			<xs:enumeration value="y"/>
+			<xs:enumeration value="y del"/>
+			<xs:enumeration value="zu"/>
+			<xs:enumeration value="zum"/>
+			<xs:enumeration value="zur"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Namenszusatz_Stp">
+		<xs:annotation>
+			<xs:documentation>Definition des Namenszusatzes und Einschränkung auf die Werte, die gem. Anlage 7 DEÜV aufgeführt sind.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Bar"/>
+			<xs:enumeration value="Baron"/>
+			<xs:enumeration value="Baroness"/>
+			<xs:enumeration value="Baronesse"/>
+			<xs:enumeration value="Baronin"/>
+			<xs:enumeration value="Brand"/>
+			<xs:enumeration value="Burggraf"/>
+			<xs:enumeration value="Burggräfin"/>
+			<xs:enumeration value="Condesa"/>
+			<xs:enumeration value="Earl"/>
+			<xs:enumeration value="Edle"/>
+			<xs:enumeration value="Edler"/>
+			<xs:enumeration value="Erbgraf"/>
+			<xs:enumeration value="Erbgräfin"/>
+			<xs:enumeration value="Erbprinz"/>
+			<xs:enumeration value="Erbprinzessin"/>
+			<xs:enumeration value="Ffr"/>
+			<xs:enumeration value="Freifr"/>
+			<xs:enumeration value="Freifräulein"/>
+			<xs:enumeration value="Freifrau"/>
+			<xs:enumeration value="Freih"/>
+			<xs:enumeration value="Freiherr"/>
+			<xs:enumeration value="Freiin"/>
+			<xs:enumeration value="Frf"/>
+			<xs:enumeration value="Frf."/>
+			<xs:enumeration value="Frfr"/>
+			<xs:enumeration value="Frfr."/>
+			<xs:enumeration value="Frh"/>
+			<xs:enumeration value="Frh."/>
+			<xs:enumeration value="Frhr"/>
+			<xs:enumeration value="Frhr."/>
+			<xs:enumeration value="Fst"/>
+			<xs:enumeration value="Fst."/>
+			<xs:enumeration value="Fstn"/>
+			<xs:enumeration value="Fstn."/>
+			<xs:enumeration value="Fürst"/>
+			<xs:enumeration value="Fürstin"/>
+			<xs:enumeration value="Gr"/>
+			<xs:enumeration value="Graf"/>
+			<xs:enumeration value="Gräfin"/>
+			<xs:enumeration value="Grf"/>
+			<xs:enumeration value="Grfn"/>
+			<xs:enumeration value="Grossherzog"/>
+			<xs:enumeration value="Großherzog"/>
+			<xs:enumeration value="Grossherzogin"/>
+			<xs:enumeration value="Großherzogin"/>
+			<xs:enumeration value="Herzog"/>
+			<xs:enumeration value="Herzogin"/>
+			<xs:enumeration value="Jhr"/>
+			<xs:enumeration value="Jhr."/>
+			<xs:enumeration value="Jonkheer"/>
+			<xs:enumeration value="Junker"/>
+			<xs:enumeration value="Landgraf"/>
+			<xs:enumeration value="Landgräfin"/>
+			<xs:enumeration value="Markgraf"/>
+			<xs:enumeration value="Markgräfin"/>
+			<xs:enumeration value="Marques"/>
+			<xs:enumeration value="Marquis"/>
+			<xs:enumeration value="Marschall"/>
+			<xs:enumeration value="Ostoja"/>
+			<xs:enumeration value="Prinz"/>
+			<xs:enumeration value="Prinzessin"/>
+			<xs:enumeration value="Przin"/>
+			<xs:enumeration value="Rabe"/>
+			<xs:enumeration value="Reichsgraf"/>
+			<xs:enumeration value="Reichsgräfin"/>
+			<xs:enumeration value="Ritter"/>
+			<xs:enumeration value="Rr"/>
+			<xs:enumeration value="Truchsess"/>
+			<xs:enumeration value="Truchseß"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Namenstitel_Stp">
+		<xs:annotation>
+			<xs:documentation>Dieser Datentyp modelliert den Namenstitel einer Person. Hierunter fallen u. a. (Nicht-)Akademische Titel / Grade oder auch Berufliche Titel</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Text_256_Stp">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Vorname_Stp">
+		<xs:annotation>
+			<xs:documentation>Dieser Datentyp modelliert den Vornamen einer Person.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Text_256_Stp">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Name_unbestimmt_Stp">
+		<xs:annotation>
+			<xs:documentation>unbestimmte Namensschreibweise gem. XOEV https://www.xoev.de/</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Text_1024_Stp"/>
+	</xs:simpleType>
+	<!--Anschrift / Adresse-->
+	<xs:simpleType name="Hausnummer_Stp">
+		<xs:annotation>
+			<xs:documentation>Eine Hausnummer dient der genauen Lokalisierung eines Grundstuecks, Gebaeudes oder Gebaeudeteils (Eingang) in einer Strasse. Hausnummern koennen entsprechend der ueblichen Praxis in vielen Gemeinden mit ergaenzenden Angaben zur weiteren Unterteilung versehen werden, etwa "12a" oder "17 1/3".
+Da manche Gebaeude oder Organisationen sich als Einheit ueber mehrere Hausnummern erstrecken, koennen auch Hausnummernbereiche angegeben werden, etwa "12a - 12e" oder "1 - 3".</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>
+Die Schreibweise für ergänzende Angaben und für Hausnummernbereiche ist in Deutschland uneinheitlich und kann daher nicht genau vorgegeben werden. Eine Aufteilung in numerische und diverse weitere Zusätze wurde bewusst nicht vorgenommen.
+			</Kommentar>
+				<Beispiele>212 12a 17
+1/3 12a - 12e
+12 a-e 1 - 3</Beispiele>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Ort_Stp">
+		<xs:annotation>
+			<xs:documentation>Das Element Ort enthält den Namen eines Ortes (Gemeinde, Ortschaft oder Stadt).</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>
+Als Ortsname sollte der amtliche Gemeindename genutzt werden.
+			</Kommentar>
+				<Beispiele/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="Text_256_Stp">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Postleitzahl_Stp">
+		<xs:annotation>
+			<xs:documentation>Eine Postleitzahl ist eine Angabe, um postalische Zustellgebiete unabhängig von Gebietskoerperschaften (Gemeinde, Kreis, …) zu bezeichnen. Mit dieser Typdefinition können sowohl inländische wie auch ausländische Postleitzahlen beschrieben werden.</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>
+In Deutschland sind durch Postleitzahlen bezeichnete Bereiche und verwaltungspolitische Grenzen in der Regel aufeinander abgestimmt. Größere Gemeinden und Städte sind häufig in mehrere Postleitzahlengebiete aufgeteilt. Postleitzahlen werden durch die Deutsche Post AG verwaltet. Eine Beschränkung auf deutsche Postleitzahlen (5-stellig) wurde bewusst nicht vorgenommen. Für diese existiert die Einschränkung 'Postleitzahl_DE_Stp'.
+			</Kommentar>
+				<Beispiele>64331</Beispiele>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Postleitzahl_DE_Stp" final="#all">
+		<xs:annotation>
+			<xs:documentation>Eine genau 5 stellige deutsche Postleitzahl für den inländischen Gebrauch.</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>Sollte als Einschränkung von 'Postleitzahl_Stp' verwendet werden, falls die Verwendung ausschliesslich deutsche Postleitzahlen zulässt.</Kommentar>
+				<Beispiele>64331</Beispiele>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="Postleitzahl_Stp">
+			<xs:minLength value="5"/>
+			<xs:maxLength value="5"/>
+			<xs:pattern value="[0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Strasse_Stp">
+		<xs:annotation>
+			<xs:documentation>
+Als Straßenname bezeichnet man den Namen, den eine Straße zur Unterscheidung von anderen Straßen trägt. Straßennamen im weiteren Sinne sind dabei auch die Namen von Plätzen und Brücken
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Text_256_Stp">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Adresszusatz_Stp">
+		<xs:restriction base="Text_256_Stp">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Länderangaben gemäß Staats- und Gebietssystematik des Statistischen Bundesamtes-->
+	<xs:simpleType name="Laenderkennzeichen_Stp">
+		<xs:annotation>
+			<xs:documentation>Länderkennzeichen nach Staats- und Gebietssystematik des Statistischen Bundesamtes, 3-stellig nach ISO-3166-1; 
+				Quelle: https://www.destatis.de/DE/Methoden/Klassifikationen/Staat-Gebietsystematik/staatsangehoerigkeit-gebietsschluessel.html</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="3"/>
+			<xs:pattern value="[A-Z]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StaatSchluessel_Stp">
+		<xs:annotation>
+			<xs:documentation>Staatsangehörigkeitsschlüssel (SASC) nach Staats- und Gebietssystematik des Statistischen Bundesamtes, 3-stellig nach Destatis-BEV-code
+				Quelle: https://www.destatis.de/DE/Methoden/Klassifikationen/Staat-Gebietsystematik/staatsangehoerigkeit-gebietsschluessel.html</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Identifikationsmerkmale-->
+	<xs:simpleType name="UUID_Stp">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Prod_ID_Stp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Prod-ID. (Kennzeichnung für Softwareersteller)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Mod_ID_Stp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Mod-ID (Kennzeichnung für Softwareversion)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Response_ID_Stp">
+		<xs:annotation>
+			<xs:documentation>Response_ID</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="23"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KVNR_Allgemein_Stp">
+		<xs:annotation>
+			<xs:documentation>Krankenversichertennummer (im allgemeinen Format), entsprechend § 290 SGB V (https://www.gesetze-im-internet.de/sgb_5/__290.html) sowie Richtlinie zum Aufbau und zur Vergabe einer Krankenversichertennummer und Regelungen des Krankenversichertennummernverzeichnissesnach § 290 SGB V (https://www.gkv-datenaustausch.de/kvnr/kvnr.jsp).
+Die Krankenversichertennummer besteht aus einem alphanumerischen und einem numerischen Baustein.
+Der unveränderbare Teil – dabei handelt es sich um die eigentliche Krankenversichertennummer, die ausschlaggebend für alle Verfahren ist – ist einer bestimmten Person, dem Hauptversicherten oder einem mitversicherten Familienangehörigen, zugeordnet und begleitet ihn ein Leben lang. Dieser Teil der neuen Krankenversichertennummer hat 10 Stellen.
+Der veränderbare Teil enthält Informationen über die Krankenkasse. Die 9-stellige Nummer ist das so genannte Institutionskennzeichen der Krankenkasse. Der Bezug eines Angehörigen zum Mitglied wird über einen weiteren Nummern-Teil hergestellt. Dieser ist 10 Stellen lang.
+In den Regelverfahren der Krankenkassen (Datenaustausch mit den Leistungserbringern, Gesundheitskarte etc.) werden der unveränderbare Teil, der veränderbare Teil und der Bezug eines Familienangehörigen jeweils in getrennten Datenfeldern verwendet. Für den Fall, dass für den unveränderbaren Teil (Stelle 1 - 10) und die Kassenzugehörigkeit (Stelle 11 - 19) in bestimmten Anwendungen nur ein Datenfeld zur Verfügung steht, ist eine zusätzliche Prüfziffer (Stelle 20) erforderlich. Werden alle drei Bestandteile der Krankenversichertennummer in einem Datenfeld verwendet, kommt ebenfalls eine zusätzliche Prüfziffer (Stelle 30) zum Einsatz.
+Die neue Krankenversichertennummer hat somit 20 Stellen für Hauptversicherte und 30 Stellen für Familienangehörige
+			</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>In Fachverfahren wird wahrscheinlich eine Trennung in die verschiedenen Komponenten erfolgen.</Kommentar>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="20"/>
+			<xs:maxLength value="30"/>
+			<xs:pattern value="[A-Z][0-9]{19}([0-9]{10})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KVNR_Stp">
+		<xs:annotation>
+			<xs:documentation>Datentyp für die Repräsentation des unveränderlichen (genau 10 stelligen) Teils der neuen Krankenversichertennummer.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="10"/>
+			<xs:maxLength value="10"/>
+			<xs:pattern value="[0-9A-Z][0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KVNR_Alt_Stp">
+		<xs:annotation>
+			<xs:documentation>Datentyp für die Repräsentation alter (variabel langer) Krankenversichertennummern.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="9"/>
+			<xs:maxLength value="12"/>
+			<xs:pattern value="[0-9A-Z][0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VSNR_Stp">
+		<xs:annotation>
+			<xs:documentation>Die Versicherungsnummer (VSNR) ist ein aus Buchstaben und Ziffern bestehendes Kennzeichen zur Identifikation von versicherten Personen in der Gesetzlichen Rentenversicherung der Bundesrepublik Deutschland, gemäß § 147 SGB VI.
+Die VSNR ist alphanumerisch und 12 stellig.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="12"/>
+			<xs:maxLength value="12"/>
+			<xs:pattern value="[0-9]{8}[A-Z][0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MNRBV_Stp">
+		<xs:annotation>
+			<xs:documentation>Mitgliedsnummer des berufsständisch Versicherten im Arbeitgeberverfahren zur Beitragserhebung (5-17 Stellen). Ist die Mitgliedsnummer noch nicht bekannt, muss die 5-stellige Dummy-Mitgliedsnummer für diese BV verwendet werden: "[1][2][3] nut [1] = '?', [2] = 3-stellige Kennzahl der Versorungseinrichtung und [3] 1-stellige Prüfziffer.")</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5"/>
+			<xs:maxLength value="17"/>
+			<xs:pattern value="[0-9VW/\.\-\?\\]{1,13}[0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Organisation_Stp">
+		<xs:annotation>
+			<xs:documentation>Kennzeichnung einer Organisation/Institution für den Datenaustausch mit oder innerhalb der Sozialversicherung. 
+				Diese Organisation kann beispielsweise als Absender oder Empfänger einer Datenlieferung in Erscheinung treten. 
+				Mögliche Ausprägungen sind: 
+				[0-9]{8} für Betriebsnummer nach § 18i SGB IV
+				[A-Z][0-9]{7} für gesonderten Absendernummer nach § 18n Abs. 2 SGB IV
+				[0-9]{2} für DRV-internen Datenaustausch
+				[0-9]{9} für Intstitutionskennzeichen, Betriebsstättennummern (vertragsärztlicher Sektor), Standortnummern (KH-Bereich)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="9"/>
+			<xs:pattern value="[0-9]{8}|[A-Z][0-9]{7}|[0-9]{2}|[0-9]{9}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IK_Stp">
+		<xs:annotation>
+			<xs:documentation>
+Das Institutionskennzeichen (IK) ist ein eindeutiges Merkmal zur Abrechnung mit den Trägern der Sozialversicherung. Alle Vertragspartner, die für die Sozialversicherungsträger Leistungen erbringen, erhalten ein Institutionskennzeichen für die maschinelle Erledigung des Abrechnungsverfahrens und den Zahlungsverkehr. 
+Das IK besteht aus 9 Ziffern, keine führende 0.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Organisation_Stp">
+			<xs:minLength value="9"/>
+			<xs:maxLength value="9"/>
+			<xs:pattern value="[1-9][0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ABSN_Stp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Absendernummer nach § 18n Abs. 1 SGB IV.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Organisation_Stp">
+			<xs:minLength value="8"/>
+			<xs:maxLength value="8"/>
+			<xs:pattern value="[0-9]{8}|[A-Z][0-9]{7}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BBNR_Stp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Betriebsnummer nach § 18i SGB IV.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Organisation_Stp">
+			<xs:minLength value="8"/>
+			<xs:maxLength value="8"/>
+			<xs:pattern value="[0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="gABSN_Stp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der gesonderten Absendernummer nach § 18n Abs. 2 SGB IV. Falls verfahrensspezifisch lediglich ein konkreter Buchstabe vorangestellt werden darf (bspw. "H" für Hochschulen) ist eine verfahrensspezfische Ableitung zu bilden.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Organisation_Stp">
+			<xs:minLength value="8"/>
+			<xs:maxLength value="8"/>
+			<xs:pattern value="[A-Z][0-9]{7}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LANR_Stp">
+		<xs:annotation>
+			<xs:documentation>Die lebenslange Arztnummer, kurz LANR, ist eine neunstellige Nummer, die die zuständige Kassenärztliche Vereinigung bundesweit an jeden Arzt vergibt, der an der vertragsärztlichen Versorgung teilnimmt. Sie ist durch das Vertragsarztrechtsänderungsgesetz (VÄndG) zusammen mit der Betriebsstättennummer (BSNR) für jede kassenärztliche Praxis gesetzlich in der BRD vorgeschrieben und durch die Flexibilisierung der vertragsärztlichen Tätigkeit notwendig geworden. 
+LANR und BSNR sind seit dem 1. Juli 2008 gültig und ersetzen gemeinsam die alten KV-Abrechnungsnummern.
+			</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>
+					Werte dieses Typs sollten in Fachverfahren über eine geeignete Schlüsselprüfung validiert werden.
+			</Kommentar>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="Organisation_Stp">
+			<xs:minLength value="9"/>
+			<xs:maxLength value="9"/>
+			<xs:pattern value="[0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Zahnarztnummer_Stp">
+		<xs:annotation>
+			<xs:documentation>Für die Zahnarztnummer existiert keine geeignete Einschränkung, außer das sie in GKV Verfahren zwischen 7 und 9 Stellen hat.
+			</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>
+					Werte dieses Typs sollten in Fachverfahren über eine geeignete Schlüsselprüfung validiert werden.
+			</Kommentar>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="Organisation_Stp">
+			<xs:minLength value="7"/>
+			<xs:maxLength value="9"/>
+			<xs:pattern value="[0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Aktenzeichen_Stp">
+		<xs:restriction base="Text_256_Stp"/>
+	</xs:simpleType>
+	<xs:simpleType name="Rechtskreis_Stp">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="O">
+				<xs:annotation>
+					<xs:documentation>Rechtskreis Ost</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="W">
+				<xs:annotation>
+					<xs:documentation>Rechtskreis West</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Abrechnungsprogramm_Stp">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>systemgeprüftes Entgeltabrechnungsprogramm</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>systemgeprüfte Ausfüllhilfe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>andere systemgeprüfte Programme</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Datei/Daten-->
+	<xs:simpleType name="Dateinummer_Stp">
+		<xs:annotation>
+			<xs:documentation>Laufende Nummer der Übertragungsdatei, bis zu 6 Stellen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Dateiname_Stp">
+		<xs:annotation>
+			<xs:documentation>Name mit maximal 30 Stellen.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DatensatzID_Stp">
+		<xs:annotation>
+			<xs:documentation>Feld zur Übermittlung der Datensatz ID, der Vorgangs ID oder der Datensatz ID Ursprungsmeldung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Verschiedenes-->
+	<xs:simpleType name="Unternehmenname_Stp">
+		<xs:annotation>
+			<xs:documentation>Name der Institution.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Text_1024_Stp"/>
+	</xs:simpleType>
+	<xs:simpleType name="Versichertenstatus_Stp">
+		<xs:annotation>
+			<xs:documentation>Versichertenstatus (der KVKarte)</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>Eine genauere Definition ist wegen der unterschiedlichen Verwendung nicht möglich und den Fachverfahren überlassen.</Kommentar>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="5"/>
+			<xs:pattern value="[0-9A-Z&#x0020;]{1,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Kommunikation -->
+	<xs:simpleType name="Rufnummer_Stp">
+		<xs:annotation>
+			<xs:documentation>Datentyp zur Repräsentation numerischer Rufnummern, z. B. als Telefonnummer oder Faxnummer.</xs:documentation>
+			<xs:appinfo>
+				<Kommentar>Wegen der unterschiedlichen Formate für die Repräsentation von Rufnummern wird hier auf eine Prüfung, z. B. nach DIN 5008 verzichtet.</Kommentar>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EmailAdresse_Stp">
+		<xs:annotation>
+			<xs:documentation>Email-Adresse entsprechend RFC 3696; vgl. "3. Restrictions on email addresses"</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="320"/>
+			<xs:pattern value="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Fehler -->
+	<xs:simpleType name="Fehlercode_Stp">
+		<xs:annotation>
+			<xs:documentation>Fehlercode bestehend aus 1 bis zu 10 Zeichen. Konkrete Fehlercodetabellen werden in verfahrensspezifischen Technischen Dokumentationen (Technischen Anlagen bzw. Fehlerkatalogen) bereitgestellt.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlertext_Stp">
+		<xs:annotation>
+			<xs:documentation>Langer Fehlertext, beispielsweise für die Angabe von Parserfehlern.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Text_1024_Stp">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- medizinisch fachliche Informationen -->
+	<xs:simpleType name="ICD10GM_Stp">
+		<xs:annotation>
+			<xs:documentation>Internationale statistische Klassifikation der Krankheiten und verwandter Gesundheitsprobleme, German Modification; 
+				Quelle: https://www.bfarm.de/DE/Kodiersysteme/Klassifikationen/ICD/ICD-10-GM/_node.html; https://www.dimdi.de/dynamic/de/klassifikationen/icd/icd-10-gm/</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z][0-9]{2}(\.[0-9]{1,2})?"/>
+			<!--<xs:pattern value="[a-zA-Z][0-9]{2}(\.[0-9]{1,2})?([#†\*\+!])?([GVAZgvaz])?([RLBrlb])?"/>-->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Seitenlokalisation_Stp">
+		<xs:annotation>
+			<xs:documentation>Verwendung z. B. bei ICD-10-GM oder OPS</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="L">
+				<xs:annotation>
+					<xs:documentation>linksseitig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="R">
+				<xs:annotation>
+					<xs:documentation>rechtsseitig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation>beidseitig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Diagnosensicherheit_Stp">
+		<xs:annotation>
+			<xs:documentation>Verwendung z. B. bei ICD-10-GM</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="A">
+				<xs:annotation>
+					<xs:documentation>Ausschluss von</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="G">
+				<xs:annotation>
+					<xs:documentation>Gesichert</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="V">
+				<xs:annotation>
+					<xs:documentation>Verdacht auf</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Z">
+				<xs:annotation>
+					<xs:documentation>Zustand nach</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ====================================================== -->
+	<!--Basisdatentypen mit komplexer Typdefinition; complexType-->
+	<!-- ====================================================== -->
+	<!-- _____________________________________ -->
+	<!-- HEADER - administrative Informationen -->
+	<!-- _____________________________________ -->
+	<!-- vollständige Header-Strukturen in Abhängigkeit der beteiligten Rollen -->
+	<xs:complexType name="Header_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung des Headers für den Datenaustausch zwischen SV-Trägern</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Verfahrensmerkmal" type="Verfahrensmerkmal_Stp">
+				<xs:annotation>
+					<xs:documentation>Anwendungsfall: Es sind folgende Verfahrensmerkmale zulaessig ...</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Absender" type="Organisation_Stp"/>
+			<xs:element name="Empfaenger" type="Organisation_Stp">
+				<xs:annotation>
+					<xs:documentation>Anwendungsfall: Absendernummer der annehmenden Stelle.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datum_Erstellung" type="Datum_Uhrzeit_Stp"/>
+			<xs:element name="Dateifolgenummer" type="Dateinummer_Stp"/>
+			<xs:element name="Vollzaehligkeit" type="Header_Vollzaehligkeit_Ctp" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Header_TODO_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung des Headers für den Datenaustausch zwischen SV-Trägern</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="Header_Ctp">
+				<xs:sequence>
+					<xs:element name="Verfahrensmerkmal" type="Verfahrensmerkmal_Stp">
+						<xs:annotation>
+							<xs:documentation>Anwendungsfall: Es sind folgende Verfahrensmerkmale zulaessig ...</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Absender" type="ABSN_Stp"/>
+					<xs:element name="Empfaenger" type="ABSN_Stp">
+						<xs:annotation>
+							<xs:documentation>Anwendungsfall: Absendernummer der annehmenden Stelle.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Datum_Erstellung" type="Datum_Uhrzeit_Stp"/>
+					<xs:element name="Dateifolgenummer" type="Dateinummer_Stp"/>
+					<xs:element name="Vollzaehligkeit" type="Header_Vollzaehligkeit_Ctp" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- Teilinformationen im Header (administrative Informationen) -->
+	<xs:complexType name="Header_Vollzaehligkeit_Ctp">
+		<xs:sequence>
+			<xs:element name="Lieferungsnummer" type="Dateinummer_Stp">
+				<xs:annotation>
+					<xs:documentation>Angabe um welche Datei der Gesamtlieferung es sich handelt.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Anzahl_Gesamt" type="Dateinummer_Stp">
+				<xs:annotation>
+					<xs:documentation>Anzahl der insgesamt zu übermittelenden Dateien.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- inhaltliche, zu transportierende Informationen -->
+	<!-- ___________________________________ -->
+	<!-- BODY - administrative Informationen -->
+	<!-- ___________________________________ -->
+	<!-- Teilinformationen im Body (Inhaltsbereich) -->
+	<xs:complexType name="Body_Verarbeitungsergebnis_Ctp">
+		<xs:annotation>
+			<xs:documentation>
+				<Quelle>Anhang SV-Basis-complex zur Anlage 12 GGT</Quelle>
+				<Version>2.0.0</Version>
+				<Verwendung>in allen Verfahren "SVTOSV", z. B. WAU, ...</Verwendung>
+				<Sonstige>...</Sonstige>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Response_ID" type="Response_ID_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Response_ID / Tracking_ID des jeweiligen Kommunikationsservers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="Weiterleitungsbestaetigung" type="Weiterleitungsbestaetigung_Ctp">
+					<xs:annotation>
+						<xs:documentation>Bestaetigung ueber die Weiterleitung an die zustaendige Stelle.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Fehlermeldungen" type="Body_Fehlermeldungen_Ctp"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Weiterleitungsbestaetigung_Ctp">
+		<xs:sequence>
+			<xs:element name="Dateifolgenummer_Original" type="Dateinummer_Stp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Body_Fehlermeldungen_Ctp">
+		<xs:choice>
+			<xs:element name="Parser" type="Parserfehler_Ctp">
+				<xs:annotation>
+					<xs:documentation>Uebermittlung von Validierungsfehlers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Dateifehler" type="Dateifehler_Ctp">
+				<xs:annotation>
+					<xs:documentation>Uebermittlung von Fehlern auf Dateiebene z.B. falsche Dateifolgenummer.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datensatzabweisung" type="Datensatzabweisung_Ctp">
+				<xs:annotation>
+					<xs:documentation>Uebermittlung der festgestellten Kernprueffehler.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="Parserfehler_Ctp">
+		<xs:annotation>
+			<xs:documentation>Uebermittlung von Validierungsfehlers.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Fehlertext" type="Fehlertext_Stp">
+				<xs:annotation>
+					<xs:documentation>Übermittlung des Fehlertextes bei der Validierung des Schemas.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<!-- alternative Typbezeichnung: "Body_Fehlermeldungen_Parser_Fehler_Ctp" -->
+	</xs:complexType>
+	<xs:complexType name="Dateifehler_Ctp">
+		<xs:annotation>
+			<xs:documentation>Uebermittlung von Fehlern auf Dateiebene z.B. falsche Dateifolgenummer.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Dateifolgenummer_Original" type="Dateinummer_Stp"/>
+			<xs:element name="Fehler" type="Fehler_Ctp"/>
+		</xs:sequence>
+		<!-- alternativer Typname: "Body_Fehlermeldung_Dateifehler_Ctp"-->
+	</xs:complexType>
+	<xs:complexType name="Datensatzabweisung_Ctp">
+		<xs:annotation>
+			<xs:documentation>Uebermittlung der festgestellten Kernprueffehler.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Dateifolgenummer_Original" type="Dateinummer_Stp"/>
+			<xs:element name="Kernpruefung" type="Kernpruefung_Ctp" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<!-- alternativer Typname: "Body_Fehlermeldung_Datensatzabweisung_Ctp"-->
+	</xs:complexType>
+	<xs:complexType name="Kernpruefung_Ctp">
+		<xs:sequence>
+			<xs:element name="Datensatz_ID" type="DatensatzID_Stp">
+				<xs:annotation>
+					<xs:documentation>Datensatz_ID der fehlerhaften Meldung. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BBNR" type="ABSN_Stp">
+				<xs:annotation>
+					<xs:documentation>Absendernummer aus dem fachlichen Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Fehler" type="Fehler_Ctp" maxOccurs="9"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Fehler -->
+	<xs:complexType name="Fehler_Ctp">
+		<xs:annotation>
+			<xs:documentation>Angabe eines Fehlercodes mit optionaler Angabe einer Fehlermeldung</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Code" type="Fehlercode_Stp"/>
+			<xs:element name="Text" type="Fehlertext_Stp" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- medizinisch fachliche Informationen -->
+	<xs:complexType name="Diagnosen_Ctp">
+		<xs:annotation>
+			<xs:documentation>https://www.bfarm.de/DE/Kodiersysteme/Klassifikationen/ICD/ICD-10-GM/_node.html</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Jahr" type="Jahr_Stp"/>
+			<xs:element name="Diagnose" type="Diagnose_Ctp" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Diagnose_Ctp">
+		<xs:annotation>
+			<xs:documentation>Angabe einer ICD-Codierung mit optionaler Angabe zur Seitenlokalisation sowie Diagnosensicherheit; TODO: Abbildung Zusammengehörigkeit primär und optional sekundär</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ICD" type="ICD10GM_Stp"/>
+			<xs:element name="Seitenlokalisation" type="Seitenlokalisation_Stp" minOccurs="0"/>
+			<xs:element name="Diagnosensicherheit" type="Diagnosensicherheit_Stp" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ======================================= -->
+	<!--Basisdaten mit Elementdefinition; element-->
+	<!-- ======================================= -->
+	<xs:element name="AZVU" type="Aktenzeichen_Stp">
+		<xs:annotation>
+			<xs:documentation>Aktenzeichen des Verursachers</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AZKK" type="Aktenzeichen_Stp">
+		<xs:annotation>
+			<xs:documentation>Aktenzeichen bei der Krankenkasse</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Rechtskreis" type="Rechtskreis_Stp">
+		<xs:annotation>
+			<xs:documentation>Zur Unterscheidung regionaler Zuständigkeiten mit den Bereichen:
+				O = Rechtskreis Ost
+				W = Rechtskreis West
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Abrechnungsprogramm" type="Abrechnungsprogramm_Stp">
+		<xs:annotation>
+			<xs:documentation>Zur Unterscheidung von Softwareprodukten im Arbeitgeberumfeld mit den Kategorien:
+				1 = systemgeprüftes Entgeltabrechnungsprogramm 
+				2 = systemgeprüfte Ausfüllhilfe
+				3 = andere systemgeprüfte Programme
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="BBNR_VU" type="BBNR_Stp"/>
+</xs:schema>

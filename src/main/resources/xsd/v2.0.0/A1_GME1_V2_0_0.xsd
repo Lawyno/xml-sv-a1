@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2020 rel. 2 sp1 (x64) (http://www.altova.com) von Björn Scharatta (GKV Spitzenverband) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1_GME1/2.0" xmlns:btst="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_A1/1.0" xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_GME1/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_A1/1.0" schemaLocation="Basistypen_Simple_A1_V1_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" schemaLocation="Basistypen_Complex_A1_V1_0_0.xsd"/>
+	<xs:element name="GME1_Antrag">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Steuerungsdaten" type="btct:Steuerungsdaten_AG_v2_Ctp"/>
+				<xs:element name="Angaben_zur_Person_A1">
+					<xs:annotation>
+						<xs:documentation>Angaben zum Arbeitnehmer</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Name">
+								<xs:annotation>
+									<xs:documentation>Angaben zum Namen des Arbeitnehmers.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Grundangabe_Name" type="btct:Angaben_Name_Ctp"/>
+										<xs:element name="Namens_Ergaenzungen" type="btct:Name_Ergaenzung_v3_Ctp"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Anschrift_Wohnstaat" type="btct:Anschrift_Ctp"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_SV">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="GKV">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BBNR_KK" type="btst:Bbnr_Typ"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PKV">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BBNR_KK" type="btst:Bbnr_Typ"/>
+										<xs:element name="Bezeichnung_Versorgungseinrichtung" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Name_Versorgungswerk" type="btst:Name_AG_Typ"/>
+													<xs:element name="Mitgliedsnummer" type="btst:Mitgliedsnummer_Typ">
+														<xs:annotation>
+															<xs:documentation>Element fuer die Mitgliedsnummer der berufsstaendischen Versorgungseinrichtung.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Arbeitgeber_Deutschland_A1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="btst:Name_AG_Typ">
+											<xs:annotation>
+												<xs:documentation>Hier ist Name des Arbeitgebers einzutragen.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Anschrift_Arbeitgeber" type="btct:Anschrift_Ctp">
+											<xs:annotation>
+												<xs:documentation>Angaben zur Anschrift des Arbeitgebers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Telefonnummer" type="btst:Rufnummer_Typ"/>
+										<xs:element name="E_Mail" type="btst:Email_Typ" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>E-Mail Adresse des Arbeitgebers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Betriebsnummer_VU" type="btst:Bbnr_Typ">
+											<xs:annotation>
+												<xs:documentation>Angabe der Betriebsnummer des Beschaeftigungsbetriebes</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Wirtschaftssektor" type="btst:Wirtschaftssektoren_Typ">
+											<xs:annotation>
+												<xs:documentation>1 = Land- und Forstwirtschaft, Fischerei
+			2 = Bergbau und Gewinnung von Steinen und Erden
+			3 = Verarbeitendes Gewerbe
+			4 = Energieversorgung
+			5 = Wasserversorgung, Abwasser- und Abfallentsorgung, Beseitigung von Umweltverschmutzungen
+			6 = Baugewerbe
+			7 = Gross- und Einzelhandel
+			8 = Verkehr (ausser Gueterbefoerderung im Strassenverkehr) und Lagerei
+			9 = Verkehr (Gueterbefoerderung im Strassenverkehr)
+			10 = Gastgewerbe / Beherbergung und Gastronomie
+			11 = Information und Kommunikation
+			12 = Erbringung von Finanz- und Versicherungsdienstleistungen
+			13 = Grundstuecks- und Wohnungswesen
+			14 = Erbringung von freiberuflichen, wissenschaftlichen oder technischen Dienstleistungen
+			15 = Erbringung von sonstigen wirtschaftlichen Dienstleistungen (ausser Vermittlung und Ueberlassung von Arbeitskraeften)
+			16 = Vermittlung und Überlassung von Arbeitskräften
+			18 = Erziehung und Unterricht
+			19 = Gesundheits- und Sozialwesen
+			20 = Kunst, Unterhaltung und Erholung
+			21 = Erbringung von sonstigen Dienstleistungen
+			22 = Private Haushalte</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Schriftwechsel_Kontakt" type="btct:Schriftwechsel_Kontakt"/>
+							<xs:element name="Angaben_Unternehmen">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Rechtsform_AG" type="btst:Rechtsform_Typ">
+											<xs:annotation>
+												<xs:documentation>Rechtsform des Arbeitgebers. 
+1 = Personen- oder Kapitalgesellschaft
+2 = Öffentlicher Arbeitgeber 
+3 = Sonstiges</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Auslandseinsatz">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten_Auslandseinsatz">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Weitere_Taetigkeit_Ausland" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Während des Antragszeitraums wird eine weitere Beschäftigung bei einem anderen Arbeitgeber oder eine selbständige Tätigkeit ausgeübt. 
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Beginn" type="xs:date"/>
+										<xs:element name="Ende" type="xs:date"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Angaben_zur_Taetigkeit_in_Deutschland">
+								<xs:complexType>
+									<xs:choice>
+										<xs:sequence>
+											<xs:element name="Geringfuegige_Beschaeftigung" type="btst:Kennzeichen_Alphanumerisch_Typ">
+												<xs:annotation>
+													<xs:documentation>Handelt es sich um eine geringfügige Beschäftigung
+
+J = Ja
+N = Nein</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Taetigkeit_in_Deutschland">
+												<xs:annotation>
+													<xs:documentation>Liegt eine Beschäftigung in Deutschland vor
+
+J = Ja</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:length value="1"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:choice>
+												<xs:element name="Feste_Einsatzstelle_in_Deutschland">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Bezeichnung_feste_Einsatzstelle" type="btst:Name_AG_Typ"/>
+															<xs:element name="Anschrift_Einsatzstelle" type="btct:Anschrift_ohne_LDKZ_Ctp"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Keine_feste_Einsatzstelle_in_Deutschland">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:length value="1"/>
+															<xs:enumeration value="J"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+											</xs:choice>
+										</xs:sequence>
+										<xs:element name="Nein">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="1"/>
+													<xs:enumeration value="N"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Angaben_zur_Taetigkeit_im_Ausland" maxOccurs="30">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Land" type="btst:Laendercode_Typ"/>
+										<xs:choice>
+											<xs:element name="Feste_Einsatzstelle_Ausland">
+												<xs:annotation>
+													<xs:documentation>Sofern eine feste Beschaeftigungsstelle vorhanden ist, sind nachfolgende Angaben zu uebermitteln. </xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Bezeichnung_Einsatzstelle" type="btst:Name_AG_Typ">
+															<xs:annotation>
+																<xs:documentation>Hier ist der Firmaname der auslaendischen Beschaeftigungsstelle einzutragen.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="Anschrift_Einsatzstelle" type="btct:Anschrift_ohne_LDKZ_Ctp">
+															<xs:annotation>
+																<xs:documentation>Angaben zur Anschrift der Beschaeftigungsstelle </xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Keine_feste_Einsatzstelle_Ausland">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:length value="1"/>
+														<xs:enumeration value="J"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+										</xs:choice>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Erklaerung_Arbeitgeber">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Angaben">
+											<xs:annotation>
+												<xs:documentation>Die Angaben entsprechen den tatsaechlichen Verhaelt- nissen
+
+J = Ja</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="1"/>
+													<xs:enumeration value="J"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+				<xs:annotation>
+					<xs:documentation>Es ist nur der Wert 2.0.0 zulaessig</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

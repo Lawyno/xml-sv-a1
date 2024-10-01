@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<SVTOAG xmlns="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_SVTOAG/1.0"
+        xmlns:a1="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1"
+        xmlns:abl="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ablehnung/1.3"
+        xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0"
+        Versionsnummer="1.0.0">
+    <SendungsHeaderSVTOAG Versionsnummer="1.0.0">
+        <Vorlaufsatz>
+            <Verfahrensmerkmal>A1S</Verfahrensmerkmal>
+            <Absendernummer>66667777</Absendernummer>
+            <Empfaengernummer>11223344</Empfaengernummer>
+            <Datum_Erstellung>2024-09-15T08:15:30</Datum_Erstellung>
+            <Dateifolgenummer>123456</Dateifolgenummer>
+        </Vorlaufsatz>
+    </SendungsHeaderSVTOAG>
+    <Sendungs_Body>
+        <Verfahren>
+            <a1:Rueckmeldungen>
+                <abl:A1_Ablehnung Versionsnummer="1.3.0">
+                    <abl:Steuerungsdaten>
+                        <abl:Absendernummer>66667777</abl:Absendernummer>
+                        <abl:Empfaengernummer>11223344</abl:Empfaengernummer>
+                        <abl:Datum_Erstellung>2024-09-15T08:15:30</abl:Datum_Erstellung>
+                        <abl:Datensatz_ID>datensatz-2000</abl:Datensatz_ID>
+                        <abl:Vorgangs_ID>vorgang-1000</abl:Vorgangs_ID>
+                        <abl:Stornokennzeichen>J</abl:Stornokennzeichen>
+                    </abl:Steuerungsdaten>
+                    <abl:Angaben_Person>
+                        <abl:Grundangabe_Name>
+                            <btct:Geschlecht>M</btct:Geschlecht>
+                            <btct:Vorname>Max</btct:Vorname>
+                            <btct:Familienname>Mustermann</btct:Familienname>
+                            <btct:Vorsatzwort>von und zu</btct:Vorsatzwort>
+                            <btct:Namenszusatz>Landgraf</btct:Namenszusatz>
+                            <btct:Namenstitel>Dr. Prof.</btct:Namenstitel>
+                        </abl:Grundangabe_Name>
+                        <abl:Versicherungsnummer>12345678X910</abl:Versicherungsnummer>
+                    </abl:Angaben_Person>
+                    <abl:Angaben_Arbeitgeber>
+                        <abl:Datensatz_ID_Ursprungsmeldung>datensatz-1000</abl:Datensatz_ID_Ursprungsmeldung>
+                        <abl:AZVU_Ursprungsmeldung>azvu-999</abl:AZVU_Ursprungsmeldung>
+                        <abl:Betriebsnummer_VU>12345678</abl:Betriebsnummer_VU>
+                    </abl:Angaben_Arbeitgeber>
+                    <abl:Ablehnungsgrund>42</abl:Ablehnungsgrund>
+                    <abl:Bescheinigung_PDF>UHNldWRvLVBERi1EYXRlaQ==</abl:Bescheinigung_PDF>
+                </abl:A1_Ablehnung>
+            </a1:Rueckmeldungen>
+        </Verfahren>
+    </Sendungs_Body>
+</SVTOAG>

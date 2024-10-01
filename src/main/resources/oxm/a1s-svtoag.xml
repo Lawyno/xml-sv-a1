@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+              package-name="de.lawyno.xml.sv.ag300.svtoag" version="2.5">
+
+    <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
+                namespace="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_SVTOAG/1.0">
+        <xml-ns prefix="a1" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1" />
+        <xml-ns prefix="abl" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ablehnung/1.3" />
+        <xml-ns prefix="bew" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" />
+        <xml-ns prefix="svbs" namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" />
+    </xml-schema>
+
+    <java-types>
+        <java-type name="SvtoagA1" />
+
+        <java-type name="SvtoagA1$SendungsHeaderSvtoag" />
+
+        <java-type name="SvtoagA1$SendungsBody$Verfahren">
+            <java-attributes>
+                <xml-element java-attribute="a1AblehnungList"
+                             xml-path="a1:Rueckmeldungen/abl:A1_Ablehnung"
+                             namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ablehnung/1.3" />
+                <xml-element java-attribute="a1BewilligungList"
+                             xml-path="a1:Rueckmeldungen/bew:A1_Bewilligung"
+                             namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" />
+            </java-attributes>
+        </java-type>
+    </java-types>
+
+</xml-bindings>

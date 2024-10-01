@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:namespace="http://jaxb2-commons.dev.java.net/basic/namespace-prefix"
+               jaxb:extensionBindingPrefixes="namespace"
+               version="2.1">
+
+    <!--
+        Normal würde man diese Datei in den Modulen xml-sv-basis und xml-sv-ag unterbringen.
+        Jedoch wurde diese Version der AG-Header unglücklicherweise so designt,
+        dass er im Prinzip nur für die A1-Datensätze 2025 verwendbar ist.
+    -->
+
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/SV-Basis-1.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.ag300.basis" />
+        </jaxb:schemaBindings>
+        <namespace:prefix name="svb" />
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/SV_Header_SVTOAG_A1_3.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.ag300.svtoag" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class name="SvtoagA1" />
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='SendungsHeaderSVTOAG']">
+            <jaxb:property name="header" />
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Sendungs_Body']">
+            <jaxb:property name="body" />
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Sendungs_Body']//xs:element[@name='Verfahren']//xs:element[@ref='abl:A1_Ablehnung']">
+            <jaxb:property name="a1AblehnungList" />
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Sendungs_Body']//xs:element[@name='Verfahren']//xs:element[@ref='bew:A1_Bewilligung']">
+            <jaxb:property name="a1BewilligungList" />
+        </jaxb:bindings>
+        <namespace:prefix name="" />
+    </jaxb:bindings>
+
+</jaxb:bindings>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1S-Bewilligung/2.0" xmlns:a1b="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0" xmlns:svb="SV-Basis://XMLSchema/1.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/A1S-Bewilligung/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0" schemaLocation="106-Basis-1.0.0.xsd"/>
+	<xs:import namespace="SV-Basis://XMLSchema/1.0" schemaLocation="SV-Basis-1.0.0.xsd"/>
+	<xs:element name="A1_Bewilligung">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Steuerungsdaten">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="a1b:Steuerungsdaten_Rueckmeldung_Ctp"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Person" type="a1b:Angaben_Person_Rueckmeldung_Ctp"/>
+				<xs:element name="Angaben_Antragsteller" type="a1b:Angaben_Antragsteller_Rueckmeldung_Ctp"/>
+				<xs:element name="Hinweistext">
+					<xs:annotation>
+						<xs:documentation>Hier wird der Hinweisetext zum Umgang mit der A1 Bescheinigung beim Arbeitgeber übermittelt.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="a1b:Iso88591_Stp">
+							<xs:maxLength value="1500"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Bescheinigung_Pdf" type="a1b:Pdf_Stp" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Element zur uebermittlung des base64 kodierten PDF. Bei einer Stornierung der Bescheinigung wird das PDF nicht erneut uebermittelt.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="svb:Versionsnummer_Stp" use="required" fixed="2.0.0">
+				<xs:annotation>
+					<xs:documentation>Die Versionsnummer des Datensatzes in der Version 2.0.0</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

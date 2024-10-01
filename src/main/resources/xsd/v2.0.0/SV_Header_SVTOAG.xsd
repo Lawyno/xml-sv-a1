@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2013 sp1 (http://www.altova.com) von Björn.Scharatta (GKV-Spitzenverband) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_SVTOAG/1.0" xmlns:A1="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1" xmlns:btst="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_SVTOAG/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1" schemaLocation="Steuerungssatz_A1.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" schemaLocation="Basistypen_Simple.xsd">
+		<xs:annotation>
+			<xs:documentation> Importieren der Datentypen</xs:documentation>
+		</xs:annotation>
+	</xs:import>
+	<xs:element name="SVTOAG">
+		<xs:annotation>
+			<xs:documentation>Rootelement</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SendungsHeaderSVTOAG">
+					<xs:annotation>
+						<xs:documentation>In diesem Element werden notwendige Steuerungsinformationen uebermittelt, welche in der DEUEV im VOSZ, NCSZ uebertragen werden.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Vorlaufsatz">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Verfahrensmerkmal" type="btst:Verfahrensmerkmal_Typ">
+											<xs:annotation>
+												<xs:documentation>Es sind folgende Verfahrensmerkmale zulaessig:
+A1 = A1S</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Absendernummer" type="btst:Absendernummer_Typ">
+											<xs:annotation>
+												<xs:documentation>Absendernummer der sendenden Stelle.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Empfaengernummer" type="btst:Absendernummer_Typ">
+											<xs:annotation>
+												<xs:documentation>Absendernummer der annehmenden Stelle.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Datum_Erstellung" type="btst:Datum_Zeit_Typ"/>
+										<xs:element name="Dateifolgenummer" type="btst:Dateifolgenummer_Typ"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Sendungs_Body">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Verfahren">
+								<xs:complexType>
+									<xs:choice>
+										<xs:element ref="A1:Rueckmeldungen"/>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Verarbeitungsergebnis">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Response_ID" type="btst:Response_ID_Typ">
+											<xs:annotation>
+												<xs:documentation>Response_ID / Tracking_ID des jeweiligen Kommunikationsservers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:choice>
+											<xs:element name="Weiterleitungsbestaetigung">
+												<xs:annotation>
+													<xs:documentation>Bestaetigung ueber die Weiterleitung an die zustaendige Stelle.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Dateifolgenummer_Original" type="btst:Dateifolgenummer_Typ"/>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Fehlermeldungen">
+												<xs:complexType>
+													<xs:choice>
+														<xs:element name="Parser_Fehler">
+															<xs:annotation>
+																<xs:documentation>Uebermittlung von Validierungsfehlers.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Fehlertext_Parser" type="btst:Langtext_Typ">
+																		<xs:annotation>
+																			<xs:documentation>Uebermittlung des Fehlertextes bei der Validierung des Schemas.</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="Dateifehler">
+															<xs:annotation>
+																<xs:documentation>Uebermittlung von Fehlern auf Dateiebene z.B. falsche Dateifolgenummer.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Dateifolgenummer_Original" type="btst:Dateifolgenummer_Typ"/>
+																	<xs:element name="Fehlercode">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="Fehlernummer" type="btst:Fehlernummer_Typ"/>
+																				<xs:element name="Fehlertext" type="btst:Fehlertext_Typ"/>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="Datensatzabweisung">
+															<xs:annotation>
+																<xs:documentation>Uebermittlung der festgestellten Kernprueffehler.</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="Dateifolgenummer_Original" type="btst:Dateifolgenummer_Typ"/>
+																	<xs:element name="Kernpruefung" maxOccurs="unbounded">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element name="Datensatz_ID" type="btst:DatensatzID_Typ">
+																					<xs:annotation>
+																						<xs:documentation>Datensatz_ID der fehlerhaften Meldung. </xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="Fehlercode" maxOccurs="9">
+																					<xs:complexType>
+																						<xs:sequence>
+																							<xs:element name="Fehlernummer" type="btst:Fehlernummer_Typ"/>
+																							<xs:element name="Fehlertext" type="btst:Fehlertext_Typ">
+																								<xs:annotation>
+																									<xs:documentation>Fehlertext der Kernpruefung.</xs:documentation>
+																								</xs:annotation>
+																							</xs:element>
+																						</xs:sequence>
+																					</xs:complexType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+										</xs:choice>
+									</xs:sequence>
+									<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+										<xs:annotation>
+											<xs:documentation>Es ist nur die Versionsnummer 1.0.0 zulaessig</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+				<xs:annotation>
+					<xs:documentation>Es ist nur der Wert 1.0.0 zulaessig</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

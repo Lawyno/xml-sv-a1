@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.lawyno.xml</groupId>
+    <artifactId>xml-sv-a1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Plugin -->
+        <jaxb-maven-plugin.version>2.0.14</jaxb-maven-plugin.version>
+
+        <!-- Own dependencies -->
+        <xml-sv-ag.version>1.0-SNAPSHOT</xml-sv-ag.version>
+
+        <!-- 3rd-party dependencies -->
+        <javax.mail-api.version>1.6.2</javax.mail-api.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+
+        <!-- Test dependencies -->
+        <junit-jupiter.version>5.10.3</junit-jupiter.version>
+        <assertj-core.version>3.26.3</assertj-core.version>
+
+    </properties>
+
+    <dependencies>
+
+        <!-- A1 data sets are sent within AG (employer) data sets -->
+        <dependency>
+            <groupId>de.lawyno.xml</groupId>
+            <artifactId>xml-sv-ag</artifactId>
+            <version>${xml-sv-ag.version}</version>
+        </dependency>
+
+        <!-- JAXB API -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Java Mail API (for MimeMultipart attachments) -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>${javax.mail-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
+                <version>${jaxb-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <extension>true</extension>
+                    <disableXmlSecurity>false</disableXmlSecurity>
+                    <locale>de</locale>
+                    <removeOldOutput>true</removeOldOutput>
+                    <args>
+                        <arg>-XautoInheritance</arg>
+                        <arg>-XautoInheritance-xmlRootElementsImplement=de.lawyno.xml.IXmlRoot</arg>
+                        <arg>-XautoInheritance-xmlTypesImplement=de.lawyno.xml.IXmlType</arg>
+                        <arg>-Xinheritance</arg>
+                        <arg>-Xcamelcase</arg>
+                        <arg>-Xfluent-api</arg>
+                        <arg>-Xnamespace-prefix</arg>
+                    </args>
+                    <bindingDirectory>src/main/resources/xjb</bindingDirectory>
+                    <bindings>
+                        <binding>
+                            <dependencyResource>
+                                <groupId>de.lawyno.xml</groupId>
+                                <artifactId>xml-sv-basis</artifactId>
+                                <resource>xjb/global.xjb</resource>
+                            </dependencyResource>
+                        </binding>
+                    </bindings>
+                    <schemaDirectory>src/main/resources/xsd/v3.0.0</schemaDirectory>
+                    <specVersion>2.1</specVersion>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb</groupId>
+                            <artifactId>jaxb2-basics</artifactId>
+                            <version>${jaxb-maven-plugin.version}</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

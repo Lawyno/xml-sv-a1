@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+              package-name="de.lawyno.xml.sv.a1.bescheid.bewilligung" version="2.5">
+
+    <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
+                namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3">
+        <xml-ns prefix="bew" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" />
+        <xml-ns prefix="btct" namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
+    </xml-schema>
+
+    <java-types>
+        <java-type name="A1Bewilligung">
+            <java-attributes>
+                <xml-element java-attribute="angabenAntragsteller" name="Angaben_Arbeitgeber" required="true" />
+                <xml-element java-attribute="bescheinigungPdfList" name="Bescheinigung_PDF" required="true" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1Bewilligung$Steuerungsdaten">
+            <xml-type prop-order="absendernummer empfaengernummer datumErstellung datensatzId vorgangsId stornokennzeichen" />
+            <java-attributes>
+                <xml-element java-attribute="absendernummer" name="Absendernummer" required="true" />
+                <xml-element java-attribute="empfaengernummer" name="Empfaengernummer" required="true" />
+                <xml-element java-attribute="datumErstellung" name="Datum_Erstellung" required="true" />
+                <xml-element java-attribute="datensatzId" name="Datensatz_ID" required="true" />
+                <xml-element java-attribute="vorgangsId" name="Vorgangs_ID" required="true" />
+                <xml-element java-attribute="stornokennzeichen" name="Stornokennzeichen" required="true" />
+            </java-attributes>
+        </java-type>
+    </java-types>
+
+</xml-bindings>

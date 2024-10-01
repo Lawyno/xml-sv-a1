@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2009 sp1 (http://www.altova.com) von Jennifer Slota (GKV Spitzenverband) bearbeitet -->
+<!--Stand: 13. Dezember 2017-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" targetNamespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" elementFormDefault="qualified" attributeFormDefault="unqualified" version="V1.0.0">
+	<xs:simpleType name="ISO88591_Typ">
+		<xs:annotation>
+			<xs:documentation>Eine 'ISO88591_Typ' Zeichenkette enthält nur Zeichen aus dem Zeichensatz ISO-8859-1 ohne Zeilenumbrüche (CR/LF) und Tab. Dieser Datentyp sollte als Basis für einfache Zeichenkettenfelder verwendet werden, bei denen Zeilenumbrüche/Tabs in den Daten nicht erwünscht sind.
+			</xs:documentation>
+			<xs:appinfo/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:pattern value="[&#x0020;-&#x007e;&#x00a0;-&#x00ff;]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Versionsnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Versionsnummer des Datensatzes. In der Form 1.0.0.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Verfahrensmerkmal_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Definiton des Verfahrensmerkmals
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Absendernummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Absendernummer eines Arbeitgebers.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Datum_Zeit_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Datum im Format YYYY-MM-DDThh:mm:ss
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="Dateifolgenummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Dateifolgenummer
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Prod_ID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Prod-ID der ITSG.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Mod_ID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Mod-ID der ITSG.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Name_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Name mit maximal 30 Stellen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Postleitzahl_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Eine Postleitzahl ist eine Angabe, um postalische Zustellgebiete unabhaengig von Gebietskoerperschaften (Gemeinde, Kreis, _) zu bezeichnen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Ort_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Das Element Ort enthält den Namen eines Ortes (Gemeinde, Ortschaft oder Stadt).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="34"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Strasse_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Als Strassenname bezeichnet man den Namen, den eine Strasse zur Unterscheidung von anderen Strassen trägt. Strassennamen im weiteren Sinne sind dabei auch die Namen von Plaetzen und Bruecken
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="33"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Hausnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung einer Hausnummer
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_MWX_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Alphanumerischer Inhalt mit entweder M(ännlich), W(eiblich), X(unbestimmt) oder D (divers)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Rufnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Datentyp zur Repraesentation numerischer Rufnummern, z.Bsp als Telefonnummer oder Faxnummer.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Langtext_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlernummer der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Email_Typ">
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="70"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DatensatzID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Feld zur Übermittlung der Datensatz ID
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Response_ID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Response_ID des jeweiligen Kommunikationsservers.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="23"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlernummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlernummer der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlertext_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlertext der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

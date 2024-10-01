@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+              package-name="de.lawyno.xml.sv.a1.basis" version="2.5">
+
+    <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
+                namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0">
+        <xml-ns prefix="btct" namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
+    </xml-schema>
+
+    <java-types>
+        <java-type name="SteuerungsdatenRueckmeldungCtp" xml-transient="true" />
+
+        <java-type name="SteuerungsdatenAgV3Ctp">
+            <xml-type name="Steuerungsdaten_AG_v3_Ctp"/>
+            <java-attributes>
+                <xml-element java-attribute="produktIdentifier" name="Prod_ID"/>
+                <xml-element java-attribute="modifikationsIdentifier" name="Mod_ID"/>
+                <xml-element java-attribute="datensatzId" name="Datensatz_ID"/>
+                <xml-element java-attribute="vorgangsId" name="Vorgangs_ID"/>
+            </java-attributes>
+        </java-type>
+        <java-type name="SteuerungsdatenAgV3Ctp$Stornierung">
+            <java-attributes>
+                <xml-element java-attribute="datensatzIdUrsprungsmeldung" name="Datensatz_ID_Ursprungsmeldung"/>
+            </java-attributes>
+        </java-type>
+
+        <java-type name="AngabenAntragstellerRueckmeldungCtp">
+            <java-attributes>
+                <xml-element java-attribute="datensatzIdUrsprungsmeldung" name="Datensatz_ID_Ursprungsmeldung" />
+                <xml-element java-attribute="azvuUrsprungsmeldung" name="AZVU_Ursprungsmeldung" />
+                <xml-element java-attribute="bbnrVu" name="Betriebsnummer_VU" />
+            </java-attributes>
+        </java-type>
+
+        <java-type name="AngabenNameCtp">
+            <java-attributes>
+                <xml-element java-attribute="titel" name="Namenstitel" />
+            </java-attributes>
+        </java-type>
+
+        <java-type name="AnschriftPersonImAbkommensstaat">
+            <java-attributes>
+                <xml-element java-attribute="land" name="Laenderschluessel"/>
+            </java-attributes>
+        </java-type>
+    </java-types>
+
+</xml-bindings>

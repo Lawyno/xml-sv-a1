@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2020 rel. 2 sp1 (x64) (http://www.altova.com) von Björn Scharatta (GKV Spitzenverband) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" xmlns:btst="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_A1/1.0" xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_A1/1.0" schemaLocation="Basistypen_Simple_A1_V1_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" schemaLocation="Basistypen_Complex_A1_V1_0_0.xsd"/>
+	<xs:element name="A1_Antrag_Seeleute">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Steuerungsdaten" type="btct:Steuerungsdaten_AG_v3_Ctp"/>
+				<xs:element name="Angaben_zur_Person_A1">
+					<xs:annotation>
+						<xs:documentation>Angaben zum Arbeitnehmer</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Name">
+								<xs:annotation>
+									<xs:documentation>Angaben zum Namen des Arbeitnehmers.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Grundangabe_Name" type="btct:Angaben_Name_Ctp"/>
+										<xs:element name="Namens_Ergaenzungen" type="btct:Name_Ergaenzung_v3_Ctp"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Anschrift_Wohnstaat" type="btct:Anschrift_Ctp"/>
+							<xs:element name="Mitgliedsnummer" type="btst:Mitgliedsnummer_Typ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Element fuer die Mitgliedsnummer der berufsstaendischen Versorgungseinrichtung.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Auslandseinsatz">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten_Auslandseinsatz">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Weitere_Taetigkeit_Mitgliedstaat" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Zeitgleich zu dieser Beschäftigung  wird eine Beschäftigung bei einem anderen Arbeitgeber oder eine selbständige Beschäftigung ausgeübt.
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Gewoehnlichkeit" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Die betroffene Person übt ihre Tätigkeit gewöhnlich an Bord eines Hochseeschiffes aus.
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Beginn" type="btst:Datum_Typ">
+											<xs:annotation>
+												<xs:documentation>Beginn des Entsendungszeitraums</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Ende" type="btst:Datum_Typ">
+											<xs:annotation>
+												<xs:documentation>Ende des Entsendungszeitraums</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Meere_und_Ozeane" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Das Schiff, an Bord dessen die betreffende Person beschäftigt ist, be-fährt Meere und Ozeane.
+
+J = Ja
+N = Nein
+</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Beschaeftigung_auf_einem_Hochseeschiff" maxOccurs="11">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name_Schiff" type="btst:Name_AG_Typ">
+											<xs:annotation>
+												<xs:documentation>Hier ist der Firmaname der auslaendischen Beschaeftigungsstelle einzutragen.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IMO_Nummer">
+											<xs:annotation>
+												<xs:documentation>Die IMO-Nummer ist eine unverwechselbare Kennung für Schiffe, Reedereien und Schiffseigentuemer.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="10"/>
+													<xs:pattern value="IMO[0-9]{7}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Flagge_unter_der_das_Schiff_faehrt" type="btst:Laendercode_Typ">
+											<xs:annotation>
+												<xs:documentation>Staatsangehörigkeitsschlüssel des Beschäftigungsstaates unter dessen Flagge das Schiff fährt gemäß Anlage 8 Teil A des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".
+
+nnn
+</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Arbeitgeber_Deutschland_A1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="btst:Name_AG_Typ">
+											<xs:annotation>
+												<xs:documentation>Hier ist Name des Arbeitgebers einzutragen.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Anschrift_Arbeitgeber" type="btct:Anschrift_Ctp">
+											<xs:annotation>
+												<xs:documentation>Angaben zur Anschrift des Arbeitgebers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Telefonnummer" type="btst:Rufnummer_Typ">
+											<xs:annotation>
+												<xs:documentation>Telefonnummer des Arbeitgebers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="E_Mail" type="btst:Email_Typ" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>E-Mail Adresse des Arbeitgebers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Betriebsnummer_VU" type="btst:Bbnr_Typ">
+											<xs:annotation>
+												<xs:documentation>Angabe der Betriebsnummer des Beschaeftigungsbetriebes</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Erklaerung_Arbeitgeber">
+					<xs:annotation>
+						<xs:documentation>Der Arbeitgeber erklaert ausdruecklich, dass alle Angaben den tatsaechlichen Verhaeltnissen entsprechen. </xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Angaben">
+								<xs:annotation>
+									<xs:documentation>Die Angaben entsprechen den tatsaelichen Verhaeltnissen. 
+
+Es ist nur "J"</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="1"/>
+										<xs:enumeration value="J"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+				<xs:annotation>
+					<xs:documentation>Es ist nur der Wert 2.0.0 zulaessig</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

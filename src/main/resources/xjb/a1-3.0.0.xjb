@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+               xmlns:namespace="http://jaxb2-commons.dev.java.net/basic/namespace-prefix"
+               jaxb:extensionBindingPrefixes="inheritance namespace"
+               version="2.1">
+
+    <!-- A1 Basis Komponenten -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/106-Basis-1.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.basis" />
+        </jaxb:schemaBindings>
+        <namespace:prefix name="a1b" />
+    </jaxb:bindings>
+
+
+    <!-- A1 Anträge -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_1_Beamte_Beschaeftigte-3.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.antrag.beamte" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class />
+            <inheritance:implements>de.lawyno.xml.sv.a1.antrag.IXmlA1Antrag</inheritance:implements>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Angaben_Zur_Taetigkeit_Im_Ausland']">
+            <jaxb:property name="angabenZurTaetigkeitImAuslandList" />
+        </jaxb:bindings>
+        <namespace:prefix name="abe" />
+    </jaxb:bindings>
+
+
+    <!-- A1 Rückmeldungen -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Ablehnung-2.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.ablehnung" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class />
+            <inheritance:implements>de.lawyno.xml.sv.a1.bescheid.IXmlA1Bescheid</inheritance:implements>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Bescheinigung_Pdf']">
+            <jaxb:property name="bescheinigungPdfList" />
+        </jaxb:bindings>
+        <namespace:prefix name="abl" />
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Bewilligung-2.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.bewilligung" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class />
+            <inheritance:implements>de.lawyno.xml.sv.a1.bescheid.IXmlA1Bescheid</inheritance:implements>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Bescheinigung_Pdf']">
+            <jaxb:property name="bescheinigungPdfList" />
+        </jaxb:bindings>
+        <namespace:prefix name="bew" />
+    </jaxb:bindings>
+
+</jaxb:bindings>

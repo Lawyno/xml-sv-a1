@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2020 rel. 2 sp1 (x64) (http://www.altova.com) von Björn Scharatta (GKV Spitzenverband) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1" xmlns:aus="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ausnahme/2.1" xmlns:ant="http://www.gkv-datenaustausch.de/XMLSchema/A1_Antrag/2.0" xmlns:bew="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" xmlns:abl="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ablehnung/1.3" xmlns:GM1="http://www.gkv-datenaustausch.de/XMLSchema/A1_GME1/2.0" xmlns:GM5="http://www.gkv-datenaustausch.de/XMLSchema/A1_GME5/2.0" xmlns:see="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" xmlns:bea="http://www.gkv-datenaustausch.de/XMLSchema/A1_Beamte/2.0" xmlns:sel="http://www.gkv-datenaustausch.de/XMLSchema/A1_Selbststaendige/1.0.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2.0">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_GME1/2.0" schemaLocation="A1_GME1_V2_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_GME5/2.0" schemaLocation="A1_GME5_V2_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ausnahme/2.1" schemaLocation="A1_Ausnahme_V2_1_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Antrag/2.0" schemaLocation="A1_Antrag_V2_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Beamte/2.0" schemaLocation="A1_Beamte_V2_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" schemaLocation="A1_Seeleute_V2_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" schemaLocation="A1_Bewilligung_V1_3_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ablehnung/1.3" schemaLocation="A1_Ablehnung_V1_3_0.xsd">
+		<xs:annotation>
+			<xs:documentation> Importieren der Datentypen</xs:documentation>
+		</xs:annotation>
+	</xs:import>
+	<xs:element name="Antraege">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="bea:A1_Antrag_Beamte" maxOccurs="100"/>
+				<xs:element ref="see:A1_Antrag_Seeleute" maxOccurs="100"/>
+				<xs:element ref="GM5:GME5_Antrag" maxOccurs="100"/>
+				<xs:element ref="ant:A1_Antrag_Entsendung" maxOccurs="100"/>
+				<xs:element ref="GM1:GME1_Antrag" maxOccurs="100"/>
+				<xs:element ref="aus:A1_Ausnahmevereinbarung" maxOccurs="100"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Rueckmeldungen">
+		<xs:complexType>
+			<xs:choice maxOccurs="100">
+				<xs:element ref="bew:A1_Bewilligung"/>
+				<xs:element ref="abl:A1_Ablehnung"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

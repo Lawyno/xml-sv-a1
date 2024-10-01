@@ -1,0 +1,1633 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- bearbeitet mit XMLSpy v2023 rel. 2 (x64) (http://www.altova.com) von Björn Scharatta (GKV-Spitzenverband) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0" xmlns:svb="SV-Basis://XMLSchema/1.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="SV-Basis://XMLSchema/1.0" schemaLocation="SV-Basis-1.0.0.xsd"/>
+	<!--simpleTypes-->
+	<xs:simpleType name="Ablehnungsgrund_Stp">
+		<xs:annotation>
+			<xs:documentation>Typ zur Übermittlung des Ablehnungsgrundes einer A1 Bescheinigung</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Adresszusatz_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Definition des Geburtsnames
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Adresszusatz_Stp">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Aktenzeichen_Verursacher_Stp">
+		<xs:restriction base="svb:Aktenzeichen_Stp">
+			<xs:maxLength value="20"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Aktenzeichen_Schriftwechsel_Kontakt_Stp">
+		<xs:restriction base="svb:Aktenzeichen_Stp">
+			<xs:maxLength value="32"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Anforderungsgrund_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				RVBEA Anforderungsgrund
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Iso88591_Stp">
+			<xs:maxLength value="15"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Art_Kontaktadresse_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Aufzaehlung der möglichen Kontaktstellen für den Schriftwechsel.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Bezeichnung_Rechtsform_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Name der Firma
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Iso88591_Stp">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Dateifolgenummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Dateifolgenummer
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Email_Stp">
+		<xs:annotation>
+			<xs:documentation>Email-Adresse entsprechend RFC 3696; vgl. "3. Restrictions on email addresses"</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="70"/>
+			<xs:pattern value="[A-Za-z0-9äöüÄÖÜ!&quot;&apos;#\\$%&amp;\(\)\*\+\?\^`&lt;=&gt;.:;,/_-]+(@|§)[A-Za-z0-9äöüÄÖÜ!&quot;&apos;#\\$%&amp;\(\)\*\+\?\^`&lt;=&gt;:;,/_-]+([.]{1}[A-Za-z0-9äöüÄÖÜ!&quot;&apos;#\\$%&amp;\(\)\*\+\?\^`&lt;=&gt;:;,/_-]+)+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Familienname_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Nachnamen einer Person.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Nachname_Stp">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlernummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlernummer der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Iso88591_Stp"/>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlertext_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlertext der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Iso88591_Stp"/>
+	</xs:simpleType>
+	<xs:simpleType name="Geburtsname_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Definition des Geburtsnames
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Nachname_Stp">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Geldleistung_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Einstelliges Kennzeichen mit numerischen Inhalt
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Grund_Abloesung_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Gruende der Abloesung eines Arbeitnehmers im Ausland. 1 = Erkrankung der zuvor entsandten Person. 2 = Kuendigung der zuvor entsandten Person. 3 = betriebsbedingter Personalwechsel
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Grundrentennummer_Japan_Stp">
+		<xs:annotation>
+			<xs:documentation>japanische Grundrentennummer  </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Iata_Stp">
+		<xs:annotation>
+			<xs:documentation>Typ zur Übermittlung des 3 stelligen IATA Codes für Flughäfen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Identitaetsnummer_Israel_Stp">
+		<xs:annotation>
+			<xs:documentation>israelische Identitätsnummer   </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Imo_Nummer_Stp">
+		<xs:annotation>
+			<xs:documentation>Datentyp zur Darstellung der eineindeutigen Schiffskennung.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="IMO[0-9]{7}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Iso88591_Stp">
+		<xs:annotation>
+			<xs:documentation>Eine 'ISO88591_Typ' Zeichenkette enthält nur Zeichen aus dem Zeichensatz ISO-8859-1 ohne Zeilenumbrüche (CR/LF) und Tab. Dieser Datentyp sollte als Basis für einfache Zeichenkettenfelder verwendet werden, bei denen Zeilenumbrüche/Tabs in den Daten nicht erwünscht sind.
+			</xs:documentation>
+			<xs:appinfo/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:pattern value="[&#x0020;-&#x007e;&#x00a0;-&#x00ff;]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Iso88591_Text_Stp">
+		<xs:annotation>
+			<xs:documentation>
+Eine 'ISO88591_Text_Stp' Zeichenkette enthält  Zeichen aus dem Zeichensatz ISO-8859-1.
+Dieser Datentyp kann Zeilenumbrüche/Tabs enthalten und sollte als Basis für mehrzeilige Texte verwendet werden.
+			</xs:documentation>
+			<xs:appinfo/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:pattern value="[\n\r\t&#x0020;-&#x00FF;]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Jahr_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Numerischer Wert 1-9999, entspricht allen Inhalten einer maximal 4-stelligen Zahl außer 0
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Alphanumerisch_J_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Einstelliges Kennzeichen mit alphanumerischen Inhalt "J".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="J"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Alphanumerisch_N_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Einstelliges Kennzeichen mit alphanumerischen Inhalt "N".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Einstelliges Kennzeichen mit alphanumerischen Inhalt "J" oder "N"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="J"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Mwx_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Alphanumerischer Inhalt mit entweder M(ännlich), W(eiblich), X(unbestimmt) oder D (divers)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="W"/>
+			<xs:enumeration value="X"/>
+			<xs:enumeration value="D"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Numerisch_1_2_3_4_Stp">
+		<xs:restriction base="Kennzeichen_Numerisch_Stp">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Numerisch_1_2_3_Stp">
+		<xs:restriction base="Kennzeichen_Numerisch_Stp">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Numerisch_1_2_Stp">
+		<xs:restriction base="Kennzeichen_Numerisch_Stp">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Numerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Einstelliges Kennzeichen mit numerischen Inhalt
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Langtext_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlernummer der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Iso88591_Text_Stp">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Mitgliedsnummer_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Mitgliedsnummer der ABV.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5"/>
+			<xs:maxLength value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Name_Ag_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Name mit maximal 50 Stellen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Iso88591_Stp">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Name_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Name mit maximal 30 Stellen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Iso88591_Stp">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Namenstitel_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Namenstitel einer Person.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Namenstitel_Stp">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Namenszusatz_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Typ modelliert den Namenszusatz einer Person. Die erlaubten Werte sind durch Anlage 7 DEUEV vorgegeben.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Namenszusatz_Stp">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Ort_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Das Element Ort enthält den Namen eines Ortes (Gemeinde, Ortschaft oder Stadt).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Ort_Stp">
+			<xs:maxLength value="34"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Pdf_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Element fuer die Ubermittlung des PDF, welches als base64 kodiertes PDF/A uebertragen wird.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:base64Binary">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Postleitzahl_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Eine Postleitzahl ist eine Angabe, um postalische Zustellgebiete unabhaengig von Gebietskoerperschaften (Gemeinde, Kreis, _) zu bezeichnen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Postleitzahl_Stp">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Rechtsform_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Rechtsform des Arbeitgebers. 1 = Personen oder Kapitalgesellschaft; 2 = Öffentlicher Arbeitgeber; 3 = Sonstiges
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Regelungen_Arbeitsvertrag_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Aufzaehlung der möglichen Ausgestaltungen zum Arbeitsvertrag waehrend der Entsendung.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Response_Id_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Response_ID des jeweiligen Kommunikationsservers.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="23"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Sozialversicherungsnummer_Usa_Stp">
+		<xs:annotation>
+			<xs:documentation>XXX-YY-ZZZZ</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="11"/>
+			<xs:maxLength value="11"/>
+			<xs:pattern value="([0-9]{3}-[0-9]{2}-[0-9]{4})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stornokennzeichen_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Kennzeichen zur Stornierung des urspruenglichen Datensatzes.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="J"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Strasse_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Definition des Geburtsnames
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Strasse_Stp">
+			<xs:maxLength value="33"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Taetigkeitsschluessel_A1_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Taetigkeitsschlüssel der Bundesagentur für Arbeit von Stelle 1 - 5
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Telearbeit_Stp">
+		<xs:annotation>
+			<xs:documentation>Datentyp zur Übermittlung zu welchem Anteil die Person die Beschäftigung in Telearbeit ausübt (1 - 100 %).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="100"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Versicherungsnummer_Chile_Stp">
+		<xs:annotation>
+			<xs:documentation>chilenische Versicherungsnummer </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Vorname_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Vornamen einer Person.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Vorname_Stp">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Vorsatzwort_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Namensvorsatz einer Person. Die erlaubten Werte sind durch Anlage 6 DEUEV vorgegeben.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="svb:Namensvorsatz_Stp">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Wirtschaftssektoren_Stp">
+		<xs:annotation>
+			<xs:documentation>
+				Aufstellung der Wirtschaftssektoren
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="2"/>
+			<xs:pattern value="(2[0-2]|1[0-9]|[1-9])"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--complexTypes-->
+	<xs:complexType name="Vorherige_Taetigkeit_Ctp">
+		<xs:sequence>
+			<xs:element name="Vorherige_Taetigkeit_Ausland" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="Angaben_Vorherige_Taetigkeit" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Wenn die betroffene Person in den letzten x Jahren im Entsendungsstart gearbeitet hat, dann müssen die Angaben zu Zeitraum, Arbeitgeber und Beschäftigungsort gemacht werden</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Taetigkeitsbereich_Umsatzanteil_Ctp">
+		<xs:sequence>
+			<xs:element name="Taetigkeitsbereich" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Die Tätigkeit der betreffenden Person im Beschäftigungsstaat entspricht dem Tätigkeitsbereich unseres Unternehmens in Deutschland.
+J = Ja
+N = Nein
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Umsatzanteil" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Unser Unternehmen übt gemessen am Umsatz mindestens 25% seiner Geschäftstätigkeit in Deutschland aus?
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Name_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Namensbestandteile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Geschlecht" type="Kennzeichen_Mwx_Stp">
+				<xs:annotation>
+					<xs:documentation>Alphanumerischer Inhalt mit entweder M(ännlich), W(eiblich), X(unbestimmt) oder D(divers)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Vorname" type="Vorname_Stp">
+				<xs:annotation>
+					<xs:documentation>Vorname der Person </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Familienname" type="Familienname_Stp">
+				<xs:annotation>
+					<xs:documentation>Familienname der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Vorsatzwort" type="Vorsatzwort_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Vorsatzwort der Person. Eine Aufstellung der zulaessigen Vorsatzworte ist der Anlage 6 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Namenszusatz" type="Namenszusatz_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Namenszusatz der Person. Eine Aufstellung der zulaessigen Namenszusaetze ist der Anlage 7 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Titel" type="Namenstitel_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Titel der Person (z.B. Prof.) </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Sv_Ctp">
+		<xs:choice>
+			<xs:element name="Gkv">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="Bbnr_Kk"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Pkv">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:choice>
+							<xs:element ref="Bbnr_Kk">
+								<xs:annotation>
+									<xs:documentation>Welche Krankenkasse ist die Einzugsstelle für die Sozialversicherung.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Keine_Versicherungspflicht">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="Bbnr_Kk">
+											<xs:annotation>
+												<xs:documentation>Welche Krankenkasse wird als Einzugsstelle gewählt für den Fall, dass die deutschen Rechtsvorschriften gelten?</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+						<xs:element name="Bezeichnung_Versorgungseinrichtung" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Name_Versorgungswerk" type="Name_Ag_Stp"/>
+									<xs:element name="Mitgliedsnummer" type="Mitgliedsnummer_Stp">
+										<xs:annotation>
+											<xs:documentation>Element fuer die Mitgliedsnummer der berufsstaendischen Versorgungseinrichtung.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Auslaendischer_Traeger">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="Bbnr_Kk">
+							<xs:annotation>
+								<xs:documentation>Welche Krankenkasse wird als Einzugsstelle Gewählt für den Fall, dass die deutschen Rechtsvorschriften gelten?</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="Anschrift_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung einer Anschrift einer Person oder Firma mit KDKZ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Strasse" type="Strasse_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angabe zur Strasse </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Hausnummer" type="svb:Hausnummer_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hausnummer </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresszusatz" type="Adresszusatz_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Anschriftenzusatz </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Postleitzahl" type="Postleitzahl_Stp">
+				<xs:annotation>
+					<xs:documentation>Postlleitzahl des Ortes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ort" type="Ort_Stp">
+				<xs:annotation>
+					<xs:documentation>Angabe zum Ort.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Land" type="svb:StaatSchluessel_Stp">
+				<xs:annotation>
+					<xs:documentation>Laenderschluessel des Ortes laut Anlage 8 des Gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Anschrift_Ohne_Ldkz_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung einer Anschrift einer Person oder Firma ohne LDKZ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Strasse" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angabe zur Strasse der Person</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="svb:Strasse_Stp">
+						<xs:maxLength value="33"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Hausnummer" type="svb:Hausnummer_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hausnummer der Person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresszusatz" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Anschriftenzusatz der Person.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="svb:Adresszusatz_Stp">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Postleitzahl" type="Postleitzahl_Stp">
+				<xs:annotation>
+					<xs:documentation>Postleitzahl des Ortes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ort" type="Ort_Stp">
+				<xs:annotation>
+					<xs:documentation>Angabe zum Ort.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Name_Ergaenzung_Vollstaendig_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Geburtsangaben, Versicherungsnummer und Staatsangehoerigkeit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Geburtsname" type="Geburtsname_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Geburtsname der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geburtsdatum" type="svb:Geburtsdatum_unbekannt_Stp">
+				<xs:annotation>
+					<xs:documentation>Geburtsdatum der Person in der Form: jjjj-mm-tt
+Bei ausländischen Staatsbürgern kann der Tag oder Monat der Geburt unbekannt sein. In diesen Fällen ist der Tag oder Monat mit "00" anzugeben. Bei der Ausstellung einer Bescheinigung, wird das Geburtsdatum auf 01.01. verändert, damit eine Nutzung im Rahmen des europäischen Datenaustausches erfolgen kann</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geburtsort" type="Ort_Stp">
+				<xs:annotation>
+					<xs:documentation>Geburtsort der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geburtsland" type="svb:StaatSchluessel_Stp">
+				<xs:annotation>
+					<xs:documentation>Geburtsland des Arbeitnehmers nach Anlage 8 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung". </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Versicherungsnummer" type="svb:VSNR_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Versicherungsnummer des Arbeitnehmers in der Form: bbttmmjjassp</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Staatsangehoerigkeit" type="svb:StaatSchluessel_Stp">
+				<xs:annotation>
+					<xs:documentation>Dabei handelt es sich um den Staatsangehoerigkeitsschluessel des Arbeitnehmers nach Anlage 8 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Schriftwechsel_Kontakt_Ctp">
+		<xs:annotation>
+			<xs:documentation>Angaben zum Schriftwechsel bei Anträgen an die DVKA</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Schriftwechsel">
+				<xs:annotation>
+					<xs:documentation>Der Ansprechpartner kann wie folgt ausgeprägt sein:
+1 = Schriftwechsel mit dem Arbeitgeber / Kontaktperson
+2 = Schriftwechsel mit der bevollmaechtigten Stelle
+</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="Art_Kontaktadresse_Stp">
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Bezeichnung_Bevollmaechtigte_Stelle" type="Name_Ag_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hier ist die aktuelle Firmenbezeichnung der bevollmächtigten Stelle anzugeben,</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Postalischer_Kontakt" type="Anschrift_Ctp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angaben zur Anschrift der Kontaktperson</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Aktenzeichen_Schriftwechsel_Kontakt" type="Aktenzeichen_Schriftwechsel_Kontakt_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hier ist das Aktenzeichen der fuer den Schriftwechsel mit dem Ansprechpartner anzugeben.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Elektronischer_Kontakt" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Telefonnummer" type="svb:Rufnummer_Stp">
+							<xs:annotation>
+								<xs:documentation>Rufnummer DIN 5008:
+Die Telefonnummer ist funktionsbezogen durch je ein Leerzeichen zu gliedern, vor der Durchwahlnummer steht ein Bindestrich.
+Beispiele:
+Einzelanschluss
+04404 912145
+Durchwahlanschluss
+04401 922-122
+International
++49 4401 922-131
+(Die laenderbezogene Zusatznummer sollte durch das Zeichen + vor der Landesvorwahl dargestellt werden (z.B. statt 0049 besser +49).</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Email_Adresse" type="Email_Stp" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>E-Mail Adresse </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Steuerungsdaten_Ag_V2_Ctp">
+		<xs:annotation>
+			<xs:documentation>Steuerungsdaten für die DVKA mit Vorgangs-ID und Stornogrund</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Absendernummer" type="svb:ABSN_Stp">
+				<xs:annotation>
+					<xs:documentation>Dabei handelt es sich um die Absendernummer der absendenden Stelle. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Empfaengernummer" type="svb:ABSN_Stp">
+				<xs:annotation>
+					<xs:documentation>In diesem Feld ist die Absendernummer der zustaendigen Stelle einzutragen. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datum_Erstellung" type="svb:Datum_Uhrzeit_Stp">
+				<xs:annotation>
+					<xs:documentation>Angabe des Erstelldatums der Meldung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Produkt_Identifier" type="svb:Prod_ID_Stp">
+				<xs:annotation>
+					<xs:documentation>Hier ist die Prod-ID des Entgeltabrechnungsprogramms oder der Ausfuellhilfe einzutragen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Modifikations_Identifier" type="svb:Mod_ID_Stp">
+				<xs:annotation>
+					<xs:documentation>Hier ist die Mod-ID des Entgeltabrechnungsprogramms oder der Ausfuellhilfe einzutragen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datensatz_Id">
+				<xs:annotation>
+					<xs:documentation>Datensatz_ID analog der Ausgestaltung der uebrigen Meldeverfahren der Arbeitgeber. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="svb:DatensatzID_Stp"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Vorgangs_Id" type="svb:DatensatzID_Stp">
+				<xs:annotation>
+					<xs:documentation>Die Vorgangs-ID ist ein für die meldende Stelle eindeutiges Zuord-nungskriterium für den Meldevorgang, welches unverändert auch für mögliche Stornierungen und Neumeldungen innerhalb des Meldevorgangs verwendet wird.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Aktenzeichen_Verursacher" type="Aktenzeichen_Verursacher_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Das Aktenzeichen Versursacher steht dem Arbeitgeber zur freien Verfügung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Stornierung" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Stornokennzeichen" type="Stornokennzeichen_Stp">
+							<xs:annotation>
+								<xs:documentation>Kennzeichen zur Stornierung der Meldung. Fuer eine Stornierung ist das Kennzeichen "J"zu uebermitteln. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Stornogrund">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:totalDigits value="2"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Datensatz_Id_Ursprungsmeldung" type="svb:DatensatzID_Stp"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Steuerungsdaten_Ag_V3_Ctp">
+		<xs:annotation>
+			<xs:documentation>Steuerungsdaten ohne Stornogrund</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Absendernummer" type="svb:ABSN_Stp">
+				<xs:annotation>
+					<xs:documentation>Dabei handelt es sich um die Absendernummer der absendenden Stelle. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Empfaengernummer" type="svb:ABSN_Stp">
+				<xs:annotation>
+					<xs:documentation>In diesem Feld ist die Absendernummer der zustaendigen Stelle einzutragen. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datum_Erstellung" type="svb:Datum_Uhrzeit_Stp">
+				<xs:annotation>
+					<xs:documentation>Angabe des Erstelldatums der Meldung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Produkt_Identifier" type="svb:Prod_ID_Stp">
+				<xs:annotation>
+					<xs:documentation>Hier ist die Prod-ID des Entgeltabrechnungsprogramms oder der Ausfuellhilfe einzutragen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Modifikations_Identifier" type="svb:Mod_ID_Stp">
+				<xs:annotation>
+					<xs:documentation>Hier ist die Mod-ID des Entgeltabrechnungsprogramms oder der Ausfuellhilfe einzutragen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datensatz_Id">
+				<xs:annotation>
+					<xs:documentation>Eindeutige Kennzeichnung des Datensatzes durch den Ersteller</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="svb:DatensatzID_Stp"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Vorgangs_Id" type="svb:DatensatzID_Stp">
+				<xs:annotation>
+					<xs:documentation>Die Vorgangs-Id ist ein für die meldende Stelle eindeutiges Zuordnungskriterium für den Meldevorgang, welches unverändert auch für mögliche Stornierungen und Neumeldungen innerhalb des Meldevorgangs verwendet wird.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Aktenzeichen_Verursacher" type="Aktenzeichen_Verursacher_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Dieses Feld steht dem Verursacher zur Verfügung. 
+z. B. Aktenzeichen/ Personalnummer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Stornierung" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Stornokennzeichen" type="Stornokennzeichen_Stp">
+							<xs:annotation>
+								<xs:documentation>Kennzeichen zur Stornierung der Meldung. Fuer eine Stornierung ist das Kennzeichen "J"zu uebermitteln. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Datensatz_Id_Ursprungsmeldung" type="svb:DatensatzID_Stp"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Vorherige_Beschaeftigung_Ctp">
+		<xs:sequence>
+			<xs:element ref="Beginn">
+				<xs:annotation>
+					<xs:documentation>Beginn des Auslandseinsatzes
+Jhjj-mm-tt				</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="Ende">
+				<xs:annotation>
+					<xs:documentation>Ende des Auslandseinsatzes
+Jhjj-mm-tt				</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="Name"/>
+			<xs:element name="Ort" type="Ort_Stp">
+				<xs:annotation>
+					<xs:documentation>Ort im Ausland				</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mindestbeschaeftigungszeitraum_Unterschritten_Abstract_Ctp">
+		<xs:sequence>
+			<xs:element name="Beschaeftigt_Seit" type="svb:Datum_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Die Person ist bei uns beschäftigt seit
+Jhjj-mm-tt</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Taetigkeit_Vor_Entsendung" type="Kennzeichen_Numerisch_1_2_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1 = Der Schwerpunkt des Arbeitsverhältnisses liegt in Deutschland und wird lediglich durch die Entsendung unterbrochen.
+2 = Die betreffende Person wurde bis zur Entsendung lediglich mit dem Ziel der Vorbereitung des Auslandseinsatzes eingearbeitet. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geltung_Deutscher_Rechtsvorschriften" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Galten für die Person unmittelbar vor ihrer Entsendung mindestens 2 Monate die deutschen Rechtsvorschriften über soziale Sicherheit? 
+J = Ja
+N = Nein
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Aufenthalt" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hat die Person zum Zeitpunkt der Einstellung ihren gewöhnlichen Aufenthalt in Deutschland? 
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Weiterbeschaeftigung" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Es ist vorgesehen, dass die Beschäftigung im Anschluss an die Entsendung in unserem Unternehmen in Deutschland fortgesetzt wird
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mindestbeschaeftigungszeitraum_Unterschritten_Ohne_Geltung_Deutscher_Rechtsvorschriften_Aufenthalt_Ctp">
+		<xs:complexContent>
+			<xs:restriction base="Mindestbeschaeftigungszeitraum_Unterschritten_Abstract_Ctp">
+				<xs:sequence>
+					<xs:element name="Beschaeftigt_Seit" type="svb:Datum_Stp">
+						<xs:annotation>
+							<xs:documentation>Die Person ist bei uns beschäftigt seit
+Jhjj-mm-tt</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Taetigkeit_Vor_Entsendung" type="Kennzeichen_Numerisch_1_2_Stp">
+						<xs:annotation>
+							<xs:documentation>1 = Der Schwerpunkt des Arbeitsverhältnisses liegt in Deutschland und wird lediglich durch die Entsendung unterbrochen.
+2 = Die betreffende Person wurde bis zur Entsendung lediglich mit dem Ziel der Vorbereitung des Auslandseinsatzes eingearbeitet. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Weiterbeschaeftigung" type="Kennzeichen_Alphanumerisch_Stp">
+						<xs:annotation>
+							<xs:documentation>Es ist vorgesehen, dass die Beschäftigung im Anschluss an die Entsendung in unserem Unternehmen in Deutschland fortgesetzt wird
+J = Ja
+N = Nein</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Mindestbeschaeftigungszeitraum_Unterschritten_Ohne_Geltung_Deutscher_Rechtsvorschriften_Ctp">
+		<xs:complexContent>
+			<xs:restriction base="Mindestbeschaeftigungszeitraum_Unterschritten_Abstract_Ctp">
+				<xs:sequence>
+					<xs:element name="Beschaeftigt_Seit" type="svb:Datum_Stp">
+						<xs:annotation>
+							<xs:documentation>Die Person ist bei uns beschäftigt seit
+Jhjj-mm-tt</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Taetigkeit_Vor_Entsendung" type="Kennzeichen_Numerisch_1_2_Stp">
+						<xs:annotation>
+							<xs:documentation>1 = Der Schwerpunkt des Arbeitsverhältnisses liegt in Deutschland und wird lediglich durch die Entsendung unterbrochen.
+2 = Die betreffende Person wurde bis zur Entsendung lediglich mit dem Ziel der Vorbereitung des Auslandseinsatzes eingearbeitet. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Aufenthalt" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Hat die Person zum Zeitpunkt der Einstellung ihren gewöhnlichen Aufenthalt in Deutschland? 
+J = Ja
+N = Nein</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Weiterbeschaeftigung" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Es ist vorgesehen, dass die Beschäftigung im Anschluss an die Entsendung in unserem Unternehmen in Deutschland fortgesetzt wird
+J = Ja
+N = Nein</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Mindestbeschaeftigungszeitraum_Unterschritten_Vollstaendig_Ctp">
+		<xs:complexContent>
+			<xs:restriction base="Mindestbeschaeftigungszeitraum_Unterschritten_Abstract_Ctp">
+				<xs:sequence>
+					<xs:element name="Beschaeftigt_Seit" type="svb:Datum_Stp">
+						<xs:annotation>
+							<xs:documentation>Die Person ist bei uns beschäftigt seit
+Jhjj-mm-tt</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Taetigkeit_Vor_Entsendung" type="Kennzeichen_Numerisch_1_2_Stp">
+						<xs:annotation>
+							<xs:documentation>1 = Der Schwerpunkt des Arbeitsverhältnisses liegt in Deutschland und wird lediglich durch die Entsendung unterbrochen.
+2 = Die betreffende Person wurde bis zur Entsendung lediglich mit dem Ziel der Vorbereitung des Auslandseinsatzes eingearbeitet. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Geltung_Deutscher_Rechtsvorschriften" type="Kennzeichen_Alphanumerisch_Stp">
+						<xs:annotation>
+							<xs:documentation>Galten für die Person unmittelbar vor ihrer Entsendung mindestens 2 Monate die deutschen Rechtsvorschriften über soziale Sicherheit? 
+J = Ja
+N = Nein
+</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Aufenthalt" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Hat die Person zum Zeitpunkt der Einstellung ihren gewöhnlichen Aufenthalt in Deutschland? 
+J = Ja
+N = Nein</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Weiterbeschaeftigung" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Es ist vorgesehen, dass die Beschäftigung im Anschluss an die Entsendung in unserem Unternehmen in Deutschland fortgesetzt wird
+J = Ja
+N = Nein</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Einstellungszweck_Abstract_Ctp">
+		<xs:sequence>
+			<xs:element name="Mindestbeschaeftigungszeitraum_Erreicht" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Die Person ist seit mindestens 2 Monaten vor dem Beginn des Antragszeitraums bei uns beschäftigt
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Mindestbeschaeftigungszeitraum_Unterschritten" type="Mindestbeschaeftigungszeitraum_Unterschritten_Abstract_Ctp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Wenn Mindestbeschaeftigungszeitraum = N, dann sind weitere Angaben zu machen</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Einstellungszweck_Ohne_Geltung_Deutscher_Rechtsvorschriften_Aufenthalt_Ctp">
+		<xs:complexContent>
+			<xs:restriction base="Einstellungszweck_Abstract_Ctp">
+				<xs:sequence>
+					<xs:element name="Mindestbeschaeftigungszeitraum_Erreicht" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1"/>
+					<xs:element name="Mindestbeschaeftigungszeitraum_Unterschritten" type="Mindestbeschaeftigungszeitraum_Unterschritten_Ohne_Geltung_Deutscher_Rechtsvorschriften_Aufenthalt_Ctp" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Wenn Mindestbeschaeftigungszeitraum_Erreicht = N, dann sind weitere Angaben zu machen</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Einstellungszweck_Ohne_Geltung_Deutscher_Rechtsvorschriften_Ctp">
+		<xs:complexContent>
+			<xs:restriction base="Einstellungszweck_Abstract_Ctp">
+				<xs:sequence>
+					<xs:element name="Mindestbeschaeftigungszeitraum_Erreicht" type="Kennzeichen_Alphanumerisch_Stp" minOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Die Person ist seit mindestens 2 Monaten vor dem Beginn des Antragszeitraums bei uns beschäftigt
+J = Ja
+N = Nein</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Mindestbeschaeftigungszeitraum_Unterschritten" type="Mindestbeschaeftigungszeitraum_Unterschritten_Ohne_Geltung_Deutscher_Rechtsvorschriften_Ctp" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Wenn Mindestbeschaeftigungszeitraum_Erreicht = N, dann sind weitere Angaben zu machen						</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Einstellungszweck_Vollstaendig_Ctp">
+		<xs:complexContent>
+			<xs:restriction base="Einstellungszweck_Abstract_Ctp">
+				<xs:sequence>
+					<xs:element name="Mindestbeschaeftigungszeitraum_Erreicht" type="Kennzeichen_Alphanumerisch_Stp">
+						<xs:annotation>
+							<xs:documentation>Die Person ist seit mindestens 2 Monaten vor dem Beginn des Antragszeitraums bei uns beschäftigt
+J = Ja
+N = Nein</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Mindestbeschaeftigungszeitraum_Unterschritten" type="Mindestbeschaeftigungszeitraum_Unterschritten_Vollstaendig_Ctp" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Wenn Mindestbeschaeftigungszeitraum_Erreicht = N, dann sind weitere Angaben zu machen</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Verbundenes_Unternehmen_Ctp">
+		<xs:sequence>
+			<xs:element name="Wirtschaftlicher_Wert" type="Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Der wirtschaftliche Wert der Arbeit kommt ausschließlich unserem Unternehmen in Deutschland zugute
+J = Ja
+N = Nein
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Weiterbelastung_Lohnkosten" type="Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Die Lohn- und Gehaltskosten werden (vollständig oder überwiegend) an das aufnehmende Unternehmen im Beschäftigungsstaat bzw. an ein drittes, ebenfalls verbundenes Unternehmen weiterbelastet
+J = Ja
+N = Nein
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Namensergaenzung_Ohne_Ort_Land_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Geburtsangaben, Versicherungsnummer und Staatsangehoerigkeit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Geburtsname" type="Geburtsname_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Geburtsname der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geburtsdatum" type="svb:Geburtsdatum_unbekannt_Stp">
+				<xs:annotation>
+					<xs:documentation>Geburtsdatum der Person in der Form: jjjj-mm-tt
+Bei ausländischen Staatsbürgern kann der Tag oder Monat der Geburt unbekannt sein. In diesen Fällen ist der Tag oder Monat mit "00" anzugeben. Bei der Ausstellung einer Bescheinigung, wird das Geburtsdatum auf 01.01. verändert, damit eine Nutzung im Rahmen des europäischen Datenaustausches erfolgen kann</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Versicherungsnummer" type="svb:VSNR_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Versicherungsnummer des Arbeitnehmers in der Form: bbttmmjjassp</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Staatsangehoerigkeit" type="svb:StaatSchluessel_Stp">
+				<xs:annotation>
+					<xs:documentation>Dabei handelt es sich um den Staatsangehoerigkeitsschluessel des Arbeitnehmers nach Anlage 8 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Vorherige_Auslandsbeschaeftigung_Ctp">
+		<xs:sequence>
+			<xs:element name="Beginn" type="svb:Datum_Stp">
+				<xs:annotation>
+					<xs:documentation>Beginn des Einsatzzeitraums
+Jhjj-mm-tt</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ende" type="svb:Datum_Stp">
+				<xs:annotation>
+					<xs:documentation>Ende des Einsatzzeitraums
+Jhjj-mm-tt</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geltung_Deutscher_Rechtsvorschriften" type="Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>J = Ja
+N =Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="Name_Ag_Stp">
+				<xs:annotation>
+					<xs:documentation>Name der Beschäftigungsstelle im Abkommensstaat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ort" type="Ort_Stp">
+				<xs:annotation>
+					<xs:documentation>Ort der Beschäftigungsstelle im Abkommensstaat</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Land" type="svb:StaatSchluessel_Stp">
+				<xs:annotation>
+					<xs:documentation>Staatsangehörigkeitsschlüssel des Abkommensstaat gemäß Anlage 8 Teil A des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung"
+
+nnn</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Grundangabe_Name_Namensergaenzungen_Ctp">
+		<xs:sequence>
+			<xs:element name="Grundangaben_Name" type="Angaben_Name_Ctp"/>
+			<xs:element name="Namensergaenzungen" type="Name_Ergaenzung_Vollstaendig_Ctp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Name_Schiff_Ctp">
+		<xs:sequence>
+			<xs:element name="Name_Schiff" type="Name_Ag_Stp">
+				<xs:annotation>
+					<xs:documentation>Name des Schiffes</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Imo_Nummer" type="Imo_Nummer_Stp">
+				<xs:annotation>
+					<xs:documentation>Die IMO-Nummer ist eine unverwechselbare Kennung für Schiffe, Reedereien und Schiffseigentümer.
+IMOnnnnnnn
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Steuerungsdaten_Rueckmeldung_Ctp">
+		<xs:annotation>
+			<xs:documentation>Steuerungsdaten für die Rückmeldung</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Absendernummer" type="svb:ABSN_Stp">
+				<xs:annotation>
+					<xs:documentation>Dabei handelt es sich um die Absendernummer der absendenden Stelle. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Empfaengernummer" type="svb:ABSN_Stp">
+				<xs:annotation>
+					<xs:documentation>In diesem Feld ist die Absendernummer der zustaendigen Stelle einzutragen. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datum_Erstellung" type="svb:Datum_Uhrzeit_Stp">
+				<xs:annotation>
+					<xs:documentation>Angabe des Erstelldatums der Meldung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datensatz_ID">
+				<xs:annotation>
+					<xs:documentation>Datensatz_ID analog der Ausgestaltung der uebrigen Meldeverfahren der Arbeitgeber. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="svb:DatensatzID_Stp"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Vorgangs_ID" type="svb:DatensatzID_Stp">
+				<xs:annotation>
+					<xs:documentation>Die Vorgangs-ID ist ein für die meldende Stelle eindeutiges Zuordnungskriterium für den Meldevorgang, welches unverändert auch für mögliche Stornierungen und Neumeldungen innerhalb des Meldevorgangs verwendet wird.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Stornokennzeichen" type="Stornokennzeichen_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Kennzeichen zur Stornierung der Meldung. Fuer eine Stornierung ist das Kennzeichen "J"zu uebermitteln. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Person_Rueckmeldung_Ctp">
+		<xs:sequence>
+			<xs:element name="Grundangabe_Name" type="Angaben_Name_Ctp"/>
+			<xs:element name="Versicherungsnummer" type="svb:VSNR_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Es ist die Versicherungsnummer des Arbeitnehmers einzutragen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Antragsteller_Rueckmeldung_Ctp">
+		<xs:sequence>
+			<xs:element name="Datensatz_Id_Ursprungsmeldung" type="svb:DatensatzID_Stp">
+				<xs:annotation>
+					<xs:documentation>Es ist die Datensatz ID aus dem Antrag einzutragen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Azvu_Ursprungsmeldung" type="Aktenzeichen_Verursacher_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Das Aktenzeichen Versursacher der Ursprungsmeldung des Arbeitgebers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Bbnr_Vu" type="svb:BBNR_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Betriebsnummer des Arbeitgebers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Zur_Person_Ctp">
+		<xs:sequence>
+			<xs:element name="Name" type="Grundangabe_Name_Namensergaenzungen_Ctp">
+				<xs:annotation>
+					<xs:documentation>Angaben zum Namen des Arbeitnehmers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Anschrift_Wohnstaat" type="Anschrift_Ctp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Zur_Person_Mitgl_Ctp">
+		<xs:sequence>
+			<xs:element name="Name" type="Grundangabe_Name_Namensergaenzungen_Ctp">
+				<xs:annotation>
+					<xs:documentation>Angaben zum Namen des Arbeitnehmers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Anschrift_Wohnstaat" type="Anschrift_Ctp"/>
+			<xs:element name="Mitgliedsnummer" type="Mitgliedsnummer_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Element fuer die Mitgliedsnummer der berufsstaendischen Versorgungseinrichtung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Zur_Person_AbhBesch_Mitgl_Ctp">
+		<xs:sequence>
+			<xs:element name="Name" type="Grundangabe_Name_Namensergaenzungen_Ctp">
+				<xs:annotation>
+					<xs:documentation>Angaben zum Namen des Arbeitnehmers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Abhaengige_Beschaeftigung" type="Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Die entsendete Person ist im Sinne der Sozialversicherung abhängig be-schäftigt
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Anschrift_Wohnstaat" type="Anschrift_Ctp"/>
+			<xs:element name="Mitgliedsnummer" type="Mitgliedsnummer_Stp" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Element fuer die Mitgliedsnummer der berufsstaendischen Versorgungseinrichtung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Angaben_Unternehmen_Ctp">
+		<xs:sequence>
+			<xs:element ref="Rechtsform"/>
+			<xs:element name="Wirtschaftssektor" type="Wirtschaftssektoren_Stp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Feste_Einsatzstelle_Ctp">
+		<xs:sequence>
+			<xs:element name="Bezeichnung_Feste_Einsatzstelle" type="Name_Ag_Stp"/>
+			<xs:element name="Anschrift_Einsatzstelle" type="Anschrift_Ohne_Ldkz_Ctp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Feste_Einsatzstelle_Bezeichnung_Optional_Ctp">
+		<xs:sequence>
+			<xs:element name="Bezeichnung_Feste_Einsatzstelle" type="Name_Ag_Stp" minOccurs="0"/>
+			<xs:element name="Anschrift_Einsatzstelle" type="Anschrift_Ohne_Ldkz_Ctp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--globale Elemente-->
+	<xs:element name="Art_Der_Befristung_Voruebergehende_Taetigkeit" type="Kennzeichen_Numerisch_1_2_3_Stp">
+		<xs:annotation>
+			<xs:documentation>1: Die Befristung der vorübergehenden Tätigkeit ergibt sich aus einem Vertrag
+2: Die Befristung der vorübergehenden Tätigkeit ergibt sich aus der Eigenart der Tätigkeit (Projektarbeit, Montagetätigkeit)
+3: Die Tätigkeit im anderen Staat ist nicht im Voraus befristet.	</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Verbundenes_Unternehmen" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Handelt es sich um eine Entsendung zu einem verbundenen Unternehmen? 
+J = Ja
+N = Nein	</xs:documentation>
+		</xs:annotation>
+		<!--	-->
+	</xs:element>
+	<xs:element name="Angaben_Verbundenes_Unternehmen" type="Verbundenes_Unternehmen_Ctp">
+		<xs:annotation>
+			<xs:documentation>Wenn Verbundenes_Unternehmen = J, sind folgende Fragen zu beantworten:			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Arbeitsvertrag_Ausland" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Hat die betroffene Person einen (lokalen) weiteren Arbeitsvertrag mit dem aufnehmenden Unternehmen im Beschäftigungsstaat geschlossen?
+J = Ja
+N = Nein			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Entgeltanspruch_Ausland" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Wenn Arbeitsvertrag_Ausland = J, ist die Frage zu beantworten: 
+Aufgrund des weiteren Arbeitsvertrages besteht ein Entgeltanspruch gegen das aufnehmende Unternehmen?
+J = Ja
+N = Nein
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Arbeitsvisum" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Wenn Arbeitsvertrag_Ausland = J, ist die Frage zu beantworten: 
+Der weitere Arbeitsvertrag dient ausschließlich dem Zweck, ein Arbeitsvisum zu erhalten
+J = Ja
+N =Nein			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Vorherige_Entsendung_Ausland" type="Kennzeichen_Numerisch_1_2_3_Stp">
+		<xs:annotation>
+			<xs:documentation>1 = Die Person war in den letzten 12 Monaten nicht in den Beschäftigungsstaat entsandt
+2 = Die Person war in den letzten 12 Monaten vom aktuellen Arbeitgeber in den Beschäftigungsstaat entsandt
+3 = Die Person war in den letzten 12 Monaten in den Beschäftigungsstaat entsandt, dies erfolgte nicht im Rahmen eines Beschäftigungsverhältnis-ses beim aktuellen Arbeitgeber	</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Angaben_Vorherige_Entsendung" type="Angaben_Vorherige_Beschaeftigung_Ctp">
+		<xs:annotation>
+			<xs:documentation>Wenn Vorherige_Entsendung_Ausland = 2: 
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Vorherige_Beschaeftigung_Ausland_Anderer_Ag" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Wenn Vorherige_Entsendung_Ausland = 3, ist die Frage zu beantworten:
+
+War die betreffende Person in den 2 Monaten vor Beginn der aktuellen Entsendung für den aktuellen Arbeitgeber in Deutschland tätig?
+J = Ja
+N = Nein		</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Abloesung_Vorherige_Person" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Löst die betroffene Person eine andere entsandte Person ab?
+J = Ja
+N = Nein				</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Dauer_Entsendung_Abgeloeste_Person">
+		<xs:annotation>
+			<xs:documentation>Wenn Abloesung_Vorherige_Person = J; dann sind weitere Angaben zu machen			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Beginn_Tez" type="svb:Datum_Stp">
+					<xs:annotation>
+						<xs:documentation>Beginn des tatsächlichen Entsendungszeitraumes der abzulösenden Person
+
+jhjjj-mm-tt							</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Ende_Tez" type="svb:Datum_Stp">
+					<xs:annotation>
+						<xs:documentation>Ende des tatsächlichen Entsendungszeitraumes der abzulösenden Person
+
+jhjjj-mm-tt							</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Schiff" type="Name_Schiff_Ctp">
+		<xs:annotation>
+			<xs:documentation>Wird die Person auf ein Schiff entsendet, ist dies hier mitzuteilen</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Beschaeftigungsverhaeltnis" type="Kennzeichen_Numerisch_1_2_3_4_Stp">
+		<xs:annotation>
+			<xs:documentation>Geben Sie an, ob eines der folgenden Beschäftigungsverhältnisse zutrifft:
+
+1 = Es besteht ein aktives Beamtenverhältnis im öffentlichen Dienst der Bundesrepublik Deutschland
+2 = Es besteht ein aktives Beschäftigungsverhältnis im öffentlichen Dienst der Bundesrepublik Deutschland
+3 = Die Person wird von einem Bediensteten einer deutschen Auslandsvertretung beschäftigt
+4 = Es trifft keines der oben genannten Beschäftigungsverhältnisse zu
+
+								</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Persoenlicher_Geltungsbereich" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Wenn Beschaeftigungsverhaeltnis = 1, 2, oder 3, ist die Frage zu beantworten:
+Besitzt die Person die deutsche Staatsangehörigkeit?
+J = Ja
+N = Nein						</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Gewoehnlicher_Aufenthalt_Beschaeftigungsstaat" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Wenn Beschaeftigungsverhaeltnis = 1, 2, oder 3, ist die Frage zu beantworten:
+Hat die Person vor Beginn ihrer Beschäftigung ihren gewöhnlichen Aufenthalt im Beschäftigungsstaat?
+J = Ja
+N = Nein						</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Can_Quebec" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Handelt es sich um eine Entsendung in die Provinz Quebec?
+J = Ja
+N = Nein					</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Vereinfachte_Antragstellung" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Anschrift_Person_Im_Abkommensstaat" type="Anschrift_Ctp"/>
+	<xs:element name="Sozialversicherungsnummer_Usa" type="Sozialversicherungsnummer_Usa_Stp">
+		<xs:annotation>
+			<xs:documentation>XXX-YY-ZZZZ</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Versicherungsnummer_Chile" type="Versicherungsnummer_Chile_Stp"/>
+	<xs:element name="Grundrentennummer_Japan" type="Grundrentennummer_Japan_Stp"/>
+	<xs:element name="Identitaetsnummer_Israel" type="Identitaetsnummer_Israel_Stp"/>
+	<xs:element name="Vorherige_Taetigkeit_Ausland" type="Kennzeichen_Alphanumerisch_Stp"/>
+	<xs:element name="Angaben_Vorherige_Taetigkeit" type="Angaben_Vorherige_Beschaeftigung_Ctp"/>
+	<xs:element name="Angaben_Vorherige_Beschaeftigung" type="Angaben_Vorherige_Beschaeftigung_Ctp"/>
+	<xs:element name="Beginn" type="svb:Datum_Stp">
+		<xs:annotation>
+			<xs:documentation>Beginn des Entsendungszeitraums 
+Jhjj-mm-tt							</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Ende" type="svb:Datum_Stp">
+		<xs:annotation>
+			<xs:documentation>Voraussichtliches Ende des Entsendungszeitraums 
+Jhjj-mm-tt							</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Aufenthalt_Seeschiff" type="Kennzeichen_Alphanumerisch_Stp"/>
+	<xs:element name="Seeschiff_Eigentuemer" type="Kennzeichen_Alphanumerisch_Stp"/>
+	<xs:element name="Rechtsform" type="Rechtsform_Stp">
+		<xs:annotation>
+			<xs:documentation>Angaben zur Rechtsform Ihres Unternehmens:
+1 = Personen oder Kapitalgesellschaft (z.B OHG, KG, GmbH, AG)
+2 = Öffentlicher Arbeitgeber 
+3 = Sonstiges (z.B. Eingetragender Verein)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Email_Adresse" type="Email_Stp">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Telefonnummer" type="svb:Rufnummer_Stp"/>
+	<xs:element name="Name" type="Name_Ag_Stp"/>
+	<xs:element name="Geringfuegige_Beschaeftigung" type="Kennzeichen_Alphanumerisch_Stp">
+		<xs:annotation>
+			<xs:documentation>Es handelt sich um eine geringfügige Beschäftigung
+J = Ja
+N = Nein
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Bbnr_Vu" type="svb:BBNR_Stp"/>
+	<xs:element name="Land_Entsendung" type="svb:StaatSchluessel_Stp">
+		<xs:annotation>
+			<xs:documentation>Die Entsendung erfolgt in folgenden Staat oder Flaggenstaat, mit dem die Bundesrepublik Deutschland ein Sozialversicherungsabkommen hat
+
+Staatsangehörigkeitsschlüssel des Landes gemäß Anlage 8 Teil A des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung"
+nnn
+</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Bhv_Gebiet" type="Kennzeichen_Numerisch_1_2_Stp"/>
+	<xs:element name="Bestaetigung_Gewoehnlichkeit" type="Kennzeichen_Alphanumerisch_J_Stp"/>
+	<xs:element name="Bbnr_Kk" type="svb:BBNR_Stp">
+		<xs:annotation>
+			<xs:documentation>Betriebsnummer der für die betreffende Person zuständigen Krankenkasse</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>
