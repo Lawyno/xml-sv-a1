@@ -32,7 +32,7 @@
                             <btct:Familienname>Mustermann</btct:Familienname>
                             <btct:Vorsatzwort>von und zu</btct:Vorsatzwort>
                             <btct:Namenszusatz>Landgraf</btct:Namenszusatz>
-                            <btct:Namenstitel>Dr. Prof.</btct:Namenstitel>
+                            <btct:Namenstitel>Prof. Dr.</btct:Namenstitel>
                         </bew:Grundangabe_Name>
                         <bew:Versicherungsnummer>12345678X910</bew:Versicherungsnummer>
                     </bew:Angaben_Person>

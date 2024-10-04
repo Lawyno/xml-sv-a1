@@ -298,7 +298,7 @@ class A1AblehnungTest extends AbstractXmlTest {
             assertThat(angabenPerson.getVersicherungsnummer()).isEqualTo(XML_VSNR);
             assertThat(angabenPerson.getGrundangabeName()).satisfies(angabenName -> {
                 assertThat(angabenName).isNotNull();
-                assertThat(angabenName.getTitel()).isEqualTo("Dr. Prof.");
+                assertThat(angabenName.getTitel()).isEqualTo("Prof. Dr.");
                 assertThat(angabenName.getVorname()).isEqualTo("Max");
                 assertThat(angabenName.getFamilienname()).isEqualTo("Mustermann");
                 assertThat(angabenName.getNamenszusatz()).isEqualByComparingTo(NamenszusatzStp.fromValue("Landgraf"));
@@ -326,7 +326,7 @@ class A1AblehnungTest extends AbstractXmlTest {
                                 .withGeschlecht(KennzeichenMwxStp.M)
                                 .withVorname("Max")
                                 .withFamilienname("Mustermann")
-                                .withTitel("Dr. Prof.")
+                                .withTitel("Prof. Dr.")
                                 .withNamenszusatz(NamenszusatzStp.fromValue("Landgraf"))
                                 .withVorsatzwort(NamensvorsatzStp.fromValue("von und zu"))
                         )

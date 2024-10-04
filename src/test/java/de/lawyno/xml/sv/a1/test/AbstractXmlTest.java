@@ -94,7 +94,8 @@ public abstract class AbstractXmlTest {
         return createJaxbContextWithMap(contextMap, classes);
     }
 
-        protected JAXBContext createJaxbContextWithMap(final Map<String, Object> contextMap, final Class<?>... classes)
+
+    protected JAXBContext createJaxbContextWithMap(final Map<String, Object> contextMap, final Class<?>... classes)
     throws JAXBException {
         return JAXBContextFactory.createContext(classes, contextMap);
     }
