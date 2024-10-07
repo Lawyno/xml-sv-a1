@@ -16,7 +16,7 @@
 
 
     <!-- A1 Anträge -->
-    <!-- Beamte -->
+    <!-- Beamte (Anlage 1) -->
     <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_1_Beamte_Beschaeftigte-3.0.0.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="de.lawyno.xml.sv.a1.antrag.beamte" />
@@ -31,7 +31,7 @@
         <namespace:prefix name="abe" />
     </jaxb:bindings>
 
-    <!-- Seeleute -->
+    <!-- Seeleute (Anlage 2) -->
     <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_2_Seeleute-3.0.0.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="de.lawyno.xml.sv.a1.antrag.seeleute" />
@@ -44,6 +44,24 @@
             <jaxb:property name="beschaeftigungAufEinemHochseeschiffList" />
         </jaxb:bindings>
         <namespace:prefix name="see" />
+    </jaxb:bindings>
+
+    <!-- Entsendung (Anlage 4) -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_4_Entsendung-3.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.antrag.entsendung" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class />
+            <inheritance:implements>de.lawyno.xml.sv.a1.antrag.IXmlA1Antrag</inheritance:implements>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Beschaeftigungsstelle']">
+            <jaxb:property name="beschaeftigungsstelleList" />
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Zeitraum_Entsendung']">
+            <jaxb:property name="zeitraumEntsendungList" />
+        </jaxb:bindings>
+        <namespace:prefix name="aes" />
     </jaxb:bindings>
 
 

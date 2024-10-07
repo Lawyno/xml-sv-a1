@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+              package-name="de.lawyno.xml.sv.a1.antrag.entsendung" version="2.5">
+
+    <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
+                namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Antrag/2.0">
+        <xml-ns prefix="aes" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Antrag/2.0" />
+        <xml-ns prefix="btct"
+                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
+    </xml-schema>
+
+    <java-types>
+        <java-type name="A1AntragEntsendung">
+            <java-attributes>
+                <xml-element java-attribute="angabenZurPersonA1" name="Angaben_zur_Person_A1" />
+                <xml-element java-attribute="angabenBeschaeftigungDeutschland"
+                             name="Angabe_Beschaeftigung_Deutschland" />
+                <xml-element java-attribute="angabenArbeitgeberDeutschland"
+                             name="Angaben_Arbeitgeber_Deutschland_A1" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenEntsendung">
+            <java-attributes>
+                <xml-element java-attribute="angabenZurBeschaeftigungsstelle"
+                             name="Angaben_zur_Beschaeftigungsstelle" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenEntsendung$GrunddatenEntsendung">
+            <java-attributes>
+                <xml-element java-attribute="mitgliedsstaatFlaggenstaat" name="Mitgliedsstaat_der_Entsendung"/>
+                <xml-element java-attribute="beginn" name="Beginn_Entsendung" />
+                <xml-element java-attribute="ende" name="Ende_Entsendung" />
+                <xml-element java-attribute="taetigkeit" name="Taetigkeitsbeschreibung_Ausland" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenEntsendung$AngabenZurBeschaeftigungsstelle">
+            <java-attributes>
+                <xml-element java-attribute="schiff" name="Schiff" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenEntsendung$AngabenZurBeschaeftigungsstelle$Beschaeftigungsstelle">
+            <java-attributes>
+                <xml-element java-attribute="name" name="Name_Beschaeftigungsstelle" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenEntsendung$AngabenEntsendungArbeitnehmer">
+            <java-attributes>
+                <xml-element java-attribute="zeitraumEntsendungList" name="Einsatz_in_den_letzten_2_Monaten" />
+                <xml-element java-attribute="anUeberlassung" name="AN_Ueberlassung_von_Entsendebetrieb" />
+                <xml-element java-attribute="anAbloesung" name="Abloesung_anderer_AN" />
+                <xml-element java-attribute="angabenAbgeloestePerson" name="Angaben_abgeloeste_Person" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenEntsendung$AngabenEntsendungArbeitnehmer$ZeitraumEntsendung">
+            <java-attributes>
+                <xml-element java-attribute="beginnEz" name="Beginn_Entsendung" />
+                <xml-element java-attribute="endeEz" name="Ende_Entsendung" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenEntsendung$AngabenEntsendungArbeitnehmer$AngabenAbgeloestePerson">
+            <java-attributes>
+                <xml-element java-attribute="beginnGez" name="Beginn_geplanter_Entsendezeitraum" />
+                <xml-element java-attribute="endeGez" name="Ende_geplanter_Entsendezeitraum" />
+                <xml-element java-attribute="beginnTez" name="Beginn_tatsaechlicher_Entsendezeitraum" />
+                <xml-element java-attribute="endeTez" name="Ende_tatsaechlicher_Entsendezeitraum" />
+                <xml-element java-attribute="grund" name="Grund_Abloesung" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenBeschaeftigungDeutschland">
+            <java-attributes>
+                <xml-element java-attribute="verantwortlichkeitAg" name="Verantwortlichkeit_AG" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenBeschaeftigungDeutschland$AngabenArbeitsverhaeltnis">
+            <java-attributes>
+                <xml-element java-attribute="taetigkeit" name="Taetigkeit_in_Deutschland" />
+                <xml-element java-attribute="geringfuegigeBeschaeftigung" name="Geringfuegige_Beschaeftigung" />
+                <xml-element java-attribute="egAnspruch" name="Entgeltanspruch_gegen_AG_Deutschland" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenBeschaeftigungDeutschland$VerantwortlichkeitAg">
+            <java-attributes>
+                <xml-element java-attribute="anwerbung" name="Anwerbung_AN" />
+                <xml-element java-attribute="arbeitsvertrag" name="Entscheidung_Arbeitsvertrag" />
+                <xml-element java-attribute="entlassung" name="Entlassung" />
+                <xml-element java-attribute="aufgaben" name="Entscheidung_Ausuebung_Aufgaben" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenArbeitgeberDeutschland$Grunddaten">
+            <java-attributes>
+                <xml-element java-attribute="name" name="Firmenname" />
+                <xml-element java-attribute="anschriftArbeitgeber" name="Firmenanschrift" />
+                <xml-element java-attribute="telefonnummer" name="Telefonnummer" />
+                <xml-element java-attribute="emailAdresse" name="E_Mail" />
+                <xml-element java-attribute="rechtsform" name="Rechtsform_AG" />
+                <xml-element java-attribute="bbnrVu" name="Betriebsnummer_VU" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragEntsendung$AngabenArbeitgeberDeutschland$AngabenGeschaeftstaetigkeit">
+            <java-attributes>
+                <xml-element java-attribute="umsatzanteil" name="Nennenswerte_Taetigkeit_Deutschland" />
+                <xml-element java-attribute="personal" name="Weiteres_Personal" />
+            </java-attributes>
+        </java-type>
+    </java-types>
+
+</xml-bindings>

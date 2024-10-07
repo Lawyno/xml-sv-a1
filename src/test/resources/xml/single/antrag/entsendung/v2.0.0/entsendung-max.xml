@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<A1_Antrag_Entsendung xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1_Antrag/2.0"
+                    xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0"
+                    Versionsnummer="2.0.0">
+    <Steuerungsdaten>
+        <btct:Absendernummer>A0123456</btct:Absendernummer>
+        <btct:Empfaengernummer>A9876543</btct:Empfaengernummer>
+        <btct:Datum_Erstellung>2024-09-27T08:15:42</btct:Datum_Erstellung>
+        <btct:Prod_ID>prod123</btct:Prod_ID>
+        <btct:Mod_ID>mod12345</btct:Mod_ID>
+        <btct:Datensatz_ID>datensatz-id-0000000000000000002</btct:Datensatz_ID>
+        <btct:Vorgangs_ID>vorgang-id-000000000000000000001</btct:Vorgangs_ID>
+        <btct:Aktenzeichen_Verursacher>Entsendung-Max-2.0.0</btct:Aktenzeichen_Verursacher>
+        <btct:Stornierung>
+            <btct:Stornokennzeichen>J</btct:Stornokennzeichen>
+            <btct:Datensatz_ID_Ursprungsmeldung>datensatz-id-0000000000000000001</btct:Datensatz_ID_Ursprungsmeldung>
+        </btct:Stornierung>
+    </Steuerungsdaten>
+    <Angaben_zur_Person_A1>
+        <Name>
+            <Grundangabe_Name>
+                <btct:Geschlecht>M</btct:Geschlecht>
+                <btct:Vorname>Maximilian</btct:Vorname>
+                <btct:Familienname>Mustermann</btct:Familienname>
+                <btct:Vorsatzwort>von und zu</btct:Vorsatzwort>
+                <btct:Namenszusatz>Landgraf</btct:Namenszusatz>
+                <btct:Namenstitel>Prof. Dr.</btct:Namenstitel>
+            </Grundangabe_Name>
+            <Namens_Ergaenzungen>
+                <btct:Geburtsdatum>1970-12-31</btct:Geburtsdatum>
+                <btct:Geburtsort>Testhüttenstadt</btct:Geburtsort>
+                <btct:Geburtsland>000</btct:Geburtsland>
+                <btct:Versicherungsnummer>12345678X910</btct:Versicherungsnummer>
+                <btct:Staatsangehoerigkeit>000</btct:Staatsangehoerigkeit>
+            </Namens_Ergaenzungen>
+        </Name>
+        <Anschrift_Wohnstaat>
+            <btct:Strasse>Milchstraße</btct:Strasse>
+            <btct:Hausnummer>42</btct:Hausnummer>
+            <btct:Adresszusatz>Etage 128</btct:Adresszusatz>
+            <btct:Postleitzahl>12345</btct:Postleitzahl>
+            <btct:Ort>Coruscant</btct:Ort>
+            <btct:Laenderschluessel>000</btct:Laenderschluessel>
+        </Anschrift_Wohnstaat>
+        <Mitgliedsnummer>987654321</Mitgliedsnummer>
+    </Angaben_zur_Person_A1>
+    <Angaben_Entsendung>
+        <Grunddaten_Entsendung>
+            <Mitgliedsstaat_der_Entsendung>123</Mitgliedsstaat_der_Entsendung>
+            <Beginn_Entsendung>2025-01-01</Beginn_Entsendung>
+            <Ende_Entsendung>2025-01-31</Ende_Entsendung>
+            <Taetigkeitsbeschreibung_Ausland>54321</Taetigkeitsbeschreibung_Ausland>
+        </Grunddaten_Entsendung>
+        <Angaben_zur_Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 01</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 02</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 03</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 04</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 05</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 06</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 07</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 08</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 09</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 10</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+            <Beschaeftigungsstelle>
+                <Name_Beschaeftigungsstelle>Fundación de prueba 11</Name_Beschaeftigungsstelle>
+                <Anschrift_Beschaeftigungsstelle>
+                    <btct:Strasse>Avda. de la Estación</btct:Strasse>
+                    <btct:Hausnummer>42</btct:Hausnummer>
+                    <btct:Adresszusatz>2. OG</btct:Adresszusatz>
+                    <btct:Postleitzahl>28607</btct:Postleitzahl>
+                    <btct:Ort>El Álamo</btct:Ort>
+                </Anschrift_Beschaeftigungsstelle>
+            </Beschaeftigungsstelle>
+        </Angaben_zur_Beschaeftigungsstelle>
+        <Angaben_Entsendung_Arbeitnehmer>
+            <Einsatz_in_den_letzten_2_Monaten>
+                <Beginn_Entsendung>2024-12-02</Beginn_Entsendung>
+                <Ende_Entsendung>2024-12-06</Ende_Entsendung>
+            </Einsatz_in_den_letzten_2_Monaten>
+            <Einsatz_in_den_letzten_2_Monaten>
+                <Beginn_Entsendung>2024-11-25</Beginn_Entsendung>
+                <Ende_Entsendung>2024-11-29</Ende_Entsendung>
+            </Einsatz_in_den_letzten_2_Monaten>
+            <Einsatz_in_den_letzten_2_Monaten>
+                <Beginn_Entsendung>2024-11-18</Beginn_Entsendung>
+                <Ende_Entsendung>2024-11-22</Ende_Entsendung>
+            </Einsatz_in_den_letzten_2_Monaten>
+            <Einsatz_in_den_letzten_2_Monaten>
+                <Beginn_Entsendung>2024-10-11</Beginn_Entsendung>
+                <Ende_Entsendung>2024-11-15</Ende_Entsendung>
+            </Einsatz_in_den_letzten_2_Monaten>
+            <Einsatz_in_den_letzten_2_Monaten>
+                <Beginn_Entsendung>2024-11-04</Beginn_Entsendung>
+                <Ende_Entsendung>2024-11-08</Ende_Entsendung>
+            </Einsatz_in_den_letzten_2_Monaten>
+            <AN_Ueberlassung_von_Entsendebetrieb>N</AN_Ueberlassung_von_Entsendebetrieb>
+            <Abloesung_anderer_AN>J</Abloesung_anderer_AN>
+            <Angaben_abgeloeste_Person>
+                <Name>
+                    <btct:Geschlecht>W</btct:Geschlecht>
+                    <btct:Vorname>Marta</btct:Vorname>
+                    <btct:Familienname>Musterfrau</btct:Familienname>
+                    <btct:Vorsatzwort>große</btct:Vorsatzwort>
+                    <btct:Namenszusatz>Landgräfin</btct:Namenszusatz>
+                    <btct:Namenstitel>Prof. Dr. Dr.</btct:Namenstitel>
+                </Name>
+                <Geburtsdatum>1987-12-31</Geburtsdatum>
+                <Beginn_geplanter_Entsendezeitraum>2024-12-26</Beginn_geplanter_Entsendezeitraum>
+                <Ende_geplanter_Entsendezeitraum>2025-01-31</Ende_geplanter_Entsendezeitraum>
+                <Beginn_tatsaechlicher_Entsendezeitraum>2024-12-26</Beginn_tatsaechlicher_Entsendezeitraum>
+                <Ende_tatsaechlicher_Entsendezeitraum>2024-12-31</Ende_tatsaechlicher_Entsendezeitraum>
+                <Grund_Abloesung>3</Grund_Abloesung>
+            </Angaben_abgeloeste_Person>
+        </Angaben_Entsendung_Arbeitnehmer>
+    </Angaben_Entsendung>
+    <Angabe_Beschaeftigung_Deutschland>
+        <Angaben_Arbeitsverhaeltnis>
+            <Taetigkeit_in_Deutschland>54321</Taetigkeit_in_Deutschland>
+            <Geringfuegige_Beschaeftigung>N</Geringfuegige_Beschaeftigung>
+            <Geltung>J</Geltung>
+            <Entgeltanspruch_gegen_AG_Deutschland>J</Entgeltanspruch_gegen_AG_Deutschland>
+        </Angaben_Arbeitsverhaeltnis>
+        <Verantwortlichkeit_AG>
+            <Anwerbung_AN>J</Anwerbung_AN>
+            <Entscheidung_Arbeitsvertrag>J</Entscheidung_Arbeitsvertrag>
+            <Entlassung>N</Entlassung>
+            <Entscheidung_Ausuebung_Aufgaben>J</Entscheidung_Ausuebung_Aufgaben>
+        </Verantwortlichkeit_AG>
+    </Angabe_Beschaeftigung_Deutschland>
+    <Angaben_Arbeitgeber_Deutschland_A1>
+        <Grunddaten>
+            <Firmenname>Häberle Test GmbH &amp; Co KG</Firmenname>
+            <Firmenanschrift>
+                <btct:Strasse>Teststraße</btct:Strasse>
+                <btct:Hausnummer>1</btct:Hausnummer>
+                <btct:Adresszusatz>3. OG</btct:Adresszusatz>
+                <btct:Postleitzahl>98765</btct:Postleitzahl>
+                <btct:Ort>Teststadt</btct:Ort>
+                <btct:Laenderschluessel>000</btct:Laenderschluessel>
+            </Firmenanschrift>
+            <Telefonnummer>0123 4567890</Telefonnummer>
+            <E_Mail>test@example.org</E_Mail>
+            <Rechtsform_AG>3</Rechtsform_AG>
+            <Betriebsnummer_VU>12345678</Betriebsnummer_VU>
+        </Grunddaten>
+        <Angaben_Geschaeftstaetigkeit>
+            <Nennenswerte_Taetigkeit_Deutschland>J</Nennenswerte_Taetigkeit_Deutschland>
+            <Weiteres_Personal>J</Weiteres_Personal>
+        </Angaben_Geschaeftstaetigkeit>
+        <Wirtschaftssektor>3</Wirtschaftssektor>
+    </Angaben_Arbeitgeber_Deutschland_A1>
+    <Erklaerung_Arbeitgeber>
+        <Angaben>J</Angaben>
+    </Erklaerung_Arbeitgeber>
+</A1_Antrag_Entsendung>
