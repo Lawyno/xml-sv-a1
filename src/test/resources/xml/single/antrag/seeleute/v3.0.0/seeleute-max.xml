@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<A1_Antrag_Seeleute xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1A-106_Anlage_2/3.0"
+                  xmlns:a1b="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0"
+                  Versionsnummer="3.0.0">
+    <Steuerungsdaten>
+        <a1b:Absendernummer>A0123456</a1b:Absendernummer>
+        <a1b:Empfaengernummer>A9876543</a1b:Empfaengernummer>
+        <a1b:Datum_Erstellung>2024-09-27T08:15:42</a1b:Datum_Erstellung>
+        <a1b:Produkt_Identifier>prod123</a1b:Produkt_Identifier>
+        <a1b:Modifikations_Identifier>mod12345</a1b:Modifikations_Identifier>
+        <a1b:Datensatz_Id>datensatz-id-0000000000000000002</a1b:Datensatz_Id>
+        <a1b:Vorgangs_Id>vorgang-id-000000000000000000001</a1b:Vorgangs_Id>
+        <a1b:Aktenzeichen_Verursacher>Seeleute-Max-3.0.0</a1b:Aktenzeichen_Verursacher>
+        <a1b:Stornierung>
+            <a1b:Stornokennzeichen>J</a1b:Stornokennzeichen>
+            <a1b:Datensatz_Id_Ursprungsmeldung>datensatz-id-0000000000000000001</a1b:Datensatz_Id_Ursprungsmeldung>
+        </a1b:Stornierung>
+    </Steuerungsdaten>
+    <Angaben_Zur_Person_A1>
+        <a1b:Name>
+            <a1b:Grundangaben_Name>
+                <a1b:Geschlecht>M</a1b:Geschlecht>
+                <a1b:Vorname>Maximilian</a1b:Vorname>
+                <a1b:Familienname>Mustermann</a1b:Familienname>
+            </a1b:Grundangaben_Name>
+            <a1b:Namensergaenzungen>
+                <a1b:Geburtsdatum>1970-12-31</a1b:Geburtsdatum>
+                <a1b:Geburtsort>Testhüttenstadt</a1b:Geburtsort>
+                <a1b:Geburtsland>000</a1b:Geburtsland>
+                <a1b:Versicherungsnummer>12345678X910</a1b:Versicherungsnummer>
+                <a1b:Staatsangehoerigkeit>000</a1b:Staatsangehoerigkeit>
+            </a1b:Namensergaenzungen>
+        </a1b:Name>
+        <a1b:Anschrift_Wohnstaat>
+            <a1b:Strasse>Milchstraße</a1b:Strasse>
+            <a1b:Hausnummer>42</a1b:Hausnummer>
+            <a1b:Adresszusatz>Etage 128</a1b:Adresszusatz>
+            <a1b:Postleitzahl>12345</a1b:Postleitzahl>
+            <a1b:Ort>Coruscant</a1b:Ort>
+            <a1b:Land>000</a1b:Land>
+        </a1b:Anschrift_Wohnstaat>
+        <a1b:Mitgliedsnummer>987654321</a1b:Mitgliedsnummer>
+    </Angaben_Zur_Person_A1>
+    <Angaben_Auslandseinsatz>
+        <Grunddaten_Auslandseinsatz>
+            <Weitere_Taetigkeit_Mitgliedstaat>N</Weitere_Taetigkeit_Mitgliedstaat>
+            <Gewoehnlichkeit>N</Gewoehnlichkeit>
+            <a1b:Beginn>2025-01-01</a1b:Beginn>
+            <a1b:Ende>2025-01-31</a1b:Ende>
+            <Meere_Und_Ozeane>N</Meere_Und_Ozeane>
+        </Grunddaten_Auslandseinsatz>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 01</Name_Schiff>
+            <Imo_Nummer>IMO7654301</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>101</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 02</Name_Schiff>
+            <Imo_Nummer>IMO7654302</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>102</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 03</Name_Schiff>
+            <Imo_Nummer>IMO7654303</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>103</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 04</Name_Schiff>
+            <Imo_Nummer>IMO7654304</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>104</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 05</Name_Schiff>
+            <Imo_Nummer>IMO7654305</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>105</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 06</Name_Schiff>
+            <Imo_Nummer>IMO7654306</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>106</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 07</Name_Schiff>
+            <Imo_Nummer>IMO7654307</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>107</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 08</Name_Schiff>
+            <Imo_Nummer>IMO7654308</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>108</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 09</Name_Schiff>
+            <Imo_Nummer>IMO7654309</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>109</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 10</Name_Schiff>
+            <Imo_Nummer>IMO7654310</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>110</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+        <Beschaeftigung_Auf_Einem_Hochseeschiff>
+            <Name_Schiff>RV Testnussbutterqualle 11</Name_Schiff>
+            <Imo_Nummer>IMO7654311</Imo_Nummer>
+            <Flagge_Unter_Der_Das_Schiff_Faehrt>111</Flagge_Unter_Der_Das_Schiff_Faehrt>
+        </Beschaeftigung_Auf_Einem_Hochseeschiff>
+    </Angaben_Auslandseinsatz>
+    <Angaben_Arbeitgeber_Deutschland>
+        <Grunddaten>
+            <Name>Seebär GmbH &amp; Co KG</Name>
+            <Anschrift_Arbeitgeber>
+                <a1b:Strasse>Teststraße</a1b:Strasse>
+                <a1b:Hausnummer>1</a1b:Hausnummer>
+                <a1b:Adresszusatz>3. OG</a1b:Adresszusatz>
+                <a1b:Postleitzahl>98765</a1b:Postleitzahl>
+                <a1b:Ort>Teststadt</a1b:Ort>
+                <a1b:Land>000</a1b:Land>
+            </Anschrift_Arbeitgeber>
+            <a1b:Telefonnummer>0123 4567890</a1b:Telefonnummer>
+            <a1b:Email_Adresse>test@example.org</a1b:Email_Adresse>
+            <a1b:Bbnr_Vu>12345678</a1b:Bbnr_Vu>
+        </Grunddaten>
+    </Angaben_Arbeitgeber_Deutschland>
+    <Erklaerung_Arbeitgeber>
+        <Angaben>J</Angaben>
+    </Erklaerung_Arbeitgeber>
+</A1_Antrag_Seeleute>

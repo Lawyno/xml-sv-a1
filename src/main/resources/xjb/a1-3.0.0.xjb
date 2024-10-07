@@ -16,6 +16,7 @@
 
 
     <!-- A1 Anträge -->
+    <!-- Beamte -->
     <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_1_Beamte_Beschaeftigte-3.0.0.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="de.lawyno.xml.sv.a1.antrag.beamte" />
@@ -30,8 +31,24 @@
         <namespace:prefix name="abe" />
     </jaxb:bindings>
 
+    <!-- Seeleute -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_2_Seeleute-3.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.antrag.seeleute" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class />
+            <inheritance:implements>de.lawyno.xml.sv.a1.antrag.IXmlA1Antrag</inheritance:implements>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Beschaeftigung_Auf_Einem_Hochseeschiff']">
+            <jaxb:property name="beschaeftigungAufEinemHochseeschiffList" />
+        </jaxb:bindings>
+        <namespace:prefix name="see" />
+    </jaxb:bindings>
+
 
     <!-- A1 Rückmeldungen -->
+    <!-- Ablehnung -->
     <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Ablehnung-2.0.0.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.ablehnung" />
@@ -46,6 +63,7 @@
         <namespace:prefix name="abl" />
     </jaxb:bindings>
 
+    <!-- Bewilligung -->
     <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Bewilligung-2.0.0.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.bewilligung" />
