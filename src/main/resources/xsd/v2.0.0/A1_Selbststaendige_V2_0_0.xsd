@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2020 rel. 2 sp1 (x64) (http://www.altova.com) von Björn Scharatta (GKV Spitzenverband) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1_Selbststaendige/2.0" xmlns:btst="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_106a/1.0.0" xmlns:btct="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_106a/1.0.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Selbststaendige/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_106a/1.0.0" schemaLocation="Basistypen_Simple_106a_V1_0_0.xsd"/>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_106a/1.0.0" schemaLocation="Basistypen_Complex_106a_V1_0_0.xsd"/>
+	<xs:element name="A1_Selbststaendige">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Steuerungsdaten" type="btct:Steuerungsdaten_106a_Ctp"/>
+				<xs:element name="Angaben_zur_Person_A1">
+					<xs:annotation>
+						<xs:documentation>Angaben zum Arbeitnehmer</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Name">
+								<xs:annotation>
+									<xs:documentation>Angaben zum Namen des Arbeitnehmers.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Grundangabe_Name" type="btct:Angaben_Name_Ctp"/>
+										<xs:element name="Namens_Ergaenzungen" type="btct:Name_Ergaenzung_v3_Ctp"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Anschrift_Wohnstaat" type="btct:Anschrift_Ctp"/>
+							<xs:element name="Mitgliedsnummer" type="btst:Mitgliedsnummer_Typ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Element fuer die Mitgliedsnummer der berufsstaendischen Versorgungseinrichtung.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Entsendung">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten_Entsendung">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Mitgliedsstaat_der_Entsendung" type="btst:Laendercode_Typ">
+											<xs:annotation>
+												<xs:documentation>Verschluesslung des Mitgliedstaates anhand des Laenderschluessels der Anlage 8 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Beginn_Entsendung" type="btst:Datum_Typ">
+											<xs:annotation>
+												<xs:documentation>Beginn des Entsendungszeitraums</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Ende_Entsendung" type="btst:Datum_Typ">
+											<xs:annotation>
+												<xs:documentation>Ende des Entsendungszeitraums</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Angaben_zur_selbstaendigen_Taetigkeit">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:choice>
+											<xs:element name="Ausuebungsort" maxOccurs="11">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Name" type="btst:Name_AG_Typ"/>
+														<xs:element name="Anschrift_Ausuebungsort" type="btct:Anschrift_ohne_LDKZ_Ctp">
+															<xs:annotation>
+																<xs:documentation>Angaben zur Anschrift des Ausübungsortes.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Kein_fester_Ausuebungsort">
+												<xs:annotation>
+													<xs:documentation>J = Es liegt kein fester Ausübungsort vor</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:length value="1"/>
+														<xs:enumeration value="J"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="Schiff">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Name_Schiff" type="btst:Name_AG_Typ"/>
+														<xs:element name="IMO_Nummer">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:length value="10"/>
+																	<xs:pattern value="IMO[0-9]{7}"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:choice>
+										<xs:element name="Art_der_Taetigkeit_im_Mitgliedsstaat" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Entspricht die Art der Tätigkeit im Mitgliedstaat der Art der in Deutschland ausgeübten Tätigkeit?</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Angaben_Entsendung_Selbststaendige" minOccurs="0" maxOccurs="5">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Beginn_Entsendung" type="btst:Datum_Typ"/>
+										<xs:element name="Ende_Entsendung" type="btst:Datum_Typ"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_selbstaendige_Taetigkeit_Deutschland">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="btst:Name_AG_Typ">
+											<xs:annotation>
+												<xs:documentation>Name des Unternehmens.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Anschrift" type="btct:Anschrift_Ctp">
+											<xs:annotation>
+												<xs:documentation>Angaben zur Anschrift des Arbeitgebers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Telefonnummer" type="btst:Rufnummer_Typ"/>
+										<xs:element name="Steuernummer">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="15"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Angaben_Geschaeftstaetigkeit">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Art_der_Taetigkeit">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="100"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Dauer" type="btst:Kennzeichen_Alphanumerisch_Typ"/>
+										<xs:element name="Vorherige_Geltung_deutsches_Recht" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Unmittelbar vor Beginn der Auslandstätigkeit galt für mindestens 1 Monat das deutsche Sozialversicherungsrecht 
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="SV_Beitraege_in_Deutschland" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Während der vorübergehenden Tätigkeit im Ausland werden Sozialversi-cherungsbeiträge in Deutschland gezahlt
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Steuern_in_Deutschland">
+											<xs:annotation>
+												<xs:documentation>Während der vorübergehenden Tätigkeit im Ausland werden Steuern in Deutschland gezahlt
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="btst:Kennzeichen_Alphanumerisch_Typ">
+													<xs:enumeration value="J"/>
+													<xs:enumeration value="N"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Eintrag_Handelskammer" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Während der vorübergehenden Tätigkeit im Ausland besteht eine Eintragung in der Handelskammer bzw. dem Berufsverband in Deutschland
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Aufrechterhaltung_Infrastruktur" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Die Infrastruktur zur Fortführung der selbständigen Tätigkeit in Deutschland wird für die Dauer der vorübergehenden Tätigkeit im Ausland aufrechterhal-ten
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Fortfuehrung_bisherige_Taetigkeit" type="btst:Kennzeichen_Alphanumerisch_Typ">
+											<xs:annotation>
+												<xs:documentation>Die selbstständige Tätigkeit in Deutschland wird nach Beendigung der vorübergehenden Tätigkeit im anderen Mitgliedstaat fortgeführt.
+
+J = Ja
+N = Nein</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Wirtschaftssektor" type="btst:Wirtschaftssektoren_Typ">
+											<xs:annotation>
+												<xs:documentation>1 = Land- und Forstwirtschaft, Fischerei
+2 = Bergbau und Gewinnung von Steinen und Erden
+3 = Verarbeitendes Gewerbe
+4 = Energieversorgung
+5 = Wasserversorgung, Abwasser- und Abfallentsorgung, Beseitigung von Umweltverschmutzungen
+6 = Baugewerbe
+7 = Gross- und Einzelhandel
+8 = Verkehr (ausser Gueterbefoerderung im Strassenverkehr) und Lagerei
+9 = Verkehr (Gueterbefoerderung im Strassenverkehr)
+10 = Gastgewerbe / Beherbergung und Gastronomie
+11 = Information und Kommunikation
+12 = Erbringung von Finanz- und Versicherungsdienstleistungen
+13 = Grundstuecks- und Wohnungswesen
+14 = Erbringung von freiberuflichen, wissenschaftlichen oder technischen Dienstleistungen
+15 = Erbringung von sonstigen wirtschaftlichen Dienstleistungen (ausser Vermittlung und Ueberlassung von Arbeitskraeften)
+16 = Vermittlung und Überlassung von Arbeitskräften
+18 = Erziehung und Unterricht
+19 = Gesundheits- und Sozialwesen
+20 = Kunst, Unterhaltung und Erholung
+21 = Erbringung von sonstigen Dienstleistungen
+22 = Private Haushalte</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_selbstaendige_Taetigkeit_Ausland">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Angaben" type="btst:Kennzeichen_Alphanumerisch_Typ">
+								<xs:annotation>
+									<xs:documentation>Erklärung zur Antragsstellung
+
+J = Ja
+N = Nein</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+				<xs:annotation>
+					<xs:documentation>Es ist nur der Wert 2.0.0 zulaessig</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

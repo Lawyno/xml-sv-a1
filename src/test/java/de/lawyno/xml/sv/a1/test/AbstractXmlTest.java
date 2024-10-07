@@ -30,7 +30,7 @@ public abstract class AbstractXmlTest {
     protected static final String XML_VERSION_BESCHEID_LEGACY = "1.3.0";
 
 
-    protected void assertThatXmlIsValid(final String xsdPath, final String xml) {
+    protected static void assertThatXmlIsValid(final String xsdPath, final String xml) {
         assertThatNoException().isThrownBy(() -> new XmlValidator(xsdPath, xml).validate());
     }
 

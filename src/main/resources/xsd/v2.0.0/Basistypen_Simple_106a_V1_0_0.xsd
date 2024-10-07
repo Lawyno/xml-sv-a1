@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2020 rel. 2 sp1 (x64) (http://www.altova.com) von Björn Scharatta (GKV Spitzenverband) bearbeitet -->
+<!--Stand: 13. Dezember 2017-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_106a/1.0.0" targetNamespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_106a/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="V1.0.0">
+	<xs:simpleType name="Absendernummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Absendernummer eines Arbeitgebers.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Adresszusatz_Typ">
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Aktenzeichen_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Aktenzeichen des Arbeitgebers
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Aktenzeichen_Verursacher_Typ">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Art_Anschrift_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Das Element beschreibt die Art der Anschrift des Arbeitnehmers. 1 = Anschrift im Wohnstaat; 2 = Anschrift im Aufenthaltsstaat
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="1"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Art_der_Beschaeftigungsstelle_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung um was für eine Beschaeftigungsstelle es sich handelt. 1 = feste Beschaeftigungsstelle 2 = keine feste Beschaeftigungsstelle
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Art_Kontaktadresse_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Aufzaehlung der möglichen Kontaktstellen für den Schriftwechsel.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Dateifolgenummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Dateifolgenummer
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DatensatzID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Feld zur Übermittlung der Datensatz ID
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Datum_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Datum im Format JJJJ-MM-TT
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="Datum_Zeit_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Datum im Format YYYY-MM-DDThh:mm:ss
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="Email_Typ">
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="70"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Familienname_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Nachnamen einer Person.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlerkennzeichen_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Kennzeichen fuer fehlerhafte Datensaetze.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlernummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlernummer der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Fehlertext_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlertext der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Firmenbezeichnung_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Name der Firma
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Geburtsdatum_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Datum im Format JJJJMMTT
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Geburtsdatum_unbekannt_Typ">
+		<xs:annotation>
+			<xs:documentation>Geburtsdatum im Format JJJJ-MM-TT. Bei ausländischen Staatsbürgern kann der Tag oder Monat der Geburt unbekannt sein. In diesen Fällen ist der Tag oder Monat mit "00" anzugeben.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="([1-9]\d{3})\-(0[0-9]|1[012])\-(0[0-9]|[12][0-9]|3[01])"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Geburtsname_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Definition des Geburtsnames
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Gruende_Ablehnung_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Gruende fuer die Ablehnung des Antrages. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Grund_Abloesung_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Gruende der Abloesung eines Arbeitnehmers im Ausland. 1 = Erkrankung der zuvor entsandten Person. 2 = Kuendigung der zuvor entsandten Person. 3 = betriebsbedingter Personalwechsel
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Hausnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung einer Hausnummer
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Hinderungsgrund_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				00	kein Hinderungsgrund
+				01	VSNR nicht im Bestand (keine Beschäftigungsverhältnis)
+					BBNRVU nicht im Bestand (falsch adressiert oder für den Zeitraum nicht im Bestand)
+				04	VSNR nicht im angeforderten Zeitraum beschäftigt
+					zu bescheinigender Zeitraum liegt in der Zukunft
+					zu bescheinigender Zeitraum liegt zu weit in der Vergangenheit (Aufzeichnungspflicht)
+					VSNR hat elektronischer Meldung widersprochen
+				02	zu bescheinigender Zeitraum nicht elektronisch übermittelbar (Systemwechsel, Fusion ohne Bestandszusammenführung, Wechsel des Dienstleisters, Wechsel des Steuerberaters)
+				03	Angeforderter Zeitraum wurde bereits übermittelt
+				05	VSNR wird derzeit kein Entgelt gezahlt
+					
+					
+				89	Der Rückmeldedatensatz mit der Angabe eines Hinderungsgrundes wurde von der DSRV als fehlerhaft abgewiesen (???)
+				99	Sonstiges
+					Ergänzen durch die angepasste Liste des Verfahrens mit der BA
+
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ISO88591_Typ">
+		<xs:annotation>
+			<xs:documentation>Eine 'ISO88591_Typ' Zeichenkette enthält nur Zeichen aus dem Zeichensatz ISO-8859-1 ohne Zeilenumbrüche (CR/LF) und Tab. Dieser Datentyp sollte als Basis für einfache Zeichenkettenfelder verwendet werden, bei denen Zeilenumbrüche/Tabs in den Daten nicht erwünscht sind.
+			</xs:documentation>
+			<xs:appinfo/>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:pattern value="[&#x0020;-&#x007e;&#x00a0;-&#x00ff;]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Jahr_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Numerischer Wert 1-9999, entspricht allen Inhalten einer maximal 4-stelligen Zahl außer 0
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Alphanumerisch_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Einstelliges Kennzeichen mit alphanumerischen Inhalt "J" oder "N"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="J"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_MWX_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Alphanumerischer Inhalt mit entweder M(ännlich), W(eiblich), X(unbestimmt) oder D (divers)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="W"/>
+			<xs:enumeration value="X"/>
+			<xs:enumeration value="D"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Kennzeichen_Numerisch_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Einstelliges Kennzeichen mit numerischen Inhalt
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Laendercode_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Schluessel der Staatsangehoerigkeit nach Anlage 8 DEUEV (z.B. 000 für Deutschland).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="3"/>
+			<xs:pattern value="([0-9]{3})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Langtext_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Fehlernummer der Kernpruefung
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Mitgliedsnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Mitgliedsnummer der ABV.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5"/>
+			<xs:maxLength value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Mod_ID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Mod-ID der ITSG.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Monats_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Numerischer Wert 1-12, entspricht allen Inhalten einer maximal 2-stelligen Zahl 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Name_AG_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Name mit maximal 50 Stellen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Name_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Name mit maximal 30 Stellen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Namenstitel_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Namenstitel einer Person.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Namenszusatz_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Typ modelliert den Namenszusatz einer Person. Die erlaubten Werte sind durch Anlage 7 DEUEV vorgegeben.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Ort_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Das Element Ort enthält den Namen eines Ortes (Gemeinde, Ortschaft oder Stadt).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="34"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PDF_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Element fuer die Ubermittlung des PDF, welches als base64 kodiertes PDF/A uebertragen wird.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:base64Binary">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Personalnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Personalnummer des Arbeitgebers
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Postleitzahl_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Eine Postleitzahl ist eine Angabe, um postalische Zustellgebiete unabhaengig von Gebietskoerperschaften (Gemeinde, Kreis, _) zu bezeichnen.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Prod_ID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Prod-ID der ITSG.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Rechtsform_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Rechtsform des Arbeitgebers. 1 = Personen oder Kapitalgesellschaft; 2 = Öffentlicher Arbeitgeber; 3 = Sonstiges
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Regelungen_Arbeitsvertrag_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Aufzaehlung der möglichen Ausgestaltungen zum Arbeitsvertrag waehrend der Entsendung.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Response_ID_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Response_ID des jeweiligen Kommunikationsservers.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="23"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Rufnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Datentyp zur Repraesentation numerischer Rufnummern, z.Bsp als Telefonnummer oder Faxnummer.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stornokennzeichen_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Kennzeichen zur Stornierung des urspruenglichen Datensatzes.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="J"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Strasse_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Als Strassenname bezeichnet man den Namen, den eine Strasse zur Unterscheidung von anderen Strassen trägt. Strassennamen im weiteren Sinne sind dabei auch die Namen von Plaetzen und Bruecken
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="33"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Taetigkeitsschluessel_A1_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Taetigkeitsschlüssel der Bundesagentur für Arbeit von Stelle 1 - 5
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Verfahrensmerkmal_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Definiton des Verfahrensmerkmals
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Versionsnummer_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Beschreibung der Versionsnummer des Datensatzes. In der Form 1.0.0.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Vorname_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Vornamen einer Person.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Vorsatzwort_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Dieser Datentyp modelliert den Namensvorsatz einer Person. Die erlaubten Werte sind durch Anlage 6 DEUEV vorgegeben.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VSNR_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Die Rentenversicherungsnummer (RVNR)  ist ein aus Buchstaben und Ziffern bestehendes Kennzeichen zur Identifikation von versicherten Personen in der Gesetzlichen Rentenversicherung der Bundesrepublik Deutschland. Die RVNR ist alphanumerisch und 12 stellig.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="tns:ISO88591_Typ">
+			<xs:length value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Wirtschaftssektoren_Typ">
+		<xs:annotation>
+			<xs:documentation>
+				Aufstellung der Wirtschaftssektoren
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger">
+			<xs:totalDigits value="2"/>
+			<xs:pattern value="(2[0-2]|1[0-9]|[1-9])"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

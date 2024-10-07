@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2020 rel. 2 sp1 (x64) (http://www.altova.com) von Björn Scharatta (GKV Spitzenverband) bearbeitet -->
+<!--Stand: 28.02.2019-->
+<!--Aufnahme Name_Ergaenzung_v2_Ctp-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_106a/1.0.0" xmlns:btst="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_106a/1.0.0" xmlns:ns1="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_106a/1.0.0" targetNamespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_106a/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_106a/1.0.0" schemaLocation="Basistypen_Simple_106a_V1_0_0.xsd">
+		<xs:annotation>
+			<xs:documentation> Importieren von GKV weit gültigen Datentypen</xs:documentation>
+		</xs:annotation>
+	</xs:import>
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple_106a/1.0.0" schemaLocation="Basistypen_Simple_106a_V1_0_0.xsd">
+		<xs:annotation>
+			<xs:documentation> Importieren von GKV weit gültigen Datentypen</xs:documentation>
+		</xs:annotation>
+	</xs:import>
+	<xs:complexType name="Angaben_Name_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Namensbestandteile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Geschlecht" type="btst:Kennzeichen_MWX_Typ">
+				<xs:annotation>
+					<xs:documentation>Geschlecht der Person mit folgenden Auspraegungen: m = maennlich, 
+w = weiblich, 
+x = unbestimmt,
+d = divers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Vorname" type="btst:Vorname_Typ">
+				<xs:annotation>
+					<xs:documentation>Vorname der Person </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Familienname" type="btst:Familienname_Typ">
+				<xs:annotation>
+					<xs:documentation>Familienname der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Vorsatzwort" type="btst:Vorsatzwort_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Vorsatzwort der Person. Eine Aufstellung der zulaessigen Vorsatzworte ist der Anlage 6 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Namenszusatz" type="btst:Namenszusatz_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Namenszusatz der Person. Eine Aufstellung der zulaessigen Namenszusaetze ist der Anlage 7 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Namenstitel" type="btst:Namenstitel_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Titel der Person (z.B. Prof.) </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Anschrift_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung einer Anschrift einer Person oder Firma</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Strasse" type="btst:Strasse_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angabe zur Strasse der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Hausnummer" type="btst:Hausnummer_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hausnummer der Person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresszusatz" type="btst:Adresszusatz_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Anschriftenzusatz der Person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Postleitzahl" type="btst:Postleitzahl_Typ">
+				<xs:annotation>
+					<xs:documentation>Postlleitzahl des Ortes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ort" type="btst:Ort_Typ">
+				<xs:annotation>
+					<xs:documentation>Angabe zum Ort.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Laenderschluessel" type="btst:Laendercode_Typ">
+				<xs:annotation>
+					<xs:documentation>Laenderschluessel des Ortes laut Anlage 8 des Gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Anschrift_ohne_LDKZ_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung einer Anschrift einer Person oder Firma</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Strasse" type="btst:Strasse_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angabe zur Strasse der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Hausnummer" type="btst:Hausnummer_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Hausnummer der Person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Adresszusatz" type="btst:Adresszusatz_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Anschriftenzusatz der Person.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Postleitzahl" type="btst:Postleitzahl_Typ">
+				<xs:annotation>
+					<xs:documentation>Postleitzahl des Ortes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ort" type="btst:Ort_Typ">
+				<xs:annotation>
+					<xs:documentation>Angabe zum Ort.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Name_Ergaenzung_v3_Ctp">
+		<xs:annotation>
+			<xs:documentation>Beschreibung der Geburtsangaben, Versicherungsnummer und Staatsangehoerigkeit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Geburtsname" type="btst:Geburtsname_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Geburtsname der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geburtsdatum" type="btst:Geburtsdatum_unbekannt_Typ">
+				<xs:annotation>
+					<xs:documentation>Geburtsdatum der Person in der Form: jjjj-mm-tt
+Bei ausländischen Staatsbürgern kann der Tag oder Monat der Geburt unbekannt sein. In diesen Fällen ist der Tag oder Monat mit "00" anzugeben. Bei der Ausstellung einer Bescheinigung, wird das Geburtsdatum auf 01.01. verändert, damit eine Nutzung im Rahmen des europäischen Datenaustausches erfolgen kann</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geburtsort" type="btst:Ort_Typ">
+				<xs:annotation>
+					<xs:documentation>Geburtsort der Person</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Geburtsland" type="btst:Laendercode_Typ">
+				<xs:annotation>
+					<xs:documentation>Geburtsland des Selbstständigen nach Anlage 8 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung". </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Versicherungsnummer" type="btst:VSNR_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Versicherungsnummer des Selbstständigen in der Form: bbttmmjjassp</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Staatsangehoerigkeit" type="btst:Laendercode_Typ">
+				<xs:annotation>
+					<xs:documentation>Dabei handelt es sich um den Staatsangehoerigkeitsschluessel des Arbeitnehmers nach Anlage 8 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Steuerungsdaten_106a_Ctp">
+		<xs:annotation>
+			<xs:documentation>Steuerungsdaten ohne Vorgangs-ID und Stornogrund</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Absendernummer" type="btst:Absendernummer_Typ">
+				<xs:annotation>
+					<xs:documentation>Dabei handelt es sich um die Absendernummer der absendenden Stelle. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Empfaengernummer" type="btst:Absendernummer_Typ">
+				<xs:annotation>
+					<xs:documentation>In diesem Feld ist die Absendernummer der zustaendigen Stelle einzutragen. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datum_Erstellung" type="btst:Datum_Zeit_Typ">
+				<xs:annotation>
+					<xs:documentation>Angabe des Erstelldatums der Meldung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Datensatz_ID">
+				<xs:annotation>
+					<xs:documentation>Datensatz_ID analog der Ausgestaltung der uebrigen Meldeverfahren der Arbeitgeber. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="btst:DatensatzID_Typ"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Aktenzeichen_Verursacher" type="btst:Aktenzeichen_Verursacher_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Das Aktenzeichen Versursacher steht dem Arbeitgeber zur freien Verfügung.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Stornierung" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Stornokennzeichen" type="btst:Stornokennzeichen_Typ">
+							<xs:annotation>
+								<xs:documentation>Kennzeichen zur Stornierung der Meldung. Fuer eine Stornierung ist das Kennzeichen "J"zu uebermitteln. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Datensatz_ID_Ursprungsmeldung" type="btst:DatensatzID_Typ"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

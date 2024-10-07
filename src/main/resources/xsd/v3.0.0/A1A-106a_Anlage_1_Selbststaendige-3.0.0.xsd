@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gkv-datenaustausch.de/XMLSchema/A1A-106a_Anlage_1/3.0" xmlns:a1b="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0" xmlns:svb="SV-Basis://XMLSchema/1.0" targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/A1A-106a_Anlage_1/3.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/XMLSchema/106-Basis/1.0" schemaLocation="106-Basis-1.0.0.xsd"/>
+	<xs:import namespace="SV-Basis://XMLSchema/1.0" schemaLocation="SV-Basis-1.0.0.xsd"/>
+	<xs:element name="A1_Antrag_Selbststaendige">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Steuerungsdaten" type="a1b:Steuerungsdaten_Ag_V3_Ctp"/>
+				<xs:element name="Angaben_Zur_Person_A1" type="a1b:Angaben_Zur_Person_Mitgl_Ctp">
+					<xs:annotation>
+						<xs:documentation>Angaben zum Arbeitnehmer</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Angaben_Entsendung">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten_Entsendung">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Mitgliedstaat_Flaggenstaat" type="svb:StaatSchluessel_Stp">
+											<xs:annotation>
+												<xs:documentation>Verschluesslung des Mitgliedstaates anhand des Laenderschluessels der Anlage 8 des gemeinsamen Rundschreibens "Meldeverfahren zur Sozialversicherung".</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="a1b:Beginn"/>
+										<xs:element ref="a1b:Ende"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Angaben_Zur_Selbststaendigen_Taetigkeit">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:choice>
+											<xs:element name="Ausuebungsort" maxOccurs="11">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Name" type="a1b:Name_Ag_Stp"/>
+														<xs:element name="Anschrift_Ausuebungsort" type="a1b:Anschrift_Ohne_Ldkz_Ctp">
+															<xs:annotation>
+																<xs:documentation>Angaben zur Anschrift des Ausübungsortes.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Kein_Fester_Ausuebungsort" type="a1b:Kennzeichen_Alphanumerisch_J_Stp">
+												<xs:annotation>
+													<xs:documentation>J = Es liegt kein fester Ausübungsort vor</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element ref="a1b:Schiff"/>
+										</xs:choice>
+										<xs:element name="Art_Der_Taetigkeit_Im_Mitgliedsstaat" type="a1b:Kennzeichen_Alphanumerisch_Stp">
+											<xs:annotation>
+												<xs:documentation>Entspricht die Art der Tätigkeit im Mitgliedstaat der Art der in Deutschland ausgeübten Tätigkeit?</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Zeitraum_Bisheriger_Einsatz" minOccurs="0" maxOccurs="5">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Beginn_Ez" type="svb:Datum_Stp"/>
+										<xs:element name="Ende_Ez" type="svb:Datum_Stp"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Selbststaendige_Taetigkeit_Deutschland">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Grunddaten">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Name" type="a1b:Name_Ag_Stp">
+											<xs:annotation>
+												<xs:documentation>Name des Unternehmens.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Anschrift" type="a1b:Anschrift_Ctp">
+											<xs:annotation>
+												<xs:documentation>Angaben zur Anschrift des Arbeitgebers.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="a1b:Telefonnummer"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Angaben_Geschaeftstaetigkeit" type="Angaben_Geschaeftstaetigkeit_Ctp"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Angaben_Selbststaendige_Taetigkeit_Ausland">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Angaben" type="a1b:Kennzeichen_Alphanumerisch_J_Stp"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="svb:Versionsnummer_Stp" use="required" fixed="3.0.0">
+				<xs:annotation>
+					<xs:documentation>Es ist nur der Wert 3.0.0 zulaessig</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Angaben_Geschaeftstaetigkeit_Ctp">
+		<xs:sequence>
+			<xs:element name="Art_Der_Taetigkeit">
+				<xs:simpleType>
+					<xs:restriction base="a1b:Iso88591_Text_Stp">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Dauer" type="a1b:Kennzeichen_Alphanumerisch_Stp"/>
+			<xs:element name="Vorherige_Geltung_Deutsches_Recht" type="a1b:Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Unmittelbar vor Beginn der Auslandstätigkeit galt für mindestens 1 Monat das deutsche Sozialversicherungsrecht
+
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Sv_Beitraege_In_Deutschland" type="a1b:Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Während der vorübergehenden Tätigkeit im Ausland werden Sozialversi-cherungsbeiträge in Deutschland gezahlt
+
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Steuern_In_Deutschland">
+				<xs:annotation>
+					<xs:documentation>Während der vorübergehenden Tätigkeit im Ausland werden Steuern in Deutschland gezahlt
+
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="a1b:Kennzeichen_Alphanumerisch_Stp">
+						<xs:enumeration value="J"/>
+						<xs:enumeration value="N"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Eintrag_Handelskammer" type="a1b:Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Während der vorübergehenden Tätigkeit im Ausland besteht eine Eintragung in der Handelskammer bzw. dem Berufsverband in Deutschland
+
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Aufrechterhaltung_Infrastruktur" type="a1b:Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Die Infrastruktur zur Fortführung der selbständigen Tätigkeit in Deutschland wird für die Dauer der vorübergehenden Tätigkeit im Ausland aufrechterhal-ten
+
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Fortfuehrung_Bisherige_Taetigkeit" type="a1b:Kennzeichen_Alphanumerisch_Stp">
+				<xs:annotation>
+					<xs:documentation>Die selbstständige Tätigkeit in Deutschland wird nach Beendigung der vorübergehenden Tätigkeit im anderen Mitgliedstaat fortgeführt.
+
+J = Ja
+N = Nein</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Wirtschaftssektor" type="a1b:Wirtschaftssektoren_Stp"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

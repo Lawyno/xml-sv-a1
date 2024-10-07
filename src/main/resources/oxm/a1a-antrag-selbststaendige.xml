@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+              package-name="de.lawyno.xml.sv.a1.antrag.selbststaendige" version="2.5">
+
+    <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
+                namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Selbststaendige/2.0">
+        <xml-ns prefix="ase" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Selbststaendige/2.0" />
+        <xml-ns prefix="btct"
+                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_106a/1.0.0" />
+    </xml-schema>
+
+    <java-types>
+        <java-type name="A1AntragSelbststaendige">
+            <xml-root-element name="A1_Selbststaendige" />
+            <java-attributes>
+                <xml-element java-attribute="angabenZurPersonA1" name="Angaben_zur_Person_A1" />
+                <xml-element java-attribute="angabenSelbststaendigeTaetigkeitDeutschland"
+                             name="Angaben_selbstaendige_Taetigkeit_Deutschland" />
+                <xml-element java-attribute="angabenSelbststaendigeTaetigkeitAusland"
+                             name="Angaben_selbstaendige_Taetigkeit_Ausland" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragSelbststaendige$AngabenEntsendung">
+            <java-attributes>
+                <xml-element java-attribute="angabenZurSelbststaendigenTaetigkeit"
+                             name="Angaben_zur_selbstaendigen_Taetigkeit" />
+                <xml-element java-attribute="zeitraumBisherigerEinsatzList"
+                             name="Angaben_Entsendung_Selbststaendige" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragSelbststaendige$AngabenEntsendung$GrunddatenEntsendung">
+            <java-attributes>
+                <xml-element java-attribute="mitgliedstaatFlaggenstaat" name="Mitgliedsstaat_der_Entsendung" />
+                <xml-element java-attribute="beginn" name="Beginn_Entsendung" />
+                <xml-element java-attribute="ende" name="Ende_Entsendung" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragSelbststaendige$AngabenEntsendung$AngabenZurSelbststaendigenTaetigkeit">
+            <java-attributes>
+                <xml-element java-attribute="schiff" name="Schiff" />
+                <xml-element java-attribute="artDerTaetigkeitImMitgliedsstaat" name="Art_der_Taetigkeit_im_Mitgliedsstaat" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragSelbststaendige$AngabenEntsendung$ZeitraumBisherigerEinsatz">
+            <java-attributes>
+                <xml-element java-attribute="beginnEz" name="Beginn_Entsendung" />
+                <xml-element java-attribute="endeEz" name="Ende_Entsendung" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragSelbststaendige$AngabenSelbststaendigeTaetigkeitDeutschland">
+            <java-attributes>
+                <xml-element java-attribute="grunddaten" name="Grunddaten"
+                             type="de.lawyno.xml.sv.a1.antrag.selbststaendige.GrunddatenLegacy" />
+            </java-attributes>
+        </java-type>
+        <java-type name="A1AntragSelbststaendige$AngabenSelbststaendigeTaetigkeitDeutschland$Grunddaten"
+            xml-transient="true" />
+        <java-type name="AngabenGeschaeftstaetigkeitCtp">
+            <java-attributes>
+                <xml-element java-attribute="artDerTaetigkeit" name="Art_der_Taetigkeit" />
+                <xml-element java-attribute="vorherigeGeltungDeutschesRecht" name="Vorherige_Geltung_deutsches_Recht" />
+                <xml-element java-attribute="svBeitraegeInDeutschland" name="SV_Beitraege_in_Deutschland" />
+                <xml-element java-attribute="steuernInDeutschland" name="Steuern_in_Deutschland" />
+                <xml-element java-attribute="fortfuehrungBisherigeTaetigkeit"
+                             name="Fortfuehrung_bisherige_Taetigkeit" />
+            </java-attributes>
+        </java-type>
+    </java-types>
+
+</xml-bindings>
