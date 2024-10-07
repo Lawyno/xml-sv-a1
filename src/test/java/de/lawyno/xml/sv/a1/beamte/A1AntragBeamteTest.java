@@ -7,7 +7,6 @@ import de.lawyno.xml.sv.a1.test.AbstractXmlTest;
 import de.lawyno.xml.sv.ag300.svtoag.SvtoagA1;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -43,7 +42,7 @@ class A1AntragBeamteTest extends AbstractXmlTest {
 
     @ParameterizedTest
     @ValueSource(strings = { XML_FILE_BEA_MAX, XML_FILE_ANG_MAX })
-    void xmlToJava(final String file) throws JAXBException, IOException, SAXException {
+    void xmlToJava(final String file) throws JAXBException, IOException {
         final Unmarshaller unmarshaller = createDefaultUnmarshaller();
         final Object o = unmarshaller.unmarshal(System.class.getResource(file));
         assertThat(o).isInstanceOf(A1AntragBeamte.class);
@@ -74,7 +73,7 @@ class A1AntragBeamteTest extends AbstractXmlTest {
 
     @ParameterizedTest
     @ValueSource(strings = { XML_FILE_BEA_MAX_LEGACY, XML_FILE_ANG_MAX_LEGACY })
-    void xmlToJava_legacy(final String file) throws JAXBException, IOException, SAXException {
+    void xmlToJava_legacy(final String file) throws JAXBException, IOException {
         final Unmarshaller unmarshaller = createLegacyUnmarshallerWithSvtoagA1();
         final Object o = unmarshaller.unmarshal(System.class.getResource(file));
         assertThat(o).isInstanceOf(A1AntragBeamte.class);
@@ -146,7 +145,7 @@ class A1AntragBeamteTest extends AbstractXmlTest {
 
 
     @Override
-    protected JAXBContext createLegacyJaxbContextWithClassicSvtoag() throws JAXBException {
+    protected JAXBContext createLegacyJaxbContextWithClassicSvtoag() {
         return null; // TODO Fälle mit SVTOAG aus xml-sv-ag implementieren
     }
 

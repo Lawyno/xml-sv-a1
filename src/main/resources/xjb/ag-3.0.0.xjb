@@ -30,12 +30,12 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xs:element[@name='Sendungs_Body']">
             <jaxb:property name="body" />
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='Sendungs_Body']//xs:element[@name='Verfahren']//xs:element[@ref='abl:A1_Ablehnung']">
-            <jaxb:property name="a1AblehnungList" />
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='Sendungs_Body']//xs:element[@name='Verfahren']//xs:element[@ref='bew:A1_Bewilligung']">
-            <jaxb:property name="a1BewilligungList" />
+            <jaxb:bindings node="//xs:element[@name='Verfahren']//xs:element[@ref='abl:A1_Ablehnung']">
+                <jaxb:property name="a1AblehnungList" />
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:element[@name='Verfahren']//xs:element[@ref='bew:A1_Bewilligung']">
+                <jaxb:property name="a1BewilligungList" />
+            </jaxb:bindings>
         </jaxb:bindings>
         <namespace:prefix name="" />
     </jaxb:bindings>

@@ -4,26 +4,20 @@
 
     <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
                 namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0">
-        <xml-ns prefix="see" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0"/>
+        <xml-ns prefix="see" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" />
         <xml-ns prefix="btct"
-                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0"/>
+                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
     </xml-schema>
 
     <java-types>
         <java-type name="AngabenZurPersonMitglCtp">
-            <xml-type namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0"/>
+            <xml-type namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" />
         </java-type>
         <java-type name="GrundangabeNameNamensergaenzungenCtp">
-            <xml-type namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0"/>
+            <xml-type namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" />
             <java-attributes>
-                <xml-element java-attribute="grundangabenName" name="Grundangabe_Name"/>
-                <xml-element java-attribute="namensergaenzungen" name="Namens_Ergaenzungen"/>
-            </java-attributes>
-        </java-type>
-        <java-type name="FesteEinsatzstelleCtp">
-            <xml-type namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0"/>
-            <java-attributes>
-                <xml-element java-attribute="bezeichnungFesteEinsatzstelle" name="Bezeichnung_Einsatzstelle"/>
+                <xml-element java-attribute="grundangabenName" name="Grundangabe_Name" />
+                <xml-element java-attribute="namensergaenzungen" name="Namens_Ergaenzungen" />
             </java-attributes>
         </java-type>
     </java-types>

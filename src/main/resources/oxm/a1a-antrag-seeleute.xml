@@ -4,23 +4,23 @@
 
     <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
                 namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0">
-        <xml-ns prefix="see" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0"/>
+        <xml-ns prefix="see" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Seeleute/2.0" />
         <xml-ns prefix="btct"
-                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0"/>
+                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
     </xml-schema>
 
     <java-types>
         <java-type name="A1AntragSeeleute">
             <java-attributes>
-                <xml-element java-attribute="angabenZurPersonA1" name="Angaben_zur_Person_A1"/>
+                <xml-element java-attribute="angabenZurPersonA1" name="Angaben_zur_Person_A1" />
                 <xml-element java-attribute="angabenArbeitgeberDeutschland"
-                             name="Angaben_Arbeitgeber_Deutschland_A1"/>
+                             name="Angaben_Arbeitgeber_Deutschland_A1" />
             </java-attributes>
         </java-type>
         <java-type name="A1AntragSeeleute$AngabenAuslandseinsatz">
             <java-attributes>
                 <xml-element java-attribute="beschaeftigungAufEinemHochseeschiffList"
-                             name="Beschaeftigung_auf_einem_Hochseeschiff"/>
+                             name="Beschaeftigung_auf_einem_Hochseeschiff" />
             </java-attributes>
         </java-type>
         <java-type name="A1AntragSeeleute$AngabenAuslandseinsatz$GrunddatenAuslandseinsatz">
@@ -40,7 +40,7 @@
         </java-type>
         <java-type name="A1AntragSeeleute$AngabenArbeitgeberDeutschland$Grunddaten">
             <java-attributes>
-                <xml-element java-attribute="anschriftArbeitgeber" name="Anschrift_Arbeitgeber"/>
+                <xml-element java-attribute="anschriftArbeitgeber" name="Anschrift_Arbeitgeber" />
                 <xml-element java-attribute="telefonnummer" name="Telefonnummer" />
                 <xml-element java-attribute="emailAdresse" name="E_Mail" />
                 <xml-element java-attribute="bbnrVu" name="Betriebsnummer_VU" />

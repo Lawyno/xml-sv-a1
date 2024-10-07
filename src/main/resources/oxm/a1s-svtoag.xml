@@ -7,7 +7,8 @@
         <xml-ns prefix="a1" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/Steuerungssatz_A1" />
         <xml-ns prefix="abl" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ablehnung/1.3" />
         <xml-ns prefix="bew" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Bewilligung/1.3" />
-        <xml-ns prefix="svbs" namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" />
+        <xml-ns prefix="svbs"
+                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" />
     </xml-schema>
 
     <java-types>

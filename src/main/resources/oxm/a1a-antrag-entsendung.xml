@@ -27,7 +27,7 @@
         </java-type>
         <java-type name="A1AntragEntsendung$AngabenEntsendung$GrunddatenEntsendung">
             <java-attributes>
-                <xml-element java-attribute="mitgliedsstaatFlaggenstaat" name="Mitgliedsstaat_der_Entsendung"/>
+                <xml-element java-attribute="mitgliedsstaatFlaggenstaat" name="Mitgliedsstaat_der_Entsendung" />
                 <xml-element java-attribute="beginn" name="Beginn_Entsendung" />
                 <xml-element java-attribute="ende" name="Ende_Entsendung" />
                 <xml-element java-attribute="taetigkeit" name="Taetigkeitsbeschreibung_Ausland" />

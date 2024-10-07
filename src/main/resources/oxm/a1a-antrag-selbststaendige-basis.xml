@@ -14,10 +14,10 @@
 
         <java-type name="SteuerungsdatenAgV3Ctp">
             <xml-type name="Steuerungsdaten_106a_Ctp" />
-<!--
-            <xml-type name="Steuerungsdaten_106a_Ctp"
-                      prop-order="absendernummer empfaengernummer datumErstellung datensatzId aktenzeichenVerursacher stornierung" />
--->
+            <!--
+                        <xml-type name="Steuerungsdaten_106a_Ctp"
+                                  prop-order="absendernummer empfaengernummer datumErstellung datensatzId aktenzeichenVerursacher stornierung" />
+            -->
             <java-attributes>
                 <xml-element java-attribute="datensatzId" name="Datensatz_ID" />
                 <xml-transient java-attribute="produktIdentifier" />

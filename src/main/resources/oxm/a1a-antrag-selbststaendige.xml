@@ -38,7 +38,8 @@
         <java-type name="A1AntragSelbststaendige$AngabenEntsendung$AngabenZurSelbststaendigenTaetigkeit">
             <java-attributes>
                 <xml-element java-attribute="schiff" name="Schiff" />
-                <xml-element java-attribute="artDerTaetigkeitImMitgliedsstaat" name="Art_der_Taetigkeit_im_Mitgliedsstaat" />
+                <xml-element java-attribute="artDerTaetigkeitImMitgliedsstaat"
+                             name="Art_der_Taetigkeit_im_Mitgliedsstaat" />
             </java-attributes>
         </java-type>
         <java-type name="A1AntragSelbststaendige$AngabenEntsendung$ZeitraumBisherigerEinsatz">
@@ -54,7 +55,7 @@
             </java-attributes>
         </java-type>
         <java-type name="A1AntragSelbststaendige$AngabenSelbststaendigeTaetigkeitDeutschland$Grunddaten"
-            xml-transient="true" />
+                   xml-transient="true" />
         <java-type name="AngabenGeschaeftstaetigkeitCtp">
             <java-attributes>
                 <xml-element java-attribute="artDerTaetigkeit" name="Art_der_Taetigkeit" />

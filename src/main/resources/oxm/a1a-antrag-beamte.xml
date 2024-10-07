@@ -4,28 +4,28 @@
 
     <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
                 namespace="http://www.gkv-datenaustausch.de/XMLSchema/A1_Beamte/2.0">
-        <xml-ns prefix="abe" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Beamte/2.0"/>
+        <xml-ns prefix="abe" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Beamte/2.0" />
         <xml-ns prefix="btct"
-                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0"/>
+                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
     </xml-schema>
 
     <java-types>
         <java-type name="A1AntragBeamte">
             <java-attributes>
-                <xml-element java-attribute="angabenZurPersonA1" name="Angaben_zur_Person_A1"/>
+                <xml-element java-attribute="angabenZurPersonA1" name="Angaben_zur_Person_A1" />
                 <xml-element java-attribute="angabenArbeitgeberDienstherrDeutschland"
-                             name="Angaben_Arbeitgeber_Deutschland_A1"/>
+                             name="Angaben_Arbeitgeber_Deutschland_A1" />
             </java-attributes>
         </java-type>
         <java-type name="A1AntragBeamte$AngabenAuslandseinsatz">
             <java-attributes>
                 <xml-element java-attribute="angabenZurTaetigkeitImAuslandList"
-                             name="Angaben_zur_Taetigkeit_im_Ausland"/>
+                             name="Angaben_zur_Taetigkeit_im_Ausland" />
             </java-attributes>
         </java-type>
         <java-type name="A1AntragBeamte$AngabenArbeitgeberDienstherrDeutschland$Grunddaten">
             <java-attributes>
-                <xml-element java-attribute="anschriftArbeitgeberDienstherr" name="Anschrift_Arbeitgeber"/>
+                <xml-element java-attribute="anschriftArbeitgeberDienstherr" name="Anschrift_Arbeitgeber" />
                 <xml-element java-attribute="telefonnummer" name="Telefonnummer" />
                 <xml-element java-attribute="emailAdresse" name="E_Mail" />
                 <xml-element java-attribute="bbnrVu" name="Betriebsnummer_VU" />
@@ -34,8 +34,8 @@
         <java-type name="A1AntragBeamte$AngabenArbeitsverhaeltnisDeutschland$BeschaeftigtePerson">
             <java-attributes>
                 <xml-element java-attribute="aktivesBeschaeftigungsverhaeltnisImOeffentlichenDienst"
-                             name="Aktives_Beschaeftigungsverhaeltnis"/>
-                <xml-transient java-attribute="geringfuegigeBeschaeftigung"/>
+                             name="Aktives_Beschaeftigungsverhaeltnis" />
+                <xml-transient java-attribute="geringfuegigeBeschaeftigung" />
             </java-attributes>
         </java-type>
     </java-types>

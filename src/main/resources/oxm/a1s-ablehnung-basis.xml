@@ -5,7 +5,8 @@
     <xml-schema element-form-default="QUALIFIED" attribute-form-default="UNQUALIFIED"
                 namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0">
         <xml-ns prefix="abl" namespace-uri="http://www.gkv-datenaustausch.de/XMLSchema/A1_Ablehnung/1.3" />
-        <xml-ns prefix="btct" namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
+        <xml-ns prefix="btct"
+                namespace-uri="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Complex_A1/1.0" />
     </xml-schema>
 
     <java-types>
