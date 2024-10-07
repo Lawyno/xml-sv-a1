@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:namespace="http://jaxb2-commons.dev.java.net/basic/namespace-prefix"
+               jaxb:extensionBindingPrefixes="inheritance namespace"
+               version="2.1">
+
+    <!-- A1 Basis Komponenten -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/106-Basis-1.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.basis" />
+        </jaxb:schemaBindings>
+        <namespace:prefix name="a1b" />
+    </jaxb:bindings>
+
+</jaxb:bindings>

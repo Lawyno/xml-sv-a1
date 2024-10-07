@@ -3,20 +3,10 @@
                xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
                xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
                xmlns:namespace="http://jaxb2-commons.dev.java.net/basic/namespace-prefix"
-               jaxb:extensionBindingPrefixes="inheritance namespace"
+               jaxb:extensionBindingPrefixes="namespace"
                version="2.1">
 
-    <!-- A1 Basis Komponenten -->
-    <jaxb:bindings schemaLocation="../xsd/v3.0.0/106-Basis-1.0.0.xsd" node="/xs:schema">
-        <jaxb:schemaBindings>
-            <jaxb:package name="de.lawyno.xml.sv.a1.basis" />
-        </jaxb:schemaBindings>
-        <namespace:prefix name="a1b" />
-    </jaxb:bindings>
-
-
-    <!-- A1 Anträge -->
-    <!-- Beamte (Anlage 1) -->
+    <!-- Beamte (106 Anlage 1) -->
     <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_1_Beamte_Beschaeftigte-3.0.0.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="de.lawyno.xml.sv.a1.antrag.beamte" />
@@ -31,7 +21,7 @@
         <namespace:prefix name="abe" />
     </jaxb:bindings>
 
-    <!-- Seeleute (Anlage 2) -->
+    <!-- Seeleute (106 Anlage 2) -->
     <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1A-106_Anlage_2_Seeleute-3.0.0.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="de.lawyno.xml.sv.a1.antrag.seeleute" />
@@ -62,38 +52,6 @@
             <jaxb:property name="zeitraumEntsendungList" />
         </jaxb:bindings>
         <namespace:prefix name="aes" />
-    </jaxb:bindings>
-
-
-    <!-- A1 Rückmeldungen -->
-    <!-- Ablehnung -->
-    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Ablehnung-2.0.0.xsd" node="/xs:schema">
-        <jaxb:schemaBindings>
-            <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.ablehnung" />
-        </jaxb:schemaBindings>
-        <jaxb:bindings node="/xs:schema/xs:element">
-            <jaxb:class />
-            <inheritance:implements>de.lawyno.xml.sv.a1.bescheid.IXmlA1Bescheid</inheritance:implements>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='Bescheinigung_Pdf']">
-            <jaxb:property name="bescheinigungPdfList" />
-        </jaxb:bindings>
-        <namespace:prefix name="abl" />
-    </jaxb:bindings>
-
-    <!-- Bewilligung -->
-    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Bewilligung-2.0.0.xsd" node="/xs:schema">
-        <jaxb:schemaBindings>
-            <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.bewilligung" />
-        </jaxb:schemaBindings>
-        <jaxb:bindings node="/xs:schema/xs:element">
-            <jaxb:class />
-            <inheritance:implements>de.lawyno.xml.sv.a1.bescheid.IXmlA1Bescheid</inheritance:implements>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:element[@name='Bescheinigung_Pdf']">
-            <jaxb:property name="bescheinigungPdfList" />
-        </jaxb:bindings>
-        <namespace:prefix name="bew" />
     </jaxb:bindings>
 
 </jaxb:bindings>

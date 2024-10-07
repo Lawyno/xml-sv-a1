@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
+               xmlns:namespace="http://jaxb2-commons.dev.java.net/basic/namespace-prefix"
+               jaxb:extensionBindingPrefixes="inheritance namespace"
+               version="2.1">
+
+    <!-- Ablehnung -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Ablehnung-2.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.ablehnung" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class />
+            <inheritance:implements>de.lawyno.xml.sv.a1.bescheid.IXmlA1Bescheid</inheritance:implements>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Bescheinigung_Pdf']">
+            <jaxb:property name="bescheinigungPdfList" />
+        </jaxb:bindings>
+        <namespace:prefix name="abl" />
+    </jaxb:bindings>
+
+    <!-- Bewilligung -->
+    <jaxb:bindings schemaLocation="../xsd/v3.0.0/A1S-Bewilligung-2.0.0.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.a1.bescheid.bewilligung" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="/xs:schema/xs:element">
+            <jaxb:class />
+            <inheritance:implements>de.lawyno.xml.sv.a1.bescheid.IXmlA1Bescheid</inheritance:implements>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Bescheinigung_Pdf']">
+            <jaxb:property name="bescheinigungPdfList" />
+        </jaxb:bindings>
+        <namespace:prefix name="bew" />
+    </jaxb:bindings>
+
+</jaxb:bindings>
